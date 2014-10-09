@@ -30,6 +30,7 @@ class stock_move(models.Model):
     product_name = fields.Char('Product name', size=64,
                                compute='_get_product_name', store=True)
 
+    @api.one
     @api.depends('product_id', 'partner_id')
     def _get_product_name(self):
         if not self.product_id:
@@ -38,6 +39,29 @@ class stock_move(models.Model):
             customer_names = self.env['product.customer'].search(
                 [('product_id', '=', self.product_id.product_tmpl_id.id),
                  ('customer_id', '=', self.partner_id.id)])
+            if customer_names:
+                self.product_name = customer_names[0].name
+            else:
+                self.product_name = self.product_id.name
+
+
+class stock_pack_operation(models.Model):
+
+    _inherit = 'stock.pack.operation'
+
+    # Se añade el campo para utilizarlo en el reporte qweb.
+    product_name = fields.Char('Product name', size=64,
+                               compute='_get_product_name', store=True)
+
+    @api.one
+    @api.depends('product_id', 'picking_id.partner_id')
+    def _get_product_name(self):
+        if not self.product_id:
+            self.product_name = ''
+        else:
+            customer_names = self.env['product.customer'].search(
+                [('product_id', '=', self.product_id.product_tmpl_id.id),
+                 ('customer_id', '=', self.picking_id.partner_id.id)])
             if customer_names:
                 self.product_name = customer_names[0].name
             else:
