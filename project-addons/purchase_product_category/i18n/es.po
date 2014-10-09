@@ -1,0 +1,94 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * purchase_product_category
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-09 11:23+0000\n"
+"PO-Revision-Date: 2014-10-09 11:23+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_product_category
+#: view:product.template:purchase_product_category.product_template_add_material_cat_search_view
+msgid "Category"
+msgstr "Categoría"
+
+#. module: purchase_product_category
+#: field:product.material.category,child_id:0
+msgid "Child Categories"
+msgstr "Categorias hijas"
+
+#. module: purchase_product_category
+#: field:product.material.category,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: purchase_product_category
+#: field:product.material.category,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: purchase_product_category
+#: field:product.material.category,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: purchase_product_category
+#: field:product.material.category,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: purchase_product_category
+#: field:product.material.category,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: purchase_product_category
+#: field:product.material.category,parent_left:0
+msgid "Left Parent"
+msgstr "Left Parent"
+
+#. module: purchase_product_category
+#: view:product.material.category:purchase_product_category.material_category_tree
+msgid "Material categories"
+msgstr "Categorias de material"
+
+#. module: purchase_product_category
+#: view:product.material.category:purchase_product_category.material_category_form
+#: view:product.template:purchase_product_category.product_template_add_material_cat_search_view
+#: field:product.template,material_categ_id:0
+msgid "Material category"
+msgstr "Categoría de material"
+
+#. module: purchase_product_category
+#: field:product.material.category,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: purchase_product_category
+#: field:product.material.category,parent_id:0
+msgid "Parent Category"
+msgstr "Categoría padre"
+
+#. module: purchase_product_category
+#: view:product.material.category:purchase_product_category.material_category_search
+msgid "Product Categories"
+msgstr "Categorías de producto"
+
+#. module: purchase_product_category
+#: model:ir.model,name:purchase_product_category.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: purchase_product_category
+#: field:product.material.category,parent_right:0
+msgid "Right Parent"
+msgstr "Right Parent"
+

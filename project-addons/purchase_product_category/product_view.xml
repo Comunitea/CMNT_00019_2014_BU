@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="product_template_add_material_category" model="ir.ui.view">
+            <field name="name">product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="account.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Accounting']/group" position="inside">
+                    <label for="material_categ_id" />
+                    <div><field name="material_categ_id" colspan="3" nolabel="1"/></div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_add_material_cat_search_view" model="ir.ui.view">
+            <field name="name">product.template.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="after">
+                    <field name="material_categ_id"/>
+                </field>
+
+                <filter string='Category' domain="[]" context="{'group_by' : 'categ_id'}" position="after">
+                    <filter string='Material category' domain="[]" context="{'group_by' : 'material_categ_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+
+        <!-- Material categories views. -->
+        <record id="material_category_search" model="ir.ui.view">
+            <field name="name">material.category.search</field>
+            <field name="model">product.material.category</field>
+            <field name="arch" type="xml">
+                <search string="Product Categories">
+                    <field name="name" string="Product Categories"/>
+                    <field name="parent_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="material_category_tree" model="ir.ui.view">
+            <field name="name">material.category.tree</field>
+            <field name="model">product.material.category</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Material categories">
+                    <field name="complete_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="material_category_form" model="ir.ui.view">
+            <field name="name">material.category.form</field>
+            <field name="model">product.material.category</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Material category">
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
