@@ -26,7 +26,7 @@
     'description': """Adds a new category to the product.""",
     'author': 'Pexego',
     'website': 'www.pexego.es',
-    "depends": ['base', 'product', 'account'],
+    "depends": ['base', 'product', 'account', 'purchase'],
     "data": ['product_view.xml',
              'security/ir.model.access.csv'],
     "installable": True
