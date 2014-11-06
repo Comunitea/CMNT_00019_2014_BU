@@ -19,6 +19,7 @@
 #
 ##############################################################################
 from openerp import models, fields, api
+import openerp.addons.decimal_precision as dp
 
 
 class ProductProduct(models.Model):
@@ -26,7 +27,8 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     urgent_stock = fields.Float('Urgent', compute='_get_urgent_stock',
-                                store=False)
+                                store=False,
+                                digits_compute=dp.get_precision('Product Unit of Measure'))
 
     @api.one
     def _get_urgent_stock(self):

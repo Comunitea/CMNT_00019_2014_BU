@@ -19,14 +19,4 @@
 #
 ##############################################################################
 
-{
-    'name': "Urgent stock",
-    'version': '1.0',
-    'category': 'stock',
-    'description': """Adds the urgent stock field""",
-    'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['product', 'stock', 'decimal_precision'],
-    "data": ['product_view.xml'],
-    "installable": True
-}
+import product

@@ -20,13 +20,13 @@
 ##############################################################################
 
 {
-    'name': "Urgent stock",
+    'name': "Used material stock",
     'version': '1.0',
     'category': 'stock',
-    'description': """Adds the urgent stock field""",
+    'description': """""",
     'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['product', 'stock', 'decimal_precision'],
+    'website': '',
+    "depends": ['product', 'mrp', 'stock', 'decimal_precision'],
     "data": ['product_view.xml'],
     "installable": True
 }
