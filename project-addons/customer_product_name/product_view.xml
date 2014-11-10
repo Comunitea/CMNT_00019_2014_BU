@@ -22,7 +22,7 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="customer_id" domain="[('customer', '=', True)]"/>
+                    <field name="customer_id" domain="[('customer', '=', True), ('parent_id', '=', False)]"/>
                     <field name="name"/>
                 </group>
             </form>

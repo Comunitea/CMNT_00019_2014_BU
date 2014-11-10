@@ -22,18 +22,17 @@
 from openerp import models, fields, api
 
 
-class stock_move(models.Model):
+class account_invoice_line(models.Model):
 
-    _inherit = 'stock.move'
+    _inherit = 'account.invoice.line'
 
-    # Se añade el campo para utilizarlo en el reporte qweb.
     product_name = fields.Char('Product name', size=64,
-                               compute='_get_product_name', store=True)
+                               compute='_get_product_name', store=False)
 
     @api.one
-    @api.depends('product_id', 'partner_id')
+    @api.depends('product_id', 'invoice_id.partner_id')
     def _get_product_name(self):
-        if self.picking_type_id.code != 'outgoing':
+        if self.invoice_id.type != 'out_invoice':
             self.product_name = self.product_id.name
             return
         if not self.product_id:
@@ -45,29 +44,6 @@ class stock_move(models.Model):
                 partner_id = self.partner_id.id
             search_domain = [('product_id', '=', self.product_id.product_tmpl_id.id), ('customer_id', '=', partner_id)]
             customer_names = self.env['product.customer'].search(search_domain)
-            if customer_names:
-                self.product_name = customer_names[0].name
-            else:
-                self.product_name = self.product_id.name
-
-
-class stock_pack_operation(models.Model):
-
-    _inherit = 'stock.pack.operation'
-
-    # Se añade el campo para utilizarlo en el reporte qweb.
-    product_name = fields.Char('Product name', size=64,
-                               compute='_get_product_name', store=True)
-
-    @api.one
-    @api.depends('product_id', 'picking_id.partner_id')
-    def _get_product_name(self):
-        if not self.product_id:
-            self.product_name = ''
-        else:
-            customer_names = self.env['product.customer'].search(
-                [('product_id', '=', self.product_id.product_tmpl_id.id),
-                 ('customer_id', '=', self.picking_id.partner_id.id)])
             if customer_names:
                 self.product_name = customer_names[0].name
             else:

@@ -28,7 +28,6 @@
     'website': 'www.pexego.es',
     "depends": ['base', 'product', 'stock', 'sale_stock'],
     "data": ['product_view.xml',
-             'views/report_stockpicking.xml',
              'security/ir.model.access.csv'],
     "installable": True
 }

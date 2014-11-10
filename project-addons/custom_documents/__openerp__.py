@@ -19,7 +19,16 @@
 #
 ##############################################################################
 
-import product
-import sale
-import stock
-import account
+{
+    'name': "Documents customizations",
+    'version': '1.0',
+    'category': '',
+    'description': """""",
+    'author': 'Pexego',
+    'website': '',
+    "depends": ['account', 'stock', 'customer_product_name'],
+    "data": ['views/stock_picking_report.xml',
+             'views/stock_picking_report_without_company.xml',
+             'picking_report.xml', 'views/account_invoice_report.xml'],
+    "installable": True
+}
