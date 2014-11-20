@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * custom_documents
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-20 18:05+0000\n"
+"PO-Revision-Date: 2014-11-20 18:05+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción."
+msgstr "**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción."
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "*= solo si hay necesidad de producción"
+msgstr "*= solo si hay necesidad de producción"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Available"
+msgstr "Disponible"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30"
+msgstr "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "CANTIDAD Minima de producción para arrancar robot: 70"
+msgstr "CANTIDAD Minima de producción para arrancar robot: 70"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Category"
+msgstr "Categoría"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Description"
+msgstr "Descripción"
+
+#. module: custom_documents
+#: model:ir.actions.report.xml,name:custom_documents.action_report_picking
+msgid "Final client picking"
+msgstr "Albarán de cliente final"
+
+#. module: custom_documents
+#: field:report.custom_documents.mrp_production,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Min"
+msgstr "Mínimo"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
+msgstr "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Page:"
+msgstr "Página:"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Prepared"
+msgstr "Preparado"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Producción maxima diaria ROBOT: xxx (aprox)"
+msgstr "Producción maxima diaria ROBOT: xxx (aprox)"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Produce"
+msgstr "Producir"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Produced"
+msgstr "Producido"
+
+#. module: custom_documents
+#: model:ir.model,name:custom_documents.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Production Template"
+msgstr "Plantilla de producción"
+
+#. module: custom_documents
+#: model:ir.actions.report.xml,name:custom_documents.action_report_production
+msgid "Production list"
+msgstr "Lista de producción"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
+msgstr "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Stock"
+msgstr "Stock"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "TOTAL TO PRODUCE:"
+msgstr "TOTAL A PRODUCIR:"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Total to produce in"
+msgstr "Total a producir en"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "URGE"
+msgstr "URGE"
+
+#. module: custom_documents
+#: code:addons/custom_documents/mrp_report.py:46
+#: code:addons/custom_documents/mrp_report.py:50
+#: code:addons/custom_documents/mrp_report.py:56
+#: code:addons/custom_documents/mrp_report.py:57
+#: code:addons/custom_documents/mrp_report.py:58
+#: code:addons/custom_documents/mrp_report.py:65
+#, python-format
+msgid "with minimun stock"
+msgstr "con stock mínimo"
+
+#. module: custom_documents
+#: code:addons/custom_documents/mrp_report.py:47
+#: code:addons/custom_documents/mrp_report.py:51
+#: code:addons/custom_documents/mrp_report.py:59
+#: code:addons/custom_documents/mrp_report.py:60
+#: code:addons/custom_documents/mrp_report.py:61
+#: code:addons/custom_documents/mrp_report.py:67
+#, python-format
+msgid "without minimun stock"
+msgstr "sin stock mínimo"
+

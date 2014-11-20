@@ -29,6 +29,7 @@
     "depends": ['account', 'stock', 'customer_product_name'],
     "data": ['views/stock_picking_report.xml',
              'views/stock_picking_report_without_company.xml',
-             'picking_report.xml', 'views/account_invoice_report.xml'],
+             'picking_report.xml', 'views/account_invoice_report.xml',
+             'views/mrp_production_report.xml', 'mrp_report.xml'],
     "installable": True
 }
