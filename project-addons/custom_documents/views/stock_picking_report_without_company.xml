@@ -6,24 +6,30 @@
                 <t t-foreach="docs" t-as="o">
                     <div class="page">
                     <div class="row">
+                        <div class="col-xs-4 pull-left">
+                            <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
+                                <span><strong>Supplier Address:</strong></span>
+                            </div>
+                            <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
+                                <span><strong>Warehouse Address:</strong></span>
+                            </div>
+                            <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
+                                <span><strong>Customer Address:</strong></span>
+                            </div>
+                            <div t-if="o.partner_id">
+                                <div t-field="o.partner_id"
+                                    t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                                    <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
+                            </div>
+                        </div>
                         <div class="col-xs-4 pull-right">
-                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px;"/>
+                            <div name="invoice_partner" t-if="o.picking_type_id.code == 'outgoing' and o.sale_id and o.sale_id.partner_invoice_id">
+                                Will be invoiced to:
+                                <div t-field="o.sale_id.partner_invoice_id"
+                                 t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                            </div>
                         </div>
                     </div>
-                    <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
-                        <span><strong>Supplier Address:</strong></span>
-                    </div>
-                    <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
-                        <span><strong>Warehouse Address:</strong></span>
-                    </div>
-                    <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
-                        <span><strong>Customer Address:</strong></span>
-                    </div>
-                    <div t-if="o.partner_id" name="partner_header">
-                        <div t-field="o.partner_id"
-                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                            <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
-                        </div>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -31,6 +37,8 @@
                                     <th><strong>State</strong></th>
                                     <th><strong>Commitment Date</strong></th>
                                     <th name="td_sched_date_h"><strong>Scheduled Date</strong></th>
+                                    <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
+                                    <th><strong>Weight</strong></th>
                                     <th><strong>Order (Origin)</strong></th>
                                     <th><strong>Delivery Expense</strong></th>
                                 </tr>
@@ -49,6 +57,12 @@
                                     <td name="td_sched_date">
                                         <span t-field="o.min_date"/>
                                     </td>
+                                    <td t-if="o.picking_type_id.code == 'outgoing'">
+                                        <span t-field="o.carrier_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.weight"/>
+                                    </td>
                                     <td>
                                         <span t-field="o.origin"/>
                                     </td>
@@ -66,13 +80,6 @@
                                     <th><strong>Ref.</strong></th>
                                     <th><strong>Product</strong></th>
                                     <th class="text-right"><strong>Quantity</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'incoming'">
-                                        <th><strong>Source</strong></th>
-                                    </t>
-                                    <th><strong>Barcode</strong></th>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'">
-                                        <th><strong>Destination</strong></th>
-                                    </t>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,17 +87,6 @@
                                     <td><span t-field="move.product_id.default_code"/></td>
                                     <td><span t-field="move.product_name"/></td>
                                     <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
-                                    <t t-if="o.picking_type_id.code != 'incoming'">
-                                        <td><span t-field="move.location_id"/></td>
-                                    </t>
-                                    <td>
-                                        <span t-if="move.product_id and move.product_id.ean13">
-                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
-                                        </span>
-                                    </td>
-                                    <t t-if="o.picking_type_id.code != 'outgoing'">
-                                        <td><span t-field="move.location_dest_id"/></td>
-                                    </t>
                                 </tr>
                             </tbody>
                         </table>
