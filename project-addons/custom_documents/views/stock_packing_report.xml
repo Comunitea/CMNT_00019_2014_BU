@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="report_packing_document">
+            <style>
+                table td{
+                    text-align: center;
+                    vertical-align: middle !important;
+                }
+            </style>
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-5 col-xs-offset-7">
+                                <address t-field="o.partner_id"
+                                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                                <span t-field="o.partner_id.vat"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>PACKING LIST</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <strong>Date</strong>
+                                <!--p t-esc="o.min_date.strftime('%d/%m/%Y')"/-->
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>P.O.</strong>
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>Origins of goods</strong>
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>Type of goods</strong>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <p t-esc="time.strftime('%m-%d-%Y',time.strptime(o.min_date,'%Y-%m-%d %H:%M:%S'))"/>
+                            </div>
+                            <div class="col-xs-3">
+                                <p t-field="o.origin"/>
+                            </div>
+                            <div class="col-xs-3">
+                                <p t-field="o.company_id.country_id.name"/>
+                            </div>
+                            <div class="col-xs-3">
+                                <p>Security material</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Boxes</th>
+                                            <th>Quantity</th>
+                                            <th>G.W. per box(KG)</th>
+                                            <th>Size(cm.)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- operations = {1:[[{}]]}-->
+                                        <t t-foreach="lines[o.id]" t-as="line">
+                                            <tr>
+                                                <td><span t-esc="line['prod']"/></td>
+                                                <t t-if="line['boxes'] is not None">
+                                                    <td t-att-rowspan="line['span']"><span t-esc="line['boxes']"/></td>
+                                                </t>
+                                                <td><span t-esc="line['qty']"/></td>
+                                                <t t-if="line['weight'] is not None">
+                                                    <td t-att-rowspan="line['span']"><span t-esc="line['weight']"/></td>
+                                                </t>
+                                                <t t-if="line['size'] is not None">
+                                                    <td t-att-rowspan="line['span']"><span t-esc="line['size']"/></td>
+                                                </t>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td><t t-esc="totals[o.id]['boxes']"/></td>
+                                            <td><t t-esc="totals[o.id]['qty']"/></td>
+                                            <td><t t-esc="totals[o.id]['weight']"/></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin.</p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+        </template>
+
+    <template id="report_packing">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'custom_documents.report_packing_document')"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>
+

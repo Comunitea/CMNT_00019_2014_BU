@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-20 18:05+0000\n"
-"PO-Revision-Date: 2014-11-20 18:05+0000\n"
+"POT-Creation-Date: 2014-12-05 11:11+0000\n"
+"PO-Revision-Date: 2014-12-05 11:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,6 +36,11 @@ msgid "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y M
 msgstr "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Boxes"
+msgstr "Cajas"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 msgid "CANTIDAD Minima de producción para arrancar robot: 70"
 msgstr "CANTIDAD Minima de producción para arrancar robot: 70"
@@ -46,12 +51,18 @@ msgid "Category"
 msgstr "Categoría"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Date"
+msgstr "Fecha"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 msgid "Date:"
 msgstr "Fecha:"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
+#: view:website:custom_documents.report_packing_document
 msgid "Description"
 msgstr "Descripción"
 
@@ -61,7 +72,13 @@ msgid "Final client picking"
 msgstr "Albarán de cliente final"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "G.W. per box(KG)"
+msgstr "G.W. por caja(KG)"
+
+#. module: custom_documents
 #: field:report.custom_documents.mrp_production,id:0
+#: field:report.custom_documents.report_packing,id:0
 msgid "ID"
 msgstr "ID"
 
@@ -71,9 +88,29 @@ msgid "Min"
 msgstr "Mínimo"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Origins of goods"
+msgstr "Origen del material"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "P.O."
+msgstr "P.O."
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "PACKING LIST"
+msgstr "LISTA DE EMBALAJE"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 msgid "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
 msgstr "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
+
+#. module: custom_documents
+#: model:ir.actions.report.xml,name:custom_documents.action_report_packing
+msgid "Packing list"
+msgstr "lista de embalaje"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -116,6 +153,11 @@ msgid "Production list"
 msgstr "Lista de producción"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 msgid "Reference"
 msgstr "Referencia"
@@ -124,6 +166,16 @@ msgstr "Referencia"
 #: view:website:custom_documents.mrp_production
 msgid "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
 msgstr "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Security material"
+msgstr "Security material"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Size(cm.)"
+msgstr "Medidas(cm.)"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -136,9 +188,24 @@ msgid "TOTAL TO PRODUCE:"
 msgstr "TOTAL A PRODUCIR:"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
+msgstr "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Total"
+msgstr "Total"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 msgid "Total to produce in"
 msgstr "Total a producir en"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Type of goods"
+msgstr "Tipo de materiales"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
