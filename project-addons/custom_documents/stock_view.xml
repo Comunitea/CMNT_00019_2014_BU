@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <!--record id="stock_picking_change_weight" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
+            <field name="arch" type="xml">
+                <label for="weight" string="Weight" position="replace">
+                    <label for="weight_o" string="Weight"/>
+                </label>
+                <field name="weight" position="replace">
+                    <field name="weight_o"  context="{'manual': True}"/>
+                </field>
+                <field name="weight_net" position="replace">
+                    <field name="weight_net_o" context="{'manual': True}"/>
+                    <field name="auto_changed" invisible="1"/>
+                    <field name="weight_manual_changed" invisible="1"/>
+                </field>
+            </field>
+        </record-->
+
+    </data>
+</openerp>
+

@@ -18,8 +18,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import mrp_report
-from . import stock_report
-from . import stock
-from . import res_country
-from . import account
+
+from openerp import models, fields
+
+
+class ResCountry(models.Model):
+
+    _inherit = 'res.country'
+
+    invoice_report_with_shipping_address = fields.Boolean('Invoice report with shipping address')
+    invoice_report_with_validation_data = fields.Boolean('Invoice report with validation data')

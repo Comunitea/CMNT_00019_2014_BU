@@ -18,8 +18,19 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import mrp_report
-from . import stock_report
-from . import stock
-from . import res_country
-from . import account
+from openerp import models, fields, api
+from datetime import date
+
+
+class AccountInvoice(models.Model):
+
+    _inherit = "account.invoice"
+
+    validation_date = fields.Date('Validation date')
+    validated_by = fields.Many2one('res.users', 'Validated by')
+    shipping_address = fields.Many2one('res.partner', 'Shipping address')
+
+    @api.multi
+    def invoice_validate(self):
+        self.write({'validation_date': date.today(), 'validated_by': self.env.user.id})
+        return super(AccountInvoice, self).invoice_validate()
