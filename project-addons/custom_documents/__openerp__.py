@@ -30,6 +30,7 @@
     "data": ['views/stock_picking_report.xml',
              'views/stock_picking_report_without_company.xml',
              'views/stock_packing_report.xml',
+             'views/stock_internal_picking_report.xml',
              'res_country_view.xml',
              'account_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',

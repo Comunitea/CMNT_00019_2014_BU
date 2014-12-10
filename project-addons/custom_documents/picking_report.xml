@@ -20,6 +20,15 @@
             file="custom_documents.report_packing"
         />
 
+    <report
+            string="internal picking"
+            id="action_report_internal_picking"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="custom_documents.report_internal_picking"
+            file="custom_documents.report_internal_picking"
+        />
+
     <!--report
             id="account_invoices"
             model="account.invoice"

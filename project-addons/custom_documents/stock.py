@@ -82,3 +82,13 @@ class StockPicking(models.Model):
         if not self.vals.get('auto_changed', False):
             vals['weight_manual_changed'] = True
         return super(StockPicking, self).write(vals)'''
+
+class product_packaging(models.Model):
+
+    _inherit='product.packaging'
+
+    measures_str = fields.Char('Measures', compute='_get_measures')
+
+    @api.one
+    def _get_measures(self):
+        self.measures_str = str(self.ul.height) + 'X' + str(self.ul.width) + 'X' + str(self.ul.length)
