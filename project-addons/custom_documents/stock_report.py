@@ -45,7 +45,9 @@ class ParticularReport(models.AbstractModel):
                 prod_list = []
                 for op_line in pack_ops[packing]:
                     prod_list.append([op_line.product_id.id, op_line.product_qty])
-                new_pack = [1, prod_list, pack_ops[packing][0].result_package_id.packaging_id.id, pack_ops[packing]]
+                measure_package = pack_ops[packing][0].result_package_id
+                measures = measure_package.packaging_id and measure_package.packaging_id.measures_str or measure_package.measures
+                new_pack = [1, prod_list, measures, pack_ops[packing]]
                 added = False
                 for line in range(len(pack_merged)):
                     eq = False
@@ -64,11 +66,9 @@ class ParticularReport(models.AbstractModel):
                     if first:
                         size = ''
                         weight = 0
-                        if op_line.result_package_id.packaging_id.ul:
-                            weight = op_line.result_package_id.packaging_id.ul.weight
-                            size = str(op_line.result_package_id.packaging_id.ul.height) + \
-                                "X" + str(op_line.result_package_id.packaging_id.ul.width) + "X" \
-                                + str(op_line.result_package_id.packaging_id.ul.length)
+                        if op_line.result_package_id:
+                            weight = op_line.result_package_id.weight
+                            size = new_pack[2]
 
                         line_pick.append(
                             {'prod': op_line.product_id.name, 'boxes': packing[0],

@@ -85,10 +85,17 @@ class StockPicking(models.Model):
 
 class product_packaging(models.Model):
 
-    _inherit='product.packaging'
+    _inherit = 'product.packaging'
 
     measures_str = fields.Char('Measures', compute='_get_measures')
 
     @api.one
     def _get_measures(self):
         self.measures_str = str(self.ul.height) + 'X' + str(self.ul.width) + 'X' + str(self.ul.length)
+
+class StockQuantPackage(models.Model):
+
+    _inherit = 'stock.quant.package'
+
+    measures = fields.Char('Measures')
+    weight = fields.Float('Weight')
