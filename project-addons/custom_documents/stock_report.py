@@ -62,7 +62,8 @@ class ParticularReport(models.AbstractModel):
                 first = True
                 for op_line in packing[3]:
                     if first:
-                        weight = size = ''
+                        size = ''
+                        weight = 0
                         if op_line.result_package_id.packaging_id.ul:
                             weight = op_line.result_package_id.packaging_id.ul.weight
                             size = str(op_line.result_package_id.packaging_id.ul.height) + \
