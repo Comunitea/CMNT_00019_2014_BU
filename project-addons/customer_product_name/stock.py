@@ -33,22 +33,7 @@ class stock_move(models.Model):
     @api.one
     @api.depends('product_id', 'partner_id')
     def _get_product_name(self):
-        if self.picking_type_id.code != 'outgoing':
-            self.product_name = self.product_id.name
-            return
-        if not self.product_id:
-            self.product_name = ''
-        else:
-            if self.partner_id.parent_id:
-                partner_id = self.partner_id.parent_id.id
-            else:
-                partner_id = self.partner_id.id
-            search_domain = [('product_id', '=', self.product_id.product_tmpl_id.id), ('customer_id', '=', partner_id)]
-            customer_names = self.env['product.customer'].search(search_domain)
-            if customer_names:
-                self.product_name = customer_names[0].name
-            else:
-                self.product_name = self.product_id.name
+        self.product_name = self.product_id.get_product_ref(self.partner_id)
 
 
 class stock_pack_operation(models.Model):
@@ -62,13 +47,4 @@ class stock_pack_operation(models.Model):
     @api.one
     @api.depends('product_id', 'picking_id.partner_id')
     def _get_product_name(self):
-        if not self.product_id:
-            self.product_name = ''
-        else:
-            customer_names = self.env['product.customer'].search(
-                [('product_id', '=', self.product_id.product_tmpl_id.id),
-                 ('customer_id', '=', self.picking_id.partner_id.id)])
-            if customer_names:
-                self.product_name = customer_names[0].name
-            else:
-                self.product_name = self.product_id.name
+        self.product_name = self.product_id.get_product_ref(self.picking_id.partner_id)

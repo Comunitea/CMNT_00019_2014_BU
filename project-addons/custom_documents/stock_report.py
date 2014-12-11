@@ -71,7 +71,7 @@ class ParticularReport(models.AbstractModel):
                             size = new_pack[2]
 
                         line_pick.append(
-                            {'prod': op_line.product_id.name, 'boxes': packing[0],
+                            {'prod': op_line.product_id.get_product_ref(op_line.picking_id.partner_id), 'boxes': packing[0],
                              'qty': op_line.product_qty * packing[0], 'weight': weight,
                              'size': size, 'span': len(packing[3])})
                         totals[picking.id]['boxes'] += packing[0]
@@ -80,7 +80,7 @@ class ParticularReport(models.AbstractModel):
                         first = False
                     else:
                         line_pick.append(
-                            {'prod': op_line.product_id.name, 'boxes': None,
+                            {'prod': op_line.product_id.get_product_ref(op_line.picking_id.partner_id), 'boxes': None,
                              'qty': op_line.product_qty * packing[0], 'weight': None,
                              'size': None})
                         totals[picking.id]['qty'] += op_line.product_qty * packing[0]

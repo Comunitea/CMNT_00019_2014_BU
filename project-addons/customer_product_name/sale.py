@@ -44,17 +44,11 @@ class sale_order_line(models.Model):
             uom, qty_uos, uos, name, partner_id,
             lang, update_tax, date_order, packaging,
             fiscal_position, flag, warehouse_id, context)
-        if not partner_id:
+        if not partner_id or not product:
             return res
         product = self.pool.get('product.product').browse(cr, uid, product,
                                                           context)
-        customer_name_ids = prod_customer_obj.search(
-            cr, uid, [('product_id', '=', product.product_tmpl_id.id),
-                      ('customer_id', '=', partner_id)], context=context)
-        if customer_name_ids:
-            cust_name = prod_customer_obj.browse(cr, uid, customer_name_ids[0],
-                                                 context)
-            res['value']['name'] = product.default_code and \
-                ('[' + product.default_code + '] ' + cust_name.name) or \
-                cust_name.name
+        import ipdb; ipdb.set_trace()
+        partner = self.pool.get('res.partner').browse(cr, uid, partner_id, context)
+        res['value']['name'] = product.get_product_ref(partner) + ' - ' + product.with_context({'lang': partner.lang}).name
         return res

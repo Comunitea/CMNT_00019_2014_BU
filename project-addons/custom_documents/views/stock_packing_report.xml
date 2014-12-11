@@ -113,7 +113,7 @@
                     <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'custom_documents.report_packing_document')"/>
                 </t>
             </t>
-        </template>
+    </template>
 
     </data>
 </openerp>

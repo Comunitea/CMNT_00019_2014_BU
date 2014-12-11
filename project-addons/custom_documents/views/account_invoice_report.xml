@@ -70,6 +70,7 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
+                            <th>Reference</th>
                             <th>Description</th>
                             <th>Quantity</th>
                             <th class="text-right">Unit Price</th>
@@ -80,7 +81,8 @@
                     </thead>
                     <tbody class="invoice_tbody">
                         <tr t-foreach="o.invoice_line" t-as="l">
-                            <td><span t-field="l.product_name"/></td>
+                            <td><span t-esc="l.product_id.get_product_ref(o.partner_id)"/></td>
+                            <td><span t-field="l.product_id.name"/></td>
                             <td>
                                 <span t-field="l.quantity"/>
                                 <span t-field="l.uos_id"  groups="product.group_uom"/>

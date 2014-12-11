@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class product_customer(models.Model):
@@ -28,7 +28,7 @@ class product_customer(models.Model):
 
     name = fields.Char('Name', size=64)
     customer_id = fields.Many2one('res.partner', 'Customer', required=True)
-    product_id = fields.Many2one('product.template', 'Product')
+    product_id = fields.Many2one('product.template', 'Reference')
 
 
 class product_template(models.Model):
@@ -37,3 +37,15 @@ class product_template(models.Model):
 
     product_customer_ids = fields.One2many('product.customer', 'product_id',
                                            'Customer name')
+
+
+class product_product(models.Model):
+
+    _inherit = 'product.product'
+
+    def get_product_ref(self, partner):
+        if isinstance(partner, ( int, long )):
+            partner = self.env['res.partner'].browse(partner)
+        name = self.env['product.customer'].search([('product_id', '=', self.id), ('customer_id', '=', partner.id)])
+        return name and name[0].name or self.default_code
+
