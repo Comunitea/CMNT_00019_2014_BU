@@ -48,7 +48,6 @@ class sale_order_line(models.Model):
             return res
         product = self.pool.get('product.product').browse(cr, uid, product,
                                                           context)
-        import ipdb; ipdb.set_trace()
         partner = self.pool.get('res.partner').browse(cr, uid, partner_id, context)
         res['value']['name'] = product.get_product_ref(partner) + ' - ' + product.with_context({'lang': partner.lang}).name
         return res
