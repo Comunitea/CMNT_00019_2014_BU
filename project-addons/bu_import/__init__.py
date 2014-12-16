@@ -19,22 +19,4 @@
 #
 ##############################################################################
 
-{
-    'name': "Documents customizations",
-    'version': '1.0',
-    'category': '',
-    'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['account', 'stock', 'customer_product_name', 'delivery', 'hr'],
-    "data": ['views/stock_picking_report.xml',
-             'views/stock_picking_report_without_company.xml',
-             'views/stock_packing_report.xml',
-             'views/stock_internal_picking_report.xml',
-             'res_country_view.xml',
-             'account_view.xml',
-             'res_partner_view.xml',
-             'picking_report.xml', 'views/account_invoice_report.xml',
-             'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml'],
-    "installable": True
-}
+import res_partner

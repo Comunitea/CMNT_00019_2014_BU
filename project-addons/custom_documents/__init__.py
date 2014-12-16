@@ -23,3 +23,4 @@ from . import stock_report
 from . import stock
 from . import res_country
 from . import account
+from . import res_partner
