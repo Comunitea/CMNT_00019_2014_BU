@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class ProductProduct(models.Model):
@@ -26,3 +26,15 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     tech_office_code = fields.Char('Technical office code')
+
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        res = super(ProductProduct, self).name_search(name=name, args=args, operator=operator, limit=limit)
+        prod_ids = self.search([('tech_office_code', operator, name)])
+        for prod in prod_ids:
+            if prod.id not in [x[0] for x in res]:
+                res += prod.name_get()
+        if len(res) > limit:
+            res = res[:limit]
+        return res
+
