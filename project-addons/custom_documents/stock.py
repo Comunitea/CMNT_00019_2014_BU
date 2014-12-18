@@ -25,13 +25,20 @@ class StockPicking(models.Model):
 
     _inherit = 'stock.picking'
 
-    '''weight_o = fields.Float('Weight')
-    weight_net_o = fields.Float('Net weight')
-    weight_manual_changed = fields.Boolean('Changed')
-    auto_changed = fields.Boolean('Changed')'''
+    weight_edit = fields.Float('Weight', compute='compute_weight', store=True,
+                               readonly=False)
+    weight_net_edit = fields.Float('Net weight', compute='compute_weight',
+                                   store=True, readonly=False)
+
+    @api.one
+    @api.depends('weight', 'weight_net')
+    def compute_weight(self):
+        self.weight_edit = self.weight
+        self.weight_net_edit = self.weight_net
 
     @api.multi
-    def action_invoice_create(self, journal_id, group=False, type='out_invoice'):
+    def action_invoice_create(self, journal_id, group=False,
+                              type='out_invoice'):
         """ Creates invoice based on the invoice state selected for picking.
         @param journal_id: Id of journal
         @param group: Whether to create a group invoice or not
@@ -51,37 +58,17 @@ class StockPicking(models.Model):
                         todo[key].append(move)
         invoices = []
         for key in todo.keys():
-            key_invoices = self._invoice_create_line(todo[key], journal_id, type)
+            key_invoices = self._invoice_create_line(todo[key], journal_id,
+                                                     type)
             invoices += key_invoices
             if key._name == 'stock.picking':
                 address = key.partner_id.id
             else:
                 address = key.id
-            self.env['account.invoice'].browse(key_invoices).write({'shipping_address': address})
+            self.env['account.invoice'].browse(key_invoices).write(
+                {'shipping_address': address})
         return invoices
 
-    ''' @api.onchange('move_lines')
-    def onchange_moves(self):
-        import ipdb; ipdb.set_trace()
-        if not self.weight_manual_changed:
-            self.weight_o = sum([x.wieght for x in self.move_lines])
-            self.weight_net_o = sum([x.weight_net for x in self.move_lines])
-            self.atuo_changed = True
-
-    @api.onchange('weight_o')
-    def onchange_weight_o(self):
-        if self.auto_changed:
-            self.weight_manual_changed = False
-        else:
-            self.weight_manual_changed = True
-
-
-    @api.one
-    def write(self, vals):
-        import ipdb; ipdb.set_trace()
-        if not self.vals.get('auto_changed', False):
-            vals['weight_manual_changed'] = True
-        return super(StockPicking, self).write(vals)'''
 
 class product_packaging(models.Model):
 
@@ -91,7 +78,9 @@ class product_packaging(models.Model):
 
     @api.one
     def _get_measures(self):
-        self.measures_str = str(self.ul.height) + 'X' + str(self.ul.width) + 'X' + str(self.ul.length)
+        self.measures_str = str(self.ul.height) + 'X' + str(self.ul.width) + \
+            'X' + str(self.ul.length)
+
 
 class StockQuantPackage(models.Model):
 
