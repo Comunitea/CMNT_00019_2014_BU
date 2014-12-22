@@ -8,11 +8,12 @@
             <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
                 <field name="default_code" position="replace">
-                    <field name="tech_office_code"/>
                 </field>
                 <field name="sale_ok" position="before">
                     <label for="default_code"/>
                     <field name="default_code"/>
+                    <label for="tech_office_code"/>
+                    <field name="tech_office_code"/>
                 </field>
             </field>
         </record>
