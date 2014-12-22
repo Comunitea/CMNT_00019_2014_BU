@@ -31,10 +31,12 @@
              'views/stock_picking_report_without_company.xml',
              'views/stock_packing_report.xml',
              'views/stock_internal_picking_report.xml',
+             'views/sale_order_report.xml',
              'res_country_view.xml',
              'account_view.xml',
              'res_partner_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',
-             'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml'],
+             'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml',
+             'data/paperformat_data.xml'],
     "installable": True
 }
