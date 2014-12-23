@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+        <template id="delivery.report_shipping2" inherit_id="stock.report_picking"></template>
+
+
         <template id="stock.report_picking">
 
             <t t-if="o and 'company_id' in o">
@@ -11,7 +14,8 @@
             </t>
 
             <div class="header">
-                <div class="row" style="margin-top: 15px;">
+                <div class="row"><br/></div>
+                <div class="row">
                     <div class="col-xs-3">
                         <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 150px;"/>
                     </div>
@@ -83,15 +87,15 @@
                     </div>
                 </div>
             </div-->
-            <div name="partner_header">
-            </div>
+            <!--div name="partner_header">
+            </div-->
                 <table class="table table-condensed">
                     <thead>
                         <tr>
                             <th><strong>Despatch Note Nº</strong></th>
                             <th><strong>State</strong></th>
-                            <th><strong>Commitment Date</strong></th>
-                            <th name="td_sched_date_h"><strong>Scheduled Date</strong></th>
+                            <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
+                            <th><strong>Weight</strong></th>
                             <th><strong>Order (Origin)</strong></th>
                             <th><strong>Delivery Expense</strong></th>
                         </tr>
@@ -104,11 +108,11 @@
                             <td>
                                 <span t-field="o.state"/>
                             </td>
-                            <td>
-                                <span t-field="o.date"/>
+                            <td t-if="o.picking_type_id.code == 'outgoing'">
+                                <span t-field="o.carrier_id"/>
                             </td>
-                            <td name="td_sched_date">
-                                <span t-field="o.min_date"/>
+                            <td>
+                                <span t-field="o.weight"/>
                             </td>
                             <td>
                                 <span t-field="o.origin"/>

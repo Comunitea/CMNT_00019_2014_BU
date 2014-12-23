@@ -20,21 +20,19 @@
                             <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
                     </div>
                 </div>
-                <div class="col-xs-4 pull-right">
+                <!--div class="col-xs-4 pull-right">
                     <div name="invoice_partner" t-if="o.picking_type_id.code == 'outgoing' and o.sale_id and o.sale_id.partner_invoice_id">
                         Will be invoiced to:
                         <div t-field="o.sale_id.partner_invoice_id"
                          t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
                     </div>
-                </div>
+                </div-->
             </div>
                 <table class="table table-condensed">
                     <thead>
                         <tr>
                             <th><strong>Despatch Note Nº</strong></th>
                             <th><strong>State</strong></th>
-                            <th><strong>Commitment Date</strong></th>
-                            <th name="td_sched_date_h"><strong>Scheduled Date</strong></th>
                             <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
                             <th><strong>Weight</strong></th>
                             <th><strong>Order (Origin)</strong></th>
@@ -48,12 +46,6 @@
                             </td>
                             <td>
                                 <span t-field="o.state"/>
-                            </td>
-                            <td>
-                                <span t-field="o.date"/>
-                            </td>
-                            <td name="td_sched_date">
-                                <span t-field="o.min_date"/>
                             </td>
                             <td t-if="o.picking_type_id.code == 'outgoing'">
                                 <span t-field="o.carrier_id"/>

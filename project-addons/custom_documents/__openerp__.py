@@ -37,6 +37,6 @@
              'res_partner_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',
              'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml',
-             'data/paperformat_data.xml'],
+             'data/report.paperformat.csv'],
     "installable": True
 }
