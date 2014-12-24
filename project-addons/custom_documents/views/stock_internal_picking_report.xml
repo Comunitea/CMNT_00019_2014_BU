@@ -87,7 +87,7 @@
                             </div>
                             <div class="col-xs-5">
                                 <div class="row">
-                                    <div class="col-xs-12"><h1><center>ALBARÁN *</center></h1></div>
+                                    <div class="col-xs-12"><h1><center>PEDIDO ALMACÉN</center></h1></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12 tittle">Número de pedido</div>
@@ -135,7 +135,7 @@
                                                     <t t-if="move.product_id.default_code == move.product_id.get_product_ref(move.partner_id)">
                                                         <td><span t-esc="move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or ''"/></td>
                                                     </t>
-                                                    <td><span t-field="move.weight_net"/></td>
+                                                    <td><span t-field="move.weight"/></td>
                                                 </tr>
                                             </t>
                                         </t>
@@ -161,7 +161,7 @@
                                 <div class="row">
                                     <div class="col-xs-3 bordered" style="height:100px;"></div>
                                     <div class="col-xs-3 bordered" style="height:100px;"></div>
-                                    <div class="col-xs-6 bordered" style="height:100px;"></div>
+                                    <div class="col-xs-6 bordered" style="height:100px;"><span t-field="o.note"/></div>
                                 </div>
                                 <div class="row bordered">
                                     <div class="col-xs-12">

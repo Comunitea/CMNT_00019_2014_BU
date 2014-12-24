@@ -11,7 +11,7 @@
                                    <span t-field="l.name"/>
                                 </td>
                                 <td>
-                                    <span t-esc="', '.join(map(lambda x: x.name, l.tax_id))"/>
+                                    <span t-esc="', '.join(map(lambda x: x.description, l.tax_id))"/>
                                 </td>
                                 <td class="text-right">
                                     <span t-field="l.product_uom_qty"/>

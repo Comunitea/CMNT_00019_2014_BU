@@ -28,5 +28,11 @@
             </field>
         </record>
 
+        <template id="report_intrastatinvoice_document_change_weight" inherit_id="report_intrastat.report_intrastatinvoice_document">
+            <xpath expr="//span[@t-esc='l.product_id.weight']" position="replace">
+                <span t-esc="l.weight"/>
+            </xpath>
+        </template>
+
     </data>
 </openerp>

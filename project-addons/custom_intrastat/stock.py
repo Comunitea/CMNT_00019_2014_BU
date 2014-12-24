@@ -18,26 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, fields
 
-{
-    'name': "Documents customizations",
-    'version': '1.0',
-    'category': '',
-    'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['account', 'stock', 'customer_product_name', 'delivery', 'hr',
-                'product_pack'],
-    "data": ['views/stock_picking_report.xml',
-             'views/stock_picking_report_without_company.xml',
-             'views/stock_packing_report.xml',
-             'views/stock_internal_picking_report.xml',
-             'views/sale_order_report.xml',
-             'res_country_view.xml',
-             'account_view.xml',
-             'res_partner_view.xml',
-             'picking_report.xml', 'views/account_invoice_report.xml',
-             'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml',
-             'data/report.paperformat.csv'],
-    "installable": True
-}
+
+class StockMove(models.Model):
+
+    _inherit = 'stock.move'
+
+    def _get_invoice_line_vals(self, cr, uid, move, partner, inv_type,
+                               context=None):
+        res = super(StockMove, self)._get_invoice_line_vals(cr, uid, move,
+                                                            partner, inv_type,
+                                                            context)
+        res['weight'] = move.weight
+        return res
