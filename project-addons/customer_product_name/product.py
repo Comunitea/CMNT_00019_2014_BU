@@ -47,5 +47,5 @@ class product_product(models.Model):
         if isinstance(partner, ( int, long )):
             partner = self.env['res.partner'].browse(partner)
         name = self.env['product.customer'].search([('product_id', '=', self.id), ('customer_id', '=', partner.id)])
-        return name and name[0].name or self.default_code
+        return name and name[0].name or (self.default_code or '')
 

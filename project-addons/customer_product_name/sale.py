@@ -38,7 +38,6 @@ class sale_order_line(models.Model):
             cliente en el reporte.
         """
         prod_customer_obj = self.pool.get('product.customer')
-
         res = super(sale_order_line, self).product_id_change_with_wh(
             cr, uid, ids, pricelist, product, qty,
             uom, qty_uos, uos, name, partner_id,
