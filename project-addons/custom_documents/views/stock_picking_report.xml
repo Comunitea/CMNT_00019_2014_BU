@@ -83,7 +83,7 @@
                                 <span t-field="o.carrier_id"/>
                             </td>
                             <td>
-                                <span t-field="o.weight"/>
+                                <span t-field="o.weight_edit"/>
                             </td>
                             <td>
                                 <span t-field="o.origin"/>
