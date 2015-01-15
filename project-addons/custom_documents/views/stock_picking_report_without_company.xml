@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="stock.report_picking_final_">
+        <template id="report_picking_final_">
             <div class="page">
             <div class="row">
                 <div class="col-xs-4 pull-left">
@@ -32,20 +32,15 @@
                     <thead>
                         <tr>
                             <th><strong>Despatch Note Nº</strong></th>
-                            <th><strong>State</strong></th>
                             <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
                             <th><strong>Weight</strong></th>
                             <th><strong>Order (Origin)</strong></th>
-                            <th><strong>Delivery Expense</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <span t-field="o.name"/>
-                            </td>
-                            <td>
-                                <span t-field="o.state"/>
                             </td>
                             <td t-if="o.picking_type_id.code == 'outgoing'">
                                 <span t-field="o.carrier_id"/>
@@ -55,9 +50,6 @@
                             </td>
                             <td>
                                 <span t-field="o.origin"/>
-                            </td>
-                            <td>
-                                -
                             </td>
                         </tr>
                     </tbody>
@@ -100,10 +92,10 @@
             </div>
         </template>
 
-        <template id="stock.report_picking_final">
+        <template id="report_picking_final">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'stock.report_picking_final_')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'custom_documents.report_picking_final_')"/>
                 </t>
             </t>
         </template>

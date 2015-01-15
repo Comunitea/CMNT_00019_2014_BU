@@ -18,10 +18,19 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields
+from openerp import models, fields, api
 
 class ResPartner(models.Model):
 
     _inherit = 'res.partner'
 
     checked_by = fields.Char('Checked by')
+    document_name = fields.Char('Document name', compute='_get_document_name', store=True)
+
+    @api.one
+    @api.depends('name', 'parent_id')
+    def _get_document_name(self):
+        if self.parent_id:
+            self.document_name = self.parent_id.document_name
+        else:
+            self.document_name = self.name

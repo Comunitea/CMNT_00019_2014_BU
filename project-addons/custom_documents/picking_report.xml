@@ -16,8 +16,8 @@
                 id="action_report_picking"
                 model="stock.picking"
                 report_type="qweb-pdf"
-                name="stock.report_picking_final"
-                file="stock.report_picking_final"
+                name="custom_documents.report_picking_final"
+                file="custom_documents.report_picking_final"
         />
 
         <report

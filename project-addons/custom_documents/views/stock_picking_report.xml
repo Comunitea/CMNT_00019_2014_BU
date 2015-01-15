@@ -4,7 +4,7 @@
         <template id="delivery.report_shipping2" inherit_id="stock.report_picking"></template>
 
 
-        <template id="stock.report_picking">
+        <template id="report_picking">
 
             <t t-if="o and 'company_id' in o">
             <t t-set="company" t-value="o.company_id"></t>
@@ -22,7 +22,7 @@
                     <!--div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/-->
                     <div class="col-xs-9 text-center" style="margin-top:30px;">
                         <h2>
-                            <span t-field="o.picking_type_id"/>:
+                            <span t-field="o.picking_type_id.name"/>:
                             <span t-field="o.name"/>
                         </h2>
                     </div>
@@ -30,35 +30,11 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" style="margin-top:30px;">
                                 <div t-field="company.partner_id"
                                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                Tel.:<span t-field="company.phone"/>
-                            </div>
-                            <div class="col-xs-6">
-                                Fax.:<span t-field="company.fax"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <span t-field="company.email"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <span t-field="company.website"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                Vat Reg. Nº: <span t-field="company.partner_id.vat"/>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="col-xs-5 col-xs-offset-2">
                         <div t-field="o.partner_id"
@@ -93,20 +69,15 @@
                     <thead>
                         <tr>
                             <th><strong>Despatch Note Nº</strong></th>
-                            <th><strong>State</strong></th>
                             <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
                             <th><strong>Weight</strong></th>
                             <th><strong>Order (Origin)</strong></th>
-                            <th><strong>Delivery Expense</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
                                 <span t-field="o.name"/>
-                            </td>
-                            <td>
-                                <span t-field="o.state"/>
                             </td>
                             <td t-if="o.picking_type_id.code == 'outgoing'">
                                 <span t-field="o.carrier_id"/>
@@ -116,9 +87,6 @@
                             </td>
                             <td>
                                 <span t-field="o.origin"/>
-                            </td>
-                            <td>
-                                -
                             </td>
                         </tr>
                     </tbody>
@@ -167,7 +135,7 @@
         <template id="stock.report_picking_">
             <t t-call="report.html_container">
                 <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'stock.report_picking')"/>
+                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'custom_documents.report_picking')"/>
                 </t>
             </t>
         </template>

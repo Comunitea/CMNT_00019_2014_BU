@@ -2,6 +2,6 @@ id,page_height,page_width,header_spacing,report_ids/id,margin_right,margin_botto
 __export__.report_paperformat_4,,,80,stock.action_report_picking,7,23,7,80,False,European A4 - picking_report,Portrait,90,A4,False
 __export__.report_paperformat_5,,,80,custom_documents.action_report_picking,7,15,7,10,False,European A4 - picking_report_without_company,Portrait,90,A4,False
 __export__.report_paperformat_6,,,10,custom_documents.action_report_internal_picking,7,10,7,10,False,European A4 - internal_picking,Portrait,90,A4,False
-__export__.report_paperformat_7,,,80,account.account_invoices,7,70,7,80,False,European A4 – facturas/ventas/packing,Portrait,90,A4,False
+__export__.report_paperformat_7,,,87,account.account_invoices,7,70,7,87,False,European A4 – facturas/ventas/packing,Portrait,90,A4,False
 ,,,,custom_documents.action_report_packing,,,,,,,,,,
 ,,,,sale.report_sale_order,,,,,,,,,,

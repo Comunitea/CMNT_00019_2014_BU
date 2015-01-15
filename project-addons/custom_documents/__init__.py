@@ -24,3 +24,4 @@ from . import stock
 from . import res_country
 from . import account
 from . import res_partner
+from . import sale_order

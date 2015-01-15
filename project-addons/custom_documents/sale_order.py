@@ -18,14 +18,19 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, fields, api
 
-from openerp import models, fields
 
+class SaleOrder(models.Model):
 
-class ResCountry(models.Model):
+    _inherit = 'sale.order'
 
-    _inherit = 'res.country'
+    have_discounts = fields.Boolean('Have discounts', compute='_have_discounts')
 
-    invoice_report_with_shipping_address = fields.Boolean('Invoice report with shipping address')
-    invoice_report_with_validation_data = fields.Boolean('Invoice report with validation data')
-    not_show_type_message = fields.Boolean('Not show type of goods')
+    @api.one
+    def _have_discounts(self):
+        discounts = False
+        for line in self.order_line:
+            if line.discount > 0:
+                discounts = True
+        self.have_discounts = discounts

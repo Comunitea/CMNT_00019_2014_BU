@@ -10,6 +10,7 @@
                 <field name="code" position="after">
                     <field name="invoice_report_with_shipping_address"/>
                     <field name="invoice_report_with_validation_data"/>
+                    <field name="not_show_type_message"/>
                 </field>
             </field>
         </record>
