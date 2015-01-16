@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * custom_documents
+#	* custom_documents
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-15 15:20+0000\n"
-"PO-Revision-Date: 2015-01-15 15:20+0000\n"
+"POT-Creation-Date: 2015-01-16 10:26+0000\n"
+"PO-Revision-Date: 2015-01-16 10:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -194,6 +194,11 @@ msgid "Date Ordered:"
 msgstr "Fecha pedida:"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Date Req."
+msgstr "Fecha solicitud"
+
+#. module: custom_documents
 #: view:website:custom_documents.mrp_production
 #: view:website:custom_documents.report_invoice_document
 msgid "Date:"
@@ -208,6 +213,8 @@ msgstr "Dirección de envío"
 #: view:website:custom_documents.mrp_production
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
+#: view:website:custom_documents.report_purchaseorder_document
+#: view:website:custom_documents.report_purchasequotation_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Description"
 msgstr "Descripción"
@@ -234,6 +241,11 @@ msgid "Discount (%)"
 msgstr "Descuento (%)"
 
 #. module: custom_documents
+#: field:res.partner,document_name:0
+msgid "Document name"
+msgstr "Document name"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 msgid "Draft Invoice"
 msgstr "Factura borrador"
@@ -247,6 +259,11 @@ msgstr "Desc. P.P. :"
 #: view:website:custom_documents.report_internal_picking
 msgid "Entrega"
 msgstr "Entrega"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchasequotation_document
+msgid "Expected Date"
+msgstr "Fecha prevista"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_internal_picking
@@ -296,6 +313,7 @@ msgstr "G.W. por caja(KG)"
 #. module: custom_documents
 #: field:report.custom_documents.mrp_production,id:0
 #: field:report.custom_documents.report_packing,id:0
+#: field:report.stock.report_picking_,id:0
 msgid "ID"
 msgstr "ID"
 
@@ -331,6 +349,11 @@ msgid "Min"
 msgstr "Mínimo"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Net Price"
+msgstr "Precio neto"
+
+#. module: custom_documents
 #: field:stock.picking,weight_net_edit:0
 msgid "Net weight"
 msgstr "Peso neto"
@@ -357,9 +380,19 @@ msgid "Order (Origin)"
 msgstr "Pedido (Origen)"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Order Date:"
+msgstr "Fecha de pedido:"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_packing_document
 msgid "Origins of goods"
 msgstr "Origen del material"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Our Order Reference:"
+msgstr "Nuestra referencia de pedido:"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
@@ -394,7 +427,7 @@ msgstr "PRO-FORMA"
 #. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
 msgid "PROFORMA INVOICE"
-msgstr "FACTURA PROFORMA"
+msgstr "PROFORMA INVOICE"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -426,6 +459,8 @@ msgstr "Pagados"
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
+#: view:website:custom_documents.report_purchaseorder_document
+#: view:website:custom_documents.report_purchasequotation_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Page:"
 msgstr "Página:"
@@ -519,6 +554,17 @@ msgid "Proforma invoice:"
 msgstr "Factura proforma:"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Purchase Order Confirmation N°"
+msgstr "Confirmación pedido de compra Nº"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+#: view:website:custom_documents.report_purchasequotation_document
+msgid "Qty"
+msgstr "Ctdad"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
 #: view:website:custom_documents.report_picking
@@ -570,9 +616,24 @@ msgid "Refund"
 msgstr "Factura rectificativa"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchasequotation_document
+msgid "Regards,"
+msgstr "Saludos cordiales,"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_internal_picking
 msgid "Repartidor"
 msgstr "Repartidor"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchasequotation_document
+msgid "Request for Quotation"
+msgstr "Solicitud de presupuesto"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Request for Quotation N°"
+msgstr "Solicitud de presupuesto Nº"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -657,6 +718,7 @@ msgstr "Impuesto"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
+#: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Taxes"
 msgstr "Impuestos"
@@ -682,6 +744,7 @@ msgstr "The exporter of the products covered by this document declares that, exc
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
+#: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Total"
 msgstr "Total"
@@ -694,6 +757,7 @@ msgstr "Total Amount due (Please take note of the fact that we do not assume the
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
+#: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Total Without Taxes"
 msgstr "Total sin impuestos"
@@ -721,6 +785,7 @@ msgstr "URGE"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
+#: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Unit Price"
 msgstr "Precio unidad"
@@ -729,6 +794,11 @@ msgstr "Precio unidad"
 #: view:website:custom_documents.report_picking_final_
 msgid "VAT:"
 msgstr "NIF:"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Validated By:"
+msgstr "Validado por:"
 
 #. module: custom_documents
 #: field:account.invoice,validated_by:0
@@ -769,6 +839,11 @@ msgid "With E.P. :"
 msgstr "Con P.P. :"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_purchaseorder_document
+msgid "Your Order Reference"
+msgstr "Su referencia"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
 msgid "Your Reference:"
 msgstr "Su referencia:"
@@ -791,7 +866,7 @@ msgstr "Albarán interno"
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
 msgid "order reference."
-msgstr "Referencia de pedido."
+msgstr "order reference."
 
 #. module: custom_documents
 #: code:addons/custom_documents/mrp_report.py:46
@@ -819,3 +894,4 @@ msgstr "sin stock mínimo"
 #: view:website:custom_documents.report_internal_picking
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
+

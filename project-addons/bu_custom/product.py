@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
+#    Copyright (C) 2015 Pexego All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,16 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, fields, api
 
-{
-    'name': "BU customizations",
-    'version': '1.0',
-    'category': '',
-    'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['sale_stock', 'stock', 'technical_office'],
-    "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
-             'wizard/stock_transfer_details_view.xml', 'product_view.xml'],
-    "installable": True
-}
+
+class ProductProduct(models.Model):
+
+    _inherit = 'product.product'
+
+    minimum_stock = fields.Float(string='Minimum stock',
+                                 compute='_get_minimum_stock')
+
+    @api.one
+    def _get_minimum_stock(self):
+        self.minimum_stock = sum([x.product_min_qty for x in
+                                  self.orderpoint_ids])

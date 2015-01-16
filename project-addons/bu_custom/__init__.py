@@ -20,3 +20,4 @@
 ##############################################################################
 from . import mrp
 from . import wizard
+from . import product
