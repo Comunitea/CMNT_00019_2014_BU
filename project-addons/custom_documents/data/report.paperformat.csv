@@ -5,3 +5,5 @@ __export__.report_paperformat_6,,,10,custom_documents.action_report_internal_pic
 __export__.report_paperformat_7,,,87,account.account_invoices,7,70,7,87,False,European A4 – facturas/ventas/packing,Portrait,90,A4,False
 ,,,,custom_documents.action_report_packing,,,,,,,,,,
 ,,,,sale.report_sale_order,,,,,,,,,,
+__export__.report_paperformat_8,,,75,purchase.action_report_purchase_order,7,15,7,75,False,European A4 – compras,Portrait,90,A4,False
+,,,,purchase.report_purchase_quotation,,,,,,,,,,
