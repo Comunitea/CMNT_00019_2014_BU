@@ -24,7 +24,7 @@
 import math
 from openerp.osv import fields, orm
 import openerp.addons.decimal_precision as dp
-
+from openerp import api
 
 class product_pack(orm.Model):
     _name = 'product.pack.line'
@@ -721,12 +721,19 @@ class stock_move(orm.Model):
 
     _inherit = 'stock.move'
 
+    @api.multi
+    def get_sale_line_id(self):
+        sale_id = self.procurement_id.sale_line_id
+        if not sale_id and self.move_dest_id:
+            sale_id = self.move_dest_id.get_sale_line_id()
+        return sale_id
+
     def _pack_component(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for move in self.browse(cr, uid, ids, context):
             res[move.id] = False
-            if move.procurement_id and move.procurement_id.sale_line_id:
-                if move.procurement_id.sale_line_id.pack_parent_line_id:
+            if self.get_sale_line_id(cr, uid, move.id, context):
+                if self.get_sale_line_id(cr, uid, move.id, context).pack_parent_line_id:
                     res[move.id] = True
         return res
 
@@ -734,7 +741,7 @@ class stock_move(orm.Model):
         'pack_component': fields.function(_pack_component,
                                           string='pack component',
                                           type='boolean',
-                                          store=True),
+                                          store=False),
     }
 
 

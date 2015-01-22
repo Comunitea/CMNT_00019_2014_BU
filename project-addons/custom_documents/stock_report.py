@@ -151,3 +151,46 @@ class picking_without_company_report(models.AbstractModel):
             'packs': packs,
         }
         return report_obj.render('custom_documents.report_picking_final', docargs)
+
+
+class picking_internal_report(models.AbstractModel):
+    _name = 'report.custom_documents.report_internal_picking'
+
+    @api.multi
+    def render_html(self, data=None):
+        report_obj = self.env['report']
+        report = report_obj._get_report_from_name('custom_documents.report_internal_picking')
+        packs = {}
+        '''
+            Estructura
+            lin_: linea de venta de producto pack, si no forma parte de un pack es False
+            mv*: movimientos
+            [(lin_, [mv1, mv2, mv3])]
+        '''
+        for picking in self.env[report.model].browse(self._ids):
+            packs[picking.id] = []
+            packs_dict = {}
+            for line in picking.move_lines:
+                if line.pack_component:
+                    move_sale = line.get_sale_line_id()
+                    pack_top = False
+                    line_aux = move_sale
+                    while not pack_top:
+                        line_aux = line_aux.pack_parent_line_id
+                        if not line_aux.pack_parent_line_id:
+                            pack_top = line_aux
+                    if not packs_dict.get(pack_top.id, False):
+                        packs_dict[pack_top.id] = []
+                    packs_dict[pack_top.id].append(line)
+                else:
+                    packs[picking.id].append((False, [line]))
+            for sale_line_id in packs_dict.keys():
+                sale_line = self.env['sale.order.line'].browse(sale_line_id)
+                packs[picking.id].append((sale_line, packs_dict[sale_line_id]))
+        docargs = {
+            'doc_ids': self._ids,
+            'doc_model': report.model,
+            'docs': self.env[report.model].browse(self._ids),
+            'moves': packs,
+        }
+        return report_obj.render('custom_documents.report_internal_picking', docargs)
