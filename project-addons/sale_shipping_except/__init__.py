@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    $Santiago Argüeso <santiago@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -19,16 +19,4 @@
 #
 ##############################################################################
 
-{
-    'name': "BU customizations",
-    'version': '1.0',
-    'category': '',
-    'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['sale_stock', 'stock', 'technical_office'],
-    "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
-             'wizard/stock_transfer_details_view.xml', 'product_view.xml',
-             'invoice_view.xml'],
-    "installable": True
-}
+from . import sale_order

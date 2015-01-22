@@ -20,15 +20,13 @@
 ##############################################################################
 
 {
-    'name': "BU customizations",
+    'name': "Manage sale shipping exception editable",
     'version': '1.0',
     'category': '',
     'description': """""",
     'author': 'Pexego',
     'website': '',
-    "depends": ['sale_stock', 'stock', 'technical_office'],
-    "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
-             'wizard/stock_transfer_details_view.xml', 'product_view.xml',
-             'invoice_view.xml'],
+    "depends": ['sale'],
+    "data": [],
     "installable": True
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_group_journal_search" model="ir.ui.view">
+            <field name="name">invoice.group.journal.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@string='Period']" position="after">
+                    <filter string="Diario" context="{'group_by':'journal_id'}" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+
