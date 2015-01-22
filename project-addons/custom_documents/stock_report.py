@@ -21,7 +21,7 @@
 from openerp import models, api
 
 
-class ParticularReport(models.AbstractModel):
+class PackingrReport(models.AbstractModel):
     _name = 'report.custom_documents.report_packing'
 
     @api.multi
@@ -93,3 +93,61 @@ class ParticularReport(models.AbstractModel):
             'totals': totals,
         }
         return report_obj.render('custom_documents.report_packing', docargs)
+
+
+class picking_report(models.AbstractModel):
+    _name = 'report.stock.report_picking_'
+
+    @api.multi
+    def render_html(self, data=None):
+        report_obj = self.env['report']
+        report = report_obj._get_report_from_name('stock.report_picking_')
+        packs = {}
+        for picking in self.env[report.model].browse(self._ids):
+            if not picking.sale_id:
+                continue
+            packs[picking.id] = []
+            for line in picking.sale_id.order_line:
+                if line.pack_child_line_ids and not line.pack_parent_line_id:
+                    packs[picking.id].append({
+                        'product_id': line.product_id,
+                        'qty': line.product_uom_qty,
+                        'uom': line.product_uom
+                    })
+
+        docargs = {
+            'doc_ids': self._ids,
+            'doc_model': report.model,
+            'docs': self.env[report.model].browse(self._ids),
+            'packs': packs,
+        }
+        return report_obj.render('stock.report_picking_', docargs)
+
+
+class picking_without_company_report(models.AbstractModel):
+    _name = 'report.custom_documents.report_picking_final'
+
+    @api.multi
+    def render_html(self, data=None):
+        report_obj = self.env['report']
+        report = report_obj._get_report_from_name('custom_documents.report_picking_final')
+        packs = {}
+        for picking in self.env[report.model].browse(self._ids):
+            if not picking.sale_id:
+                continue
+            packs[picking.id] = []
+            for line in picking.sale_id.order_line:
+                if line.pack_child_line_ids and not line.pack_parent_line_id:
+                    packs[picking.id].append({
+                        'product_id': line.product_id,
+                        'qty': line.product_uom_qty,
+                        'uom': line.product_uom
+                    })
+
+        docargs = {
+            'doc_ids': self._ids,
+            'doc_model': report.model,
+            'docs': self.env[report.model].browse(self._ids),
+            'packs': packs,
+        }
+        return report_obj.render('custom_documents.report_picking_final', docargs)

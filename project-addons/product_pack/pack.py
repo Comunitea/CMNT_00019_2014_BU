@@ -23,6 +23,7 @@
 
 import math
 from openerp.osv import fields, orm
+import openerp.addons.decimal_precision as dp
 
 
 class product_pack(orm.Model):
@@ -42,42 +43,21 @@ class product_pack(orm.Model):
 
 class product_product(orm.Model):
     _inherit = 'product.product'
-    _columns = {
-        'stock_depends': fields.boolean(
-            'Stock depends of components',
-            help='Mark if pack stock is calcualted from component stock'
-        ),
-        'pack_fixed_price': fields.boolean(
-            'Pack has fixed price',
-            help="""
-            Mark this field if the public price of the pack should be fixed.
-            Do not mark it if the price should be calculated from the sum of
-            the prices of the products in the pack.
-        """
-        ),
-        'pack_line_ids': fields.one2many(
-            'product.pack.line', 'parent_product_id', 'Pack Products',
-            help='List of products that are part of this pack.'
-        ),
-    }
 
-    _defaults = {
-        'pack_fixed_price': True,
-    }
-
-    def get_product_available(self, cr, uid, ids, context=None):
+    '''def get_product_available(self, cr, uid, ids, context=None):
         """
         Calulate stock for packs
         :return: maximum stock that lets complete pack
         """
-        result = {}
+        import ipdb; ipdb.set_trace()
+        res = {}
         for product in self.browse(cr, uid, ids, context=context):
             stock = super(product_product, self).get_product_available(
                 cr, uid, [product.id], context=context)
 
             # Check if product stock depends on it's subproducts stock.
             if not product.stock_depends:
-                result[product.id] = stock[product.id]
+                res[product.id] = stock[product.id]
                 continue
 
             first_subproduct = True
@@ -103,8 +83,7 @@ class product_product(orm.Model):
                         continue
                     if first_subproduct:
                         subproduct_quantity = subproduct.quantity
-                        subproduct_stock = (
-                            subproducts_stock[subproduct.product_id.id])
+                        subproduct_stock = subproduct.product_id.qty_available
                         if subproduct_quantity == 0:
                             continue
 
@@ -117,8 +96,7 @@ class product_product(orm.Model):
 
                     # Take the info of the next subproduct
                     subproduct_quantity_next = subproduct.quantity
-                    subproduct_stock_next = (
-                        subproducts_stock[subproduct.product_id.id])
+                    subproduct_stock_next = subproduct.product_id.qty_available
 
                     if (
                         subproduct_quantity_next == 0
@@ -134,10 +112,155 @@ class product_product(orm.Model):
                         pack_stock = pack_stock_next
 
                 # result is the minimum stock of all subproducts
-                result[product.id] = pack_stock
+                res[product.id] = {
+                    'qty_available': pack_stock,
+                    'incoming_qty': 0,
+                    'outgoing_qty': 0,
+                    'virtual_available': 0,
+                }
             else:
-                result[product.id] = stock[product.id]
-        return result
+                res[product.id] = stock[product.id]
+        return res'''
+
+    def _product_available(self, cr, uid, ids, field_names=None, arg=False, context=None):
+        res = {}
+        for product in self.browse(cr, uid, ids, context=context):
+            stock = super(product_product, self)._product_available(
+                cr, uid, [product.id], field_names, arg, context)
+
+            if not product.stock_depends:
+                res[product.id] = stock[product.id]
+                continue
+
+            first_subproduct = True
+            pack_stock = 0
+
+            # Check if product stock depends on it's subproducts stock.
+            if product.pack_line_ids:
+                """ Go over all subproducts, take quantity needed for the pack
+                and its available stock """
+                for subproduct in product.pack_line_ids:
+
+                    # if subproduct is a service don't calculate the stock
+                    if subproduct.product_id.type == 'service':
+                        continue
+                    if first_subproduct:
+                        subproduct_quantity = subproduct.quantity
+                        subproduct_stock = self._product_available(cr, uid, [subproduct.product_id.id], field_names, arg, context)[subproduct.product_id.id]['qty_available']
+                        if subproduct_quantity == 0:
+                            continue
+
+                        """ Calculate real stock for current pack from the
+                        subproduct stock and needed quantity """
+                        pack_stock = math.floor(
+                            subproduct_stock / subproduct_quantity)
+                        first_subproduct = False
+                        continue
+
+                    # Take the info of the next subproduct
+                    subproduct_quantity_next = subproduct.quantity
+                    subproduct_stock_next = self._product_available(cr, uid, [subproduct.product_id.id], field_names, arg, context)[subproduct.product_id.id]['qty_available']
+
+                    if (
+                        subproduct_quantity_next == 0
+                        or subproduct_quantity_next == 0.0
+                    ):
+                        continue
+
+                    pack_stock_next = math.floor(
+                        subproduct_stock_next / subproduct_quantity_next)
+
+                    # compare the stock of a subproduct and the next subproduct
+                    if pack_stock_next < pack_stock:
+                        pack_stock = pack_stock_next
+
+                # result is the minimum stock of all subproducts
+                res[product.id] = {
+                    'qty_available': pack_stock,
+                    'incoming_qty': 0,
+                    'outgoing_qty': 0,
+                    'virtual_available': pack_stock,
+                }
+            else:
+                res[product.id] = stock[product.id]
+        return res
+
+    def _search_product_quantity(self, cr, uid, obj, name, domain, context):
+        return super(product_product, self)._search_product_quantity(cr, uid, obj, name, domain, context)
+
+    _columns = {
+        'stock_depends': fields.boolean(
+            'Stock depends of components',
+            help='Mark if pack stock is calcualted from component stock'
+        ),
+        'pack_fixed_price': fields.boolean(
+            'Pack has fixed price',
+            help="""
+            Mark this field if the public price of the pack should be fixed.
+            Do not mark it if the price should be calculated from the sum of
+            the prices of the products in the pack.
+        """
+        ),
+        'pack_line_ids': fields.one2many(
+            'product.pack.line', 'parent_product_id', 'Pack Products',
+            help='List of products that are part of this pack.'
+        ),
+        'qty_available': fields.function(_product_available, multi='qty_available',
+            type='float', digits_compute=dp.get_precision('Product Unit of Measure'),
+            string='Quantity On Hand',
+            fnct_search=_search_product_quantity,
+            help="Current quantity of products.\n"
+                 "In a context with a single Stock Location, this includes "
+                 "goods stored at this Location, or any of its children.\n"
+                 "In a context with a single Warehouse, this includes "
+                 "goods stored in the Stock Location of this Warehouse, or any "
+                 "of its children.\n"
+                 "stored in the Stock Location of the Warehouse of this Shop, "
+                 "or any of its children.\n"
+                 "Otherwise, this includes goods stored in any Stock Location "
+                 "with 'internal' type."),
+        'virtual_available': fields.function(_product_available, multi='qty_available',
+            type='float', digits_compute=dp.get_precision('Product Unit of Measure'),
+            string='Forecast Quantity',
+            fnct_search=_search_product_quantity,
+            help="Forecast quantity (computed as Quantity On Hand "
+                 "- Outgoing + Incoming)\n"
+                 "In a context with a single Stock Location, this includes "
+                 "goods stored in this location, or any of its children.\n"
+                 "In a context with a single Warehouse, this includes "
+                 "goods stored in the Stock Location of this Warehouse, or any "
+                 "of its children.\n"
+                 "Otherwise, this includes goods stored in any Stock Location "
+                 "with 'internal' type."),
+        'incoming_qty': fields.function(_product_available, multi='qty_available',
+            type='float', digits_compute=dp.get_precision('Product Unit of Measure'),
+            string='Incoming',
+            fnct_search=_search_product_quantity,
+            help="Quantity of products that are planned to arrive.\n"
+                 "In a context with a single Stock Location, this includes "
+                 "goods arriving to this Location, or any of its children.\n"
+                 "In a context with a single Warehouse, this includes "
+                 "goods arriving to the Stock Location of this Warehouse, or "
+                 "any of its children.\n"
+                 "Otherwise, this includes goods arriving to any Stock "
+                 "Location with 'internal' type."),
+        'outgoing_qty': fields.function(_product_available, multi='qty_available',
+            type='float', digits_compute=dp.get_precision('Product Unit of Measure'),
+            string='Outgoing',
+            fnct_search=_search_product_quantity,
+            help="Quantity of products that are planned to leave.\n"
+                 "In a context with a single Stock Location, this includes "
+                 "goods leaving this Location, or any of its children.\n"
+                 "In a context with a single Warehouse, this includes "
+                 "goods leaving the Stock Location of this Warehouse, or "
+                 "any of its children.\n"
+                 "Otherwise, this includes goods leaving any Stock "
+                 "Location with 'internal' type."),
+    }
+
+    _defaults = {
+        'pack_fixed_price': True,
+    }
 
 
 class sale_order_line(orm.Model):
@@ -177,6 +300,16 @@ class sale_order(orm.Model):
     def write(self, cr, uid, ids, vals, context=None):
         result = super(sale_order, self).write(cr, uid, ids, vals, context)
         self.expand_packs(cr, uid, ids, context)
+        return result
+
+    def copy(self, cr, uid, id, default={}, context=None):
+        line_obj = self.pool.get('sale.order.line')
+        result = super(sale_order, self).copy(cr, uid, id, default, context)
+        sale = self.browse(cr, uid, result, context)
+        for line in sale.order_line:
+            if line.pack_parent_line_id:
+                line_obj.unlink(cr, uid, [line.id], context)
+        self.expand_packs(cr, uid, sale.id, context)
         return result
 
     def expand_packs(self, cr, uid, ids, context={}, depth=1):
@@ -537,34 +670,51 @@ class stock_pciking(orm.Model):
 
     _inherit = 'stock.picking'
 
-    def _invoice_create_line(self, cr, uid, moves, journal_id, inv_type='out_invoice', context=None):
-        invoice_obj = self.pool.get('account.invoice')
-        move_obj = self.pool.get('stock.move')
-        invoices = {}
-        for move in moves:
-            if move.pack_component:
-                continue
-            company = move.company_id
-            origin = move.picking_id.name
-            partner, user_id, currency_id = move_obj._get_master_data(cr, uid, move, company, context=context)
-
-            key = (partner, currency_id, company.id, user_id)
-
-            if key not in invoices:
-                # Get account and payment terms
-                invoice_vals = self._get_invoice_vals(cr, uid, key, inv_type, journal_id, move, context=context)
-                invoice_id = self._create_invoice_from_picking(cr, uid, move.picking_id, invoice_vals, context=context)
-                invoices[key] = invoice_id
-
-            invoice_line_vals = move_obj._get_invoice_line_vals(cr, uid, move, partner, inv_type, context=context)
-            invoice_line_vals['invoice_id'] = invoices[key]
-            invoice_line_vals['origin'] = origin
-
-            move_obj._create_invoice_line_from_vals(cr, uid, move, invoice_line_vals, context=context)
-            move_obj.write(cr, uid, move.id, {'invoice_state': 'invoiced'}, context=context)
-
-        invoice_obj.button_compute(cr, uid, invoices.values(), context=context, set_total=(inv_type in ('in_invoice', 'in_refund')))
-        return invoices.values()
+    def action_invoice_create(self, cr, uid, ids, journal_id, group=False, type='out_invoice', context=None):
+        """ Creates invoice based on the invoice state selected for picking.
+        @param journal_id: Id of journal
+        @param group: Whether to create a group invoice or not
+        @param type: Type invoice to be created
+        @return: Ids of created invoices for the pickings
+        """
+        context = context or {}
+        inv_line_obj = self.pool.get('account.invoice.line')
+        todo = {}
+        for picking in self.browse(cr, uid, ids, context=context):
+            partner = self._get_partner_to_invoice(cr, uid, picking, context)
+            #grouping is based on the invoiced partner
+            if group:
+                key = partner
+            else:
+                key = picking.id
+            for move in picking.move_lines:
+                if move.invoice_state == '2binvoiced':
+                    if (move.state != 'cancel') and not move.scrapped:
+                        todo.setdefault(key, [])
+                        todo[key].append(move)
+        invoices = []
+        for moves in todo.values():
+            final_moves = []
+            pack_moves = []
+            for move in moves:
+                if not move.pack_component:
+                    final_moves.append(move)
+                else:
+                    pack_moves.append(move)
+            if final_moves:
+                invoices += self._invoice_create_line(cr, uid, final_moves, journal_id, type, context=context)
+            else:
+                # Si el albarán no tiene ningun movimiento facturable se crea
+                # una factura con uno de los movimientos y se borran las lineas.
+                invoice = self._invoice_create_line(cr, uid, [moves[0]], journal_id, type, context=context)
+                to_delete = inv_line_obj.search(
+                    [('invoice_id', '=', invoice),
+                     ('product_id', '=', moves[0].product_id.id)])
+                inv_line_obj.unlink(to_delete)
+                invoices += invoice
+            if pack_moves:
+                self.pool.get('stock.move').write(cr, uid, [x.id for x in pack_moves], {'invoice_state': 'invoiced'}, context)
+        return invoices
 
 
 class stock_move(orm.Model):
@@ -576,7 +726,7 @@ class stock_move(orm.Model):
         for move in self.browse(cr, uid, ids, context):
             res[move.id] = False
             if move.procurement_id and move.procurement_id.sale_line_id:
-                if move.procurement_id.sale_line_id.pack_depth > 0:
+                if move.procurement_id.sale_line_id.pack_parent_line_id:
                     res[move.id] = True
         return res
 

@@ -44,8 +44,12 @@ class StockPicking(models.Model):
         @param group: Whether to create a group invoice or not
         @param type: Type invoice to be created
         @return: Ids of created invoices for the pickings
+        Se sobreescribe para añadir la direccion de envio en la factura,
+        al depender este modulo de pack se añade la funcionalidad sobreescrita
+        en el modulo(pack.py:695)
         """
         todo = {}
+        inv_line_obj = self.env['account.invoice.line']
         for picking in self:
             if group:
                 key = picking.partner_id
@@ -58,8 +62,26 @@ class StockPicking(models.Model):
                         todo[key].append(move)
         invoices = []
         for key in todo.keys():
-            key_invoices = self._invoice_create_line(todo[key], journal_id,
-                                                     type)
+            final_moves = self.env['stock.move']
+            pack_moves = self.env['stock.move']
+            for move in todo[key]:
+                if not move.pack_component:
+                    final_moves += move
+                else:
+                    pack_moves += move
+            if final_moves:
+                key_invoices = self._invoice_create_line(final_moves,
+                                                         journal_id, type)
+            else:
+                delete_move = todo[key][0]
+                key_invoices = self._invoice_create_line([delete_move],
+                                                         journal_id, type)
+                to_delete = inv_line_obj.search(
+                    [('invoice_id', '=', key_invoices),
+                     ('product_id', '=', delete_move.product_id.id)])
+                to_delete.unlink()
+            if pack_moves:
+                pack_moves.write({'invoice_state': 'invoiced'})
             invoices += key_invoices
             if key._name == 'stock.picking':
                 address = key.partner_id.id
