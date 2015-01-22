@@ -41,6 +41,7 @@ as children of the pack product.
         'account',
         'sale',
         'sale_stock',
+        'stock_account',
         'purchase',
         'customer_product_name',
     ],
