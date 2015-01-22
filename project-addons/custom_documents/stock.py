@@ -110,3 +110,27 @@ class StockQuantPackage(models.Model):
 
     measures = fields.Char('Measures')
     weight = fields.Float('Weight')
+
+
+class stock_transfer_details_items(models.TransientModel):
+    _inherit = 'stock.transfer_details_items'
+
+    @api.multi
+    def put_in_pack(self):
+        res = super(stock_transfer_details_items, self).put_in_pack()
+        for packop in self:
+            if packop.result_package_id:
+                weight = packop.quantity * packop.product_id.weight
+                measures = ''
+                use_packaging = False
+                for packaging in packop.product_id.packaging_ids:
+                    if packaging.qty >= packop.quantity:
+                        if not use_packaging:
+                            use_packaging = packaging
+                        else:
+                            if packaging.qty < use_packaging.qty:
+                                use_packaging = packaging
+                if use_packaging:
+                    measures = use_packaging.measures_str
+                packop.result_package_id.write({'weight': weight, 'measures': measures})
+        return res
