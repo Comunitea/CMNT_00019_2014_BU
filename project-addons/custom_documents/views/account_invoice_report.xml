@@ -197,11 +197,10 @@
                 </div>
                 <div class="row" t-if="o.partner_id.country_id.invoice_report_with_validation_data and o.validated_by">
                     <div class="col-xs-6">
-                        <div style="border: 1px solid black">
+                        <div style="border: 1px solid black; padding-left:6%; padding-top:3%;">
                             <p>Date: <span t-field="o.validation_date"/></p>
-                            <p>Place: <span t-field="o.validated_by.company_id.city"/></p>
-                            <p><span t-esc="o.validated_by.employee_ids[0].name"/></p>
-                            <p><span t-esc="o.validated_by.employee_ids[0].department_id.name"/></p>
+                            <p>Place: <span t-field="o.validated_by.company_id.city"/> , <span t-field="o.validated_by.company_id.country_id.name"/></p>
+                            <p><span t-esc="o.validated_by.employee_ids[0].name"/> - <span t-esc="o.validated_by.employee_ids[0].department_id.name"/></p>
                         </div>
                     </div>
                 </div>
