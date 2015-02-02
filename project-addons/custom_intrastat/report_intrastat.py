@@ -42,7 +42,7 @@ class report_intrastat(models.Model):
                     intrastat.id as intrastat_id,
                     inv_country.id as country_id,
                     sum(case when inv_line.price_unit is not null
-                            then inv_line.price_unit * inv_line.quantity
+                            then inv_line.price_subtotal
                             else 0
                         end) as value,
                     sum(
