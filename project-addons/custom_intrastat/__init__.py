@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-from . import report_intrastat
 from . import stock
 from . import account
+from . import report_intrastat

@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class AccountInvoiceLine(models.Model):
@@ -26,3 +26,14 @@ class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
 
     weight = fields.Float('Weight')
+
+class AccountInvoice(models.Model):
+
+    _inherit = 'account.invoice'
+
+    lines_len = fields.Float('lines length', compute='_get_len', store=True)
+
+    @api.one
+    @api.depends('invoice_line')
+    def _get_len(self):
+        self.lines_len = len(self.invoice_line)

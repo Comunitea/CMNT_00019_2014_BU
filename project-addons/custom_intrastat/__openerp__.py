@@ -26,7 +26,8 @@
     'description': """""",
     'author': 'Pexego',
     'website': 'www.pexego.es',
-    "depends": ['report_intrastat', 'bu_custom'],
+    "depends": ['report_intrastat', 'bu_custom', 'stock_picking_invoice_link',
+                'custom_documents'],
     "data": ['intrastat_report_view.xml'],
     "installable": True
 }
