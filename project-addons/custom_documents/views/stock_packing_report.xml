@@ -54,7 +54,7 @@
                         <!--p t-esc="o.min_date.strftime('%d/%m/%Y')"/-->
                     </div>
                     <div class="col-xs-3">
-                        <strong>order reference.</strong>
+                        <strong>Your Reference.</strong>
                     </div>
                     <div class="col-xs-3">
                         <strong>Origins of goods</strong>

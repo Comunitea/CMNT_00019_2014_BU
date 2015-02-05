@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* custom_documents
+#   * custom_documents
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-16 10:26+0000\n"
-"PO-Revision-Date: 2015-01-16 10:26+0000\n"
+"POT-Creation-Date: 2015-02-05 08:54+0000\n"
+"PO-Revision-Date: 2015-02-05 08:54+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -220,11 +220,6 @@ msgid "Description"
 msgstr "Descripción"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Description:"
-msgstr "Descripción:"
-
-#. module: custom_documents
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
 msgid "Despatch Note Nº"
@@ -312,7 +307,9 @@ msgstr "G.W. por caja(KG)"
 
 #. module: custom_documents
 #: field:report.custom_documents.mrp_production,id:0
+#: field:report.custom_documents.report_internal_picking,id:0
 #: field:report.custom_documents.report_packing,id:0
+#: field:report.custom_documents.report_picking_final,id:0
 #: field:report.stock.report_picking_,id:0
 msgid "ID"
 msgstr "ID"
@@ -347,6 +344,11 @@ msgstr "Medidas"
 #: view:website:custom_documents.mrp_production
 msgid "Min"
 msgstr "Mínimo"
+
+#. module: custom_documents
+#: view:website:custom_documents.mrp_production
+msgid "Name"
+msgstr "Nombre"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
@@ -427,7 +429,7 @@ msgstr "PRO-FORMA"
 #. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
 msgid "PROFORMA INVOICE"
-msgstr "PROFORMA INVOICE"
+msgstr "FACTURA PROFORMA"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -495,6 +497,11 @@ msgstr "Paquetes físicos"
 #: model:ir.model,name:custom_documents.model_stock_picking
 msgid "Picking List"
 msgstr "Albarán"
+
+#. module: custom_documents
+#: model:ir.model,name:custom_documents.model_stock_transfer_details_items
+msgid "Picking wizard items"
+msgstr "Elementos del asistente de albarán"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
@@ -659,7 +666,7 @@ msgstr "Comercial:"
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
 msgid "Security material"
-msgstr "Material de seguridad"
+msgstr "Security material"
 
 #. module: custom_documents
 #: field:account.invoice,shipping_address:0
@@ -844,6 +851,18 @@ msgid "Your Order Reference"
 msgstr "Su referencia"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_picking
+#: view:website:custom_documents.report_picking_final_
+msgid "Your Reference"
+msgstr "Su referencia"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_packing_document
+msgid "Your Reference."
+msgstr "Su referencia."
+
+#. module: custom_documents
+#: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Your Reference:"
 msgstr "Su referencia:"
@@ -862,11 +881,6 @@ msgstr "in"
 #: model:ir.actions.report.xml,name:custom_documents.action_report_internal_picking
 msgid "internal picking"
 msgstr "Albarán interno"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
-msgid "order reference."
-msgstr "order reference."
 
 #. module: custom_documents
 #: code:addons/custom_documents/mrp_report.py:46
