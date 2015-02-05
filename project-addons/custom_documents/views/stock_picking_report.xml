@@ -68,7 +68,7 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <th><strong>Despatch Note Nº</strong></th>
+                            <th t-if="o.date_done"><strong>Date</strong></th>
                             <th t-if="o.sale_id.client_order_ref"><strong>Your Reference</strong></th>
                             <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
                             <th><strong>Weight</strong></th>
@@ -77,8 +77,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span t-field="o.name"/>
+                            <td t-if="o.date_done">
+                                <span t-field="o.date_done" t-field-options='{"format": "dd/MM/y"}'/>
                             </td>
                             <td t-if="o.sale_id.client_order_ref">
                                 <span t-field="o.sale_id.client_order_ref"/>

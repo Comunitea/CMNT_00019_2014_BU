@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * custom_documents
+#	* custom_documents
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-05 08:54+0000\n"
-"PO-Revision-Date: 2015-02-05 08:54+0000\n"
+"POT-Creation-Date: 2015-02-05 16:36+0000\n"
+"PO-Revision-Date: 2015-02-05 16:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -185,6 +185,8 @@ msgstr "DIRECCION DE ENVIO"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
+#: view:website:custom_documents.report_picking
+#: view:website:custom_documents.report_picking_final_
 msgid "Date"
 msgstr "Fecha"
 
@@ -218,12 +220,6 @@ msgstr "Dirección de envío"
 #: view:website:custom_documents.report_saleorder_document
 msgid "Description"
 msgstr "Descripción"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Despatch Note Nº"
-msgstr "Nº de albarán"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
