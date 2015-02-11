@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
+#    Copyright (C) 2015 Pexego All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import mrp
-from . import wizard
-from . import product
-from . import stock_picking
+from openerp import models, fields, api
+
+
+class StockPicking(models.Model):
+
+    _inherit = 'stock.picking'
+
+    currency = fields.Many2one('res.currency',
+                               related='sale_id.currency_id', store=True)
+
+
