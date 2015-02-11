@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
+#    Copyright (C) 2015 Pexego All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,15 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, fields
 
-{
-    'name': "Urgent stock",
-    'version': '1.0',
-    'category': 'stock',
-    'description': """Adds the urgent stock field""",
-    'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['product', 'stock', 'decimal_precision', 'raw_material_stock'],
-    "data": ['product_view.xml'],
-    "installable": True
-}
+class StockWarehouse(models.Model):
+    _inherit = 'stock.warehouse'
+
+    show_material_stock = fields.Boolean('Show material stock')

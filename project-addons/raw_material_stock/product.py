@@ -41,10 +41,17 @@ class ProductProduct(models.Model):
         if not self.show_used_stock:
             self.used_stock = 0
             return
-        uom_obj = self.env['product.uom']
-        bom_lines = self.env['mrp.bom.line'].search([('product_id', '=',
+        new_context = self.env.context
+        if not self.env.context.get('warehouse', False):
+            warehouse = self.env['stock.warehouse'].search(
+                [('show_material_stock', '=', True)])
+            if warehouse:
+                new_context = dict(self.env.context)
+                new_context['warehouse'] = warehouse.id
+        uom_obj = self.with_context(new_context).env['product.uom']
+        bom_lines = self.with_context(new_context).env['mrp.bom.line'].search([('product_id', '=',
                                                     self.id)])
-        total_qty = self.qty_available
+        total_qty = self.with_context(new_context).qty_available
         for line in bom_lines:
             line_qty = uom_obj._compute_qty(line.product_uom.id,
                                             line.product_qty,

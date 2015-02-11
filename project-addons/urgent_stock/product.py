@@ -26,7 +26,7 @@ class ProductProduct(models.Model):
 
     _inherit = 'product.product'
 
-    urgent_stock = fields.Float('Urgent', compute='_get_urgent_stock',
+    urgent_stock = fields.Float('Urgent stock', compute='_get_urgent_stock',
                                 store=False,
                                 digits_compute=dp.get_precision('Product Unit of Measure'))
 
@@ -36,17 +36,26 @@ class ProductProduct(models.Model):
             Calculo del stock necesario para cubrir los albaranes de salida.
         """
         uom_obj = self.env['product.uom']
-        moves_out = self.env['stock.move'].search(
-            [('state', 'in', ['waiting', 'confirmed']),
-             ('product_id', '=', self.id),
-             ('picking_type_id.code', '=', 'outgoing')])
+        new_context = self.env.context
+        move_domain = [('state', 'in', ['waiting', 'confirmed']),
+                       ('product_id', '=', self.id),
+                       ('picking_type_id.code', '=', 'outgoing')]
+        if not self.env.context.get('warehouse', False):
+            warehouse = self.env['stock.warehouse'].search(
+                [('show_material_stock', '=', True)])
+            if warehouse:
+                new_context = dict(self.env.context)
+                new_context['warehouse'] = warehouse.id
+            move_domain += [('warehouse_id', '=', warehouse.id)]
 
+        moves_out = self.with_context(new_context).env['stock.move'].search(
+            move_domain)
         total_qty = 0
         for move in moves_out:
             total_qty += uom_obj._compute_qty(move.product_uom.id,
                                               move.product_uom_qty,
                                               self.uom_id.id)
-        if total_qty > self.qty_available:
-            self.urgent_stock = total_qty - self.qty_available
+        if total_qty > self.with_context(new_context).qty_available:
+            self.urgent_stock = total_qty - self.with_context(new_context).qty_available
         else:
             self.urgent_stock = 0
