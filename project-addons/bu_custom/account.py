@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
+#    Copyright (C) 2015 Pexego All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import mrp
-from . import wizard
-from . import product
-from . import account
+from openerp import models, fields, api, exceptions, _
+
+
+class account_invoice(models.Model):
+
+    _inherit = 'account.invoice'
+
+    @api.multi
+    def invoice_validate(self):
+        res = super(account_invoice, self).invoice_validate()
+        for invoice in self:
+            if not invoice.reference:
+                invoice.reference = invoice.number[invoice.number.rfind('/')+1:]

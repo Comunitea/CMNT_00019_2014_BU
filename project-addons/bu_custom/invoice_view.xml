@@ -13,6 +13,28 @@
             </field>
         </record>
 
+        <record id="account_invoice_change_reference" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.mod340.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="l10n_es_aeat_mod340.invoice_supplier_mod340_form"/>
+            <field name="arch" type="xml">
+                <field name="reference" position="replace">
+                    <field name="reference" nolabel="1" required="0"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="account_invoice_tree_add_reference" model="ir.ui.view">
+            <field name="name">account.invoice.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="number" position="after">
+                    <field name="reference"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
 
