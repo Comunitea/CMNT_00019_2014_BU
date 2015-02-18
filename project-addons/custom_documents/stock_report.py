@@ -107,12 +107,15 @@ class picking_report(models.AbstractModel):
             if not picking.sale_id:
                 continue
             packs[picking.id] = []
+            my_context = dict(self.env.context)
+            my_context['lang'] = picking.partner_id.lang
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     packs[picking.id].append({
                         'product_id': line.product_id,
+                        'product_name': line.with_context(my_context).product_id.name,
                         'qty': line.product_uom_qty,
-                        'uom': line.product_uom
+                        'uom': line.with_context(my_context).product_uom.name
                     })
 
         docargs = {
@@ -136,12 +139,15 @@ class picking_without_company_report(models.AbstractModel):
             if not picking.sale_id:
                 continue
             packs[picking.id] = []
+            my_context = dict(self.env.context)
+            my_context['lang'] = picking.partner_id.lang
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     packs[picking.id].append({
                         'product_id': line.product_id,
+                        'product_name': line.with_context(my_context).product_id.name,
                         'qty': line.product_uom_qty,
-                        'uom': line.product_uom
+                        'uom': line.with_context(my_context).product_uom.name
                     })
 
         docargs = {

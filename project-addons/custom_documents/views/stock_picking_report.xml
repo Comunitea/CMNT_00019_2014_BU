@@ -115,7 +115,7 @@
                         </tr>
                         <tr t-foreach="packs[o.id]" t-as="pack">
                             <td><span t-esc="pack['product_id'].get_product_ref(o.partner_id)"/></td>
-                            <td><span t-esc="pack['product_id'].name"/></td>
+                            <td><span t-esc="pack['product_name']"/></td>
                             <td class="text-right"><span t-esc="pack['qty']"/> <span t-esc="pack['uom']" groups="product.group_uom"/></td>
                         </tr>
                     </tbody>
