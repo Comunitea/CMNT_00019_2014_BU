@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_partner_form_add_validated" model="ir.ui.view">
+            <field name="name">res.partner.form.add_validated</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="validated"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
