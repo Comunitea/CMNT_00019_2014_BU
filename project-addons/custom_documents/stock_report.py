@@ -68,7 +68,7 @@ class PackingrReport(models.AbstractModel):
                         weight = 0
                         if op_line.result_package_id:
                             weight = op_line.result_package_id.weight
-                            size = new_pack[2]
+                            size = packing[2]
 
                         line_pick.append(
                             {'prod': op_line.product_id.get_product_ref(op_line.picking_id.partner_id), 'boxes': packing[0],

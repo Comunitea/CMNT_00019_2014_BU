@@ -66,7 +66,7 @@
 
                 <div class="row">
                     <div class="col-xs-3">
-                        <p t-esc="time.strftime('%m-%d-%Y',time.strptime(o.min_date,'%Y-%m-%d %H:%M:%S'))"/>
+                        <p t-field="o.min_date" t-field-options='{"format": "dd/MM/y"}'/>
                     </div>
                     <div class="col-xs-3">
                         <p t-field="o.sale_id.client_order_ref"/>
