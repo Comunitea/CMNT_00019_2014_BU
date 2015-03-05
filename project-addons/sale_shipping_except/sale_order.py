@@ -53,8 +53,7 @@ class sale_order(osv.osv):
                                                })
                 else:
                     if line.state == 'draft':
-                        sale_line_obj.write(cr, uid, line.id,
-                            {'state': 'confirmed'})
+                        sale_line_obj.button_confirm(cr, uid, line.id)
 
         super(sale_order, self).action_ship_create(cr, uid, ids,
                                                    context=context)
