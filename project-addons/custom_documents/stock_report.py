@@ -27,7 +27,8 @@ class PackingrReport(models.AbstractModel):
     @api.multi
     def render_html(self, data=None):
         report_obj = self.env['report']
-        report = report_obj._get_report_from_name('custom_documents.report_packing')
+        report = report_obj._get_report_from_name(
+            'custom_documents.report_packing')
         docs = []
         lines = {}
         totals = {}
@@ -44,9 +45,12 @@ class PackingrReport(models.AbstractModel):
             for packing in pack_ops.keys():
                 prod_list = []
                 for op_line in pack_ops[packing]:
-                    prod_list.append([op_line.product_id.id, op_line.product_qty])
+                    prod_list.append([op_line.product_id.id,
+                                      op_line.product_qty])
                 measure_package = pack_ops[packing][0].result_package_id
-                measures = measure_package.packaging_id and measure_package.packaging_id.measures_str or measure_package.measures
+                measures = measure_package.packaging_id and \
+                    measure_package.packaging_id.measures_str or \
+                    measure_package.measures
                 new_pack = [1, prod_list, measures, pack_ops[packing]]
                 added = False
                 for line in range(len(pack_merged)):
@@ -71,19 +75,28 @@ class PackingrReport(models.AbstractModel):
                             size = packing[2]
 
                         line_pick.append(
-                            {'prod': op_line.product_id.get_product_ref(op_line.picking_id.partner_id), 'boxes': packing[0],
-                             'qty': op_line.product_qty * packing[0], 'weight': weight,
+                            {'prod': op_line.product_id.get_product_ref(
+                                op_line.picking_id.partner_id),
+                             'boxes': packing[0],
+                             'qty': op_line.product_qty * packing[0],
+                             'weight': weight,
                              'size': size, 'span': len(packing[3])})
                         totals[picking.id]['boxes'] += packing[0]
-                        totals[picking.id]['qty'] += op_line.product_qty * packing[0]
+                        totals[picking.id]['qty'] += op_line.product_qty * \
+                            packing[0]
                         totals[picking.id]['weight'] += weight
                         first = False
                     else:
                         line_pick.append(
-                            {'prod': op_line.product_id.get_product_ref(op_line.picking_id.partner_id), 'boxes': None,
-                             'qty': op_line.product_qty * packing[0], 'weight': None,
+                            {'prod':
+                                op_line.product_id.get_product_ref(
+                                    op_line.picking_id.partner_id),
+                             'boxes': None,
+                             'qty': op_line.product_qty * packing[0],
+                             'weight': None,
                              'size': None})
-                        totals[picking.id]['qty'] += op_line.product_qty * packing[0]
+                        totals[picking.id]['qty'] += op_line.product_qty * \
+                            packing[0]
             lines[picking.id] = line_pick
         docargs = {
             'doc_ids': self._ids,
@@ -109,11 +122,20 @@ class picking_report(models.AbstractModel):
             packs[picking.id] = []
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
+            picking_product_ids = [x.product_id.id for x in picking.move_lines]
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
+                    add_pack = True
+                    for sale_pack_line in line.pack_child_line_ids:
+                        if sale_pack_line.product_id.id not in \
+                                picking_product_ids:
+                            add_pack = False
+                    if not add_pack:
+                        continue
                     packs[picking.id].append({
                         'product_id': line.product_id,
-                        'product_name': line.with_context(my_context).product_id.name,
+                        'product_name':
+                            line.with_context(my_context).product_id.name,
                         'qty': line.product_uom_qty,
                         'uom': line.with_context(my_context).product_uom.name
                     })
@@ -133,7 +155,8 @@ class picking_without_company_report(models.AbstractModel):
     @api.multi
     def render_html(self, data=None):
         report_obj = self.env['report']
-        report = report_obj._get_report_from_name('custom_documents.report_picking_final')
+        report = report_obj._get_report_from_name(
+            'custom_documents.report_picking_final')
         packs = {}
         for picking in self.env[report.model].browse(self._ids):
             if not picking.sale_id:
@@ -141,11 +164,20 @@ class picking_without_company_report(models.AbstractModel):
             packs[picking.id] = []
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
+            picking_product_ids = [x.product_id.id for x in picking.move_lines]
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
+                    add_pack = True
+                    for sale_pack_line in line.pack_child_line_ids:
+                        if sale_pack_line.product_id.id not in \
+                                picking_product_ids:
+                            add_pack = False
+                    if not add_pack:
+                        continue
                     packs[picking.id].append({
                         'product_id': line.product_id,
-                        'product_name': line.with_context(my_context).product_id.name,
+                        'product_name':
+                            line.with_context(my_context).product_id.name,
                         'qty': line.product_uom_qty,
                         'uom': line.with_context(my_context).product_uom.name
                     })
@@ -156,7 +188,8 @@ class picking_without_company_report(models.AbstractModel):
             'docs': self.env[report.model].browse(self._ids),
             'packs': packs,
         }
-        return report_obj.render('custom_documents.report_picking_final', docargs)
+        return report_obj.render('custom_documents.report_picking_final',
+                                 docargs)
 
 
 class picking_internal_report(models.AbstractModel):
@@ -165,11 +198,13 @@ class picking_internal_report(models.AbstractModel):
     @api.multi
     def render_html(self, data=None):
         report_obj = self.env['report']
-        report = report_obj._get_report_from_name('custom_documents.report_internal_picking')
+        report = report_obj._get_report_from_name(
+            'custom_documents.report_internal_picking')
         packs = {}
         '''
             Estructura
-            lin_: linea de venta de producto pack, si no forma parte de un pack es False
+            lin_: linea de venta de producto pack, si no forma parte de un
+                  pack es False
             mv*: movimientos
             [(lin_, [mv1, mv2, mv3])]
         '''
@@ -199,4 +234,5 @@ class picking_internal_report(models.AbstractModel):
             'docs': self.env[report.model].browse(self._ids),
             'moves': packs,
         }
-        return report_obj.render('custom_documents.report_internal_picking', docargs)
+        return report_obj.render('custom_documents.report_internal_picking',
+                                 docargs)

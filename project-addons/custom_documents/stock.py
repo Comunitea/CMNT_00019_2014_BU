@@ -132,5 +132,6 @@ class stock_transfer_details_items(models.TransientModel):
                                 use_packaging = packaging
                 if use_packaging:
                     measures = use_packaging.measures_str
-                packop.result_package_id.write({'weight': weight, 'measures': measures})
+                packop.result_package_id.write({'weight': weight,
+                                                'measures': measures})
         return res

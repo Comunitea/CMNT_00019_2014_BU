@@ -20,12 +20,14 @@
 ##############################################################################
 from openerp import models, fields, api
 
+
 class ResPartner(models.Model):
 
     _inherit = 'res.partner'
 
     checked_by = fields.Char('Checked by')
-    document_name = fields.Char('Document name', compute='_get_document_name', store=True)
+    document_name = fields.Char('Document name',
+                                compute='_get_document_name', store=True)
 
     @api.one
     @api.depends('name', 'parent_id')

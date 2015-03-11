@@ -22,6 +22,7 @@
 from openerp import models, api, fields, _
 from datetime import date
 
+
 class product_product(models.Model):
 
     _inherit = 'product.product'
@@ -30,7 +31,9 @@ class product_product(models.Model):
 
     @api.one
     def _get_orderpoint_stock(self):
-        rules = self.env['stock.warehouse.orderpoint'].search([('product_id', '=', self.id)], limit=1, order='product_min_qty desc')
+        rules = self.env['stock.warehouse.orderpoint'].search(
+            [('product_id', '=', self.id)], limit=1,
+            order='product_min_qty desc')
         self.stock_min = rules and rules[0].product_min_qty or 0.0
 
 
@@ -40,8 +43,11 @@ class ParticularReport(models.AbstractModel):
     @api.multi
     def render_html(self, data=None):
         report_obj = self.env['report']
-        report = report_obj._get_report_from_name('custom_documents.mrp_production')
-        #objetos en un diccionario {'constock': {'robot':[], 'manual':[]}, 'sinstock':{'robot':[], 'manual':[]}}
+        report = report_obj._get_report_from_name(
+            'custom_documents.mrp_production')
+        # objetos en un diccionario
+        # {'constock': {'robot':[], 'manual':[]}, 'sinstock':{'robot':[],
+        #                                                     'manual':[]}}
         docs = {
             _('with minimun stock'): {},
             _('without minimun stock'): {}
@@ -52,11 +58,14 @@ class ParticularReport(models.AbstractModel):
             'total': {},
         }
         for production in self.env[report.model].browse(self._ids):
-            rules = self.env['stock.warehouse.orderpoint'].search([('product_id', '=', production.product_id.id)])
-            if production.routing_id.name not in docs[_('with minimun stock')].keys() and rules:
+            rules = self.env['stock.warehouse.orderpoint'].search(
+                [('product_id', '=', production.product_id.id)])
+            if production.routing_id.name not in \
+                    docs[_('with minimun stock')].keys() and rules:
                 docs[_('with minimun stock')][production.routing_id.name] = []
                 totals[_('with minimun stock')][production.routing_id.name] = 0.0
-            if production.routing_id.name not in docs[_('without minimun stock')].keys() and not rules:
+            if production.routing_id.name not in \
+                    docs[_('without minimun stock')].keys() and not rules:
                 docs[_('without minimun stock')][production.routing_id.name] = []
                 totals[_('without minimun stock')][production.routing_id.name] = 0.0
             if production.routing_id.name not in totals['total'].keys():
@@ -67,7 +76,8 @@ class ParticularReport(models.AbstractModel):
                 key = _('without minimun stock')
             docs[key][production.routing_id.name].append(production)
             totals[key][production.routing_id.name] += production.product_qty
-            totals['total'][production.routing_id.name] += production.product_qty
+            totals['total'][production.routing_id.name] += \
+                production.product_qty
         docargs = {
             'doc_ids': self._ids,
             'doc_model': report.model,
@@ -75,4 +85,4 @@ class ParticularReport(models.AbstractModel):
             'totals': totals,
             'today': date.today().strftime('%d/%m/%Y')
         }
-        return  report_obj.render('custom_documents.mrp_production', docargs)
+        return report_obj.render('custom_documents.mrp_production', docargs)

@@ -32,5 +32,6 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def invoice_validate(self):
-        self.write({'validation_date': date.today(), 'validated_by': self.env.user.id})
+        self.write({'validation_date': date.today(),
+                    'validated_by': self.env.user.id})
         return super(AccountInvoice, self).invoice_validate()

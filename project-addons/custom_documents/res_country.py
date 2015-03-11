@@ -26,6 +26,8 @@ class ResCountry(models.Model):
 
     _inherit = 'res.country'
 
-    invoice_report_with_shipping_address = fields.Boolean('Invoice report with shipping address')
-    invoice_report_with_validation_data = fields.Boolean('Invoice report with validation data')
+    invoice_report_with_shipping_address = fields.Boolean('Invoice report \
+with shipping address')
+    invoice_report_with_validation_data = fields.Boolean('Invoice report with \
+validation data')
     not_show_type_message = fields.Boolean('Not show type of goods')

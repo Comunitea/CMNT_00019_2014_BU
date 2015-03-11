@@ -25,7 +25,8 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
-    have_discounts = fields.Boolean('Have discounts', compute='_have_discounts')
+    have_discounts = fields.Boolean('Have discounts',
+                                    compute='_have_discounts')
 
     @api.one
     def _have_discounts(self):
