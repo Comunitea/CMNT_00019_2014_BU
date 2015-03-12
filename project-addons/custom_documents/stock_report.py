@@ -125,11 +125,11 @@ class picking_report(models.AbstractModel):
             picking_product_ids = [x.product_id.id for x in picking.move_lines]
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
-                    add_pack = True
+                    add_pack = False
                     for sale_pack_line in line.pack_child_line_ids:
-                        if sale_pack_line.product_id.id not in \
+                        if sale_pack_line.product_id.id in \
                                 picking_product_ids:
-                            add_pack = False
+                            add_pack = True
                     if not add_pack:
                         continue
                     packs[picking.id].append({
