@@ -27,6 +27,7 @@ class ProductProduct(models.Model):
 
     minimum_stock = fields.Float(string='Minimum stock',
                                  compute='_get_minimum_stock')
+    manual_minimum_stock = fields.Float('Manual minimum stock')
 
     @api.one
     def _get_minimum_stock(self):

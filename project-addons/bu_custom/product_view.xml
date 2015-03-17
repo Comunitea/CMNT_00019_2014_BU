@@ -15,6 +15,7 @@
                 <field name="name" position="after">
                     <field name="qty_available"/>
                     <field name="minimum_stock"/>
+                    <field name="manual_minimum_stock"/>
                     <field name="virtual_available"/>
                 </field>
             </field>
@@ -27,6 +28,7 @@
             <field name="arch" type="xml">
                 <field name="virtual_available" position="after">
                     <field name="minimum_stock"/>
+                    <field name="manual_minimum_stock"/>
                 </field>
             </field>
         </record>
