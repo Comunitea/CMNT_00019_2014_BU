@@ -117,9 +117,9 @@ class picking_report(models.AbstractModel):
         report = report_obj._get_report_from_name('stock.report_picking_')
         packs = {}
         for picking in self.env[report.model].browse(self._ids):
+            packs[picking.id] = []
             if not picking.sale_id:
                 continue
-            packs[picking.id] = []
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
             picking_product_ids = [x.product_id.id for x in picking.move_lines]
@@ -159,9 +159,9 @@ class picking_without_company_report(models.AbstractModel):
             'custom_documents.report_picking_final')
         packs = {}
         for picking in self.env[report.model].browse(self._ids):
+            packs[picking.id] = []
             if not picking.sale_id:
                 continue
-            packs[picking.id] = []
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
             picking_product_ids = [x.product_id.id for x in picking.move_lines]

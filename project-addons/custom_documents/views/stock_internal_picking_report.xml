@@ -101,7 +101,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 text-right tittle">FECHA</div>
-                                    <div class="col-xs-6 text-left"><span t-esc="time.strftime('%d/%m/%Y',time.strptime(o.sale_id.date_order,'%Y-%m-%d %H:%M:%S'))"/></div>
+                                    <div class="col-xs-6 text-left">
+                                        <t t-if="o.sale_id">
+                                            <span t-esc="time.strftime('%d/%m/%Y',time.strptime(o.sale_id.date_order,'%Y-%m-%d %H:%M:%S'))"/>
+                                        </t>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 text-right tittle">Número de pedido de cliente</div>
