@@ -103,3 +103,7 @@ class sale_order_line(osv.osv):
             states={'draft': [('readonly', False)],
             'confirmed':[('readonly', False)]}),
         }
+
+    def unlink(self, cr, uid, ids, context=None):
+        self.button_cancel(cr, uid, ids, context)
+        return super(sale_order_line, self).unlink(cr, uid, ids, context=context)
