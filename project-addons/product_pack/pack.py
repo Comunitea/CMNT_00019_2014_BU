@@ -210,6 +210,18 @@ class sale_order_line(orm.Model):
                 no_pack_ids.append(line.id)
         return super(sale_order_line, self).invoice_line_create(cr, uid, no_pack_ids, context)
 
+    @api.multi
+    def pack_in_moves(self, product_ids):
+        is_in_list = True
+        for child in self.pack_child_line_ids:
+            if child.pack_child_line_ids:
+                if not child.pack_in_moves(product_ids):
+                    is_in_list = False
+            else:
+                if child.product_id.id not in product_ids:
+                    is_in_list = False
+        return is_in_list
+
 
 class sale_order(orm.Model):
     _inherit = 'sale.order'
@@ -659,12 +671,7 @@ class stock_pciking(orm.Model):
                 if sale_line_ids:
                     for line in sale_line_obj.browse(cr, uid, sale_line_ids, context):
                         if line.pack_child_line_ids and not line.pack_parent_line_id and line.invoiced:
-                            add_pack = False
-                            for sale_pack_line in line.pack_child_line_ids:
-                                if sale_pack_line.product_id.id in \
-                                        picking_product_ids:
-                                    add_pack = True
-                            if not add_pack:
+                            if not line.pack_in_moves(picking_product_ids):
                                 invoice_line_obj.unlink(cr, uid, [x.id for x in line.invoice_lines], context)
                                 sale_line_obj.write(cr, uid, line.id, {'invoice_lines': False}, context)
         return invoice_id
