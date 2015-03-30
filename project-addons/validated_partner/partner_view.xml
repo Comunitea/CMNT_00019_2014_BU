@@ -8,8 +8,8 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <field name="active" position="after">
-                    <field name="validated"/>
+                <field name="category_id" position="after">
+                    <label for="validated"/><field name="validated"/>
                 </field>
             </field>
         </record>
