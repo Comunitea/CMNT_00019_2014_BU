@@ -25,6 +25,21 @@ class account_invoice(models.Model):
 
     _inherit = 'account.invoice'
 
+    sale_ref = fields.Char(string='Sale ref',
+                                     compute='_get_so')
+
+    def _get_so(self):
+        for record in self:
+            refs = []
+            for picking in record.picking_ids:
+                if picking.sale_id:
+                    sale_ref = picking.sale_id.client_order_ref
+                    if sale_ref not in refs:
+                        refs.append(sale_ref)
+
+            for ref in refs:
+                record.sale_ref = ref
+
     @api.multi
     def invoice_validate(self):
         res = super(account_invoice, self).invoice_validate()
