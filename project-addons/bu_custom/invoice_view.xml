@@ -30,6 +30,7 @@
             <field name="inherit_id" ref="account.invoice_tree"/>
             <field name="arch" type="xml">
                 <field name="number" position="after">
+                    <field name="sale_ref"/>
                     <field name="reference"/>
                 </field>
             </field>
