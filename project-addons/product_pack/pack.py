@@ -648,10 +648,10 @@ class stock_pciking(orm.Model):
                 # Si el albarán no tiene ningun movimiento facturable se crea
                 # una factura con uno de los movimientos y se borran las lineas.
                 invoice = self._invoice_create_line(cr, uid, [moves[0]], journal_id, type, context=context)
-                to_delete = inv_line_obj.search(
+                to_delete = inv_line_obj.search(cr, uid,
                     [('invoice_id', '=', invoice),
-                     ('product_id', '=', moves[0].product_id.id)])
-                inv_line_obj.unlink(to_delete)
+                     ('product_id', '=', moves[0].product_id.id)], context=context)
+                inv_line_obj.unlink(cr, uid, to_delete, context)
                 invoices += invoice
             if pack_moves:
                 self.pool.get('stock.move').write(cr, uid, [x.id for x in pack_moves], {'invoice_state': 'invoiced'}, context)
