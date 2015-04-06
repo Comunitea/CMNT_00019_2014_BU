@@ -28,4 +28,18 @@ class StockPicking(models.Model):
     currency = fields.Many2one('res.currency',
                                related='sale_id.currency_id', store=True)
 
+    def link_backorder(self, picking, invoice_id):
+        picking.write({'invoice_id': invoice_id})
+        if picking.backorder_id:
+            self.link_backorder(picking.backorder_id, invoice_id)
 
+    def _create_invoice_from_picking(
+            self, cr, uid, picking, vals, context=None):
+        '''
+            Para linkear bien la factura a los envios parciales
+        '''
+        invoice_id = super(StockPicking, self)._create_invoice_from_picking(
+            cr, uid, picking, vals, context=context)
+        if picking.backorder_id:
+            self.link_backorder(picking.backorder_id, invoice_id)
+        return invoice_id
