@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="row">
-                            <div class="col-xs-12" style="margin-top:30px;">
+                            <div class="col-xs-12">
                                 <div t-field="company.partner_id"
                                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                             </div>
@@ -112,7 +112,7 @@
                             <tfoot>
                                 <tr>
                                     <td>Total</td>
-                                    <td><t t-esc="totals[o.id]['boxes']"/></td>
+                                    <td><t t-esc="int(totals[o.id]['boxes'])"/></td>
                                     <td><t t-esc="totals[o.id]['qty']"/></td>
                                     <td><t t-esc="totals[o.id]['weight']"/></td>
                                     <td></td>

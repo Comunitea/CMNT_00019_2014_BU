@@ -19,7 +19,6 @@
                     <div class="col-xs-3">
                         <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 150px;"/>
                     </div>
-                    <!--div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/-->
                     <div class="col-xs-9 text-center" style="margin-top:30px;">
                         <h2>
                             <span t-field="o.picking_type_id.name"/>:
@@ -30,7 +29,7 @@
                 <div class="row">
                     <div class="col-xs-5">
                         <div class="row">
-                            <div class="col-xs-12" style="margin-top:30px;">
+                            <div class="col-xs-12">
                                 <div t-field="company.partner_id"
                                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                             </div>
@@ -45,26 +44,6 @@
             </div>
 
             <div class="page">
-            <!--div class="row">
-                <div class="col-xs-4 pull-right">
-                    <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
-                        <span><strong>Supplier Address:</strong></span>
-                    </div>
-                    <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
-                        <span><strong>Warehouse Address:</strong></span>
-                    </div>
-                    <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
-                        <span><strong>Customer Address:</strong></span>
-                    </div>
-                    <div t-if="o.partner_id">
-                        <div t-field="o.partner_id"
-                            t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                            <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
-                    </div>
-                </div>
-            </div-->
-            <!--div name="partner_header">
-            </div-->
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -114,9 +93,9 @@
                             </t>
                         </tr>
                         <tr t-foreach="packs[o.id]" t-as="pack">
-                            <td><span t-esc="pack['product_id'].get_product_ref(o.partner_id)"/></td>
-                            <td><span t-esc="pack['product_name']"/></td>
-                            <td class="text-right"><span t-esc="pack['qty']"/> <span t-esc="pack['uom']" groups="product.group_uom"/></td>
+                            <td><span t-esc="pack.product_id.get_product_ref(o.partner_id)"/></td>
+                            <td><span t-field="pack.product_id.name"/></td>
+                            <td class="text-right"><span t-field="pack.product_uom_qty"/> <span t-field="pack.product_uom.name" groups="product.group_uom"/></td>
                         </tr>
                     </tbody>
                 </table>

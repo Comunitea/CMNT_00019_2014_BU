@@ -17,16 +17,8 @@
                     <div t-if="o.partner_id">
                         <div t-field="o.partner_id"
                             t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                            <p t-if="o.partner_id.vat">VAT: <span t-field="o.partner_id.vat"/></p>
                     </div>
                 </div>
-                <!--div class="col-xs-4 pull-right">
-                    <div name="invoice_partner" t-if="o.picking_type_id.code == 'outgoing' and o.sale_id and o.sale_id.partner_invoice_id">
-                        Will be invoiced to:
-                        <div t-field="o.sale_id.partner_invoice_id"
-                         t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                    </div>
-                </div-->
             </div>
                 <table class="table table-condensed">
                     <thead>
@@ -77,9 +69,9 @@
                             </t>
                         </tr>
                         <tr t-foreach="packs[o.id]" t-as="pack">
-                            <td><span t-esc="pack['product_id'].get_product_ref(o.partner_id)"/></td>
-                            <td><span t-esc="pack['product_name']"/></td>
-                            <td class="text-right"><span t-esc="pack['qty']"/> <span t-esc="pack['uom']" groups="product.group_uom"/></td>
+                            <td><span t-esc="pack.product_id.get_product_ref(o.partner_id)"/></td>
+                            <td><span t-field="pack.product_id.name"/></td>
+                            <td class="text-right"><span t-field="pack.product_uom_qty"/> <span t-field="pack.product_uom.name" groups="product.group_uom"/></td>
                         </tr>
                     </tbody>
                 </table>

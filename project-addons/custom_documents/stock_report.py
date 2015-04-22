@@ -127,13 +127,7 @@ class picking_report(models.AbstractModel):
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
                         continue
-                    packs[picking.id].append({
-                        'product_id': line.product_id,
-                        'product_name':
-                            line.with_context(my_context).product_id.name,
-                        'qty': line.product_uom_qty,
-                        'uom': line.with_context(my_context).product_uom.name
-                    })
+                    packs[picking.id].append(line)
 
         docargs = {
             'doc_ids': self._ids,
@@ -164,13 +158,7 @@ class picking_without_company_report(models.AbstractModel):
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
                         continue
-                    packs[picking.id].append({
-                        'product_id': line.product_id,
-                        'product_name':
-                            line.with_context(my_context).product_id.name,
-                        'qty': line.product_uom_qty,
-                        'uom': line.with_context(my_context).product_uom.name
-                    })
+                    packs[picking.id].append(line)
 
         docargs = {
             'doc_ids': self._ids,
