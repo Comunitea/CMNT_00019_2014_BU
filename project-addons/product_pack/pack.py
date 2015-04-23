@@ -677,7 +677,6 @@ class stock_pciking(orm.Model):
         return invoice_id
 
 
-
 class stock_move(orm.Model):
 
     _inherit = 'stock.move'
@@ -725,3 +724,42 @@ class stock_pack_operation(orm.Model):
                                           type='boolean',
                                           store=True),
     }
+
+
+class stock_return_picking(orm.TransientModel):
+    _inherit = 'stock.return.picking'
+
+    def _create_returns(self, cr, uid, ids, context=None):
+        data = self.browse(cr, uid, ids[0], context=context)
+        if data.invoice_state == '2binvoiced':
+            sale_obj = self.pool.get('sale.order')
+            sale_line_obj = self.pool.get('sale.order.line')
+            record_id = context and context.get('active_id', False) or False
+            picking = self.pool.get('stock.picking').browse(cr, uid, record_id,
+                                                            context)
+            picking_product_ids = [x.product_id.id for x in picking.move_lines]
+            sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=',
+                                                  picking.group_id.id)],
+                                       context=context)
+            if sale_ids:
+                sale_line_ids = sale_line_obj.search(cr, uid,
+                                                     [('order_id', 'in',
+                                                       sale_ids),
+                                                      ('product_id.type', '=',
+                                                       'service')],
+                                                     context=context)
+                if sale_line_ids:
+                    for line in sale_line_obj.browse(cr, uid, sale_line_ids,
+                                                     context):
+                        if line.pack_child_line_ids and not \
+                                line.pack_parent_line_id and line.invoiced:
+                            if sale_line_obj.pack_in_moves(cr, uid, line.id,
+                                                           picking_product_ids,
+                                                           context):
+                                sale_line_obj.write(cr, uid, [line.id],
+                                                    {'invoice_lines':
+                                                     [(3, x.id) for x in
+                                                      line.invoice_lines]},
+                                                    context)
+            return super(stock_return_picking, self)._create_returns(
+                cr, uid, ids, context)
