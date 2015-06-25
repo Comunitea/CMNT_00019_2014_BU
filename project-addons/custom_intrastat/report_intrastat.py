@@ -28,6 +28,8 @@ class report_intrastat(models.Model):
 
     partner_id = fields.Many2one('res.partner', 'Partner')
     country_id = fields.Many2one('res.country', 'Country')
+    type = fields.Selection(selection_add=[('import_refund', 'Import refund'),
+                                           ('export_refund', 'Export refund')])
 
 
     def init(self, cr):
@@ -57,10 +59,11 @@ class report_intrastat(models.Model):
 
                     inv.currency_id as currency_id,
                     inv.number as ref,
-                    case when inv.type in ('out_invoice','in_refund')
-                        then 'export'
-                        else 'import'
-                        end as type
+                    CASE WHEN inv.type = 'out_invoice' THEN 'export'
+                         WHEN inv.type = 'in_invoice' THEN 'import'
+                         WHEN inv.type = 'out_refund' THEN 'export_refund'
+                         WHEN inv.type = 'in_refund' THEN 'import_refund'
+                    END AS type
                 from
                     account_invoice inv
                     left join account_invoice_line inv_line on inv_line.invoice_id=inv.id

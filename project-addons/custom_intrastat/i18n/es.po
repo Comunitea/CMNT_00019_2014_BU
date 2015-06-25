@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-06 13:07+0000\n"
-"PO-Revision-Date: 2014-11-06 13:07+0000\n"
+"POT-Creation-Date: 2015-06-25 07:42+0000\n"
+"PO-Revision-Date: 2015-06-25 07:42+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,29 @@ msgid "Intrastat report"
 msgstr "Informe Intrastat"
 
 #. module: custom_intrastat
+#: model:ir.model,name:custom_intrastat.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: custom_intrastat
+#: model:ir.model,name:custom_intrastat.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+#. module: custom_intrastat
 #: field:report.intrastat,partner_id:0
 msgid "Partner"
 msgstr "Partner"
+
+#. module: custom_intrastat
+#: model:ir.model,name:custom_intrastat.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: custom_intrastat
+#: field:account.invoice.line,weight:0
+msgid "Weight"
+msgstr "Weight"
 
 #. module: custom_intrastat
 #: view:report.intrastat:custom_intrastat.intrastat_custom_search
@@ -41,7 +61,22 @@ msgid "intrastat code"
 msgstr "Código intrastat"
 
 #. module: custom_intrastat
+#: field:account.invoice,lines_len:0
+msgid "lines length"
+msgstr "lines length"
+
+#. module: custom_intrastat
 #: view:report.intrastat:custom_intrastat.intrastat_custom_search
 msgid "partner"
 msgstr "partner"
+
+#. module: report_intrastat
+#: selection:report.intrastat,type:0
+msgid "Import refund"
+msgstr "Devolución de importación"
+
+#. module: report_intrastat
+#: selection:report.intrastat,type:0
+msgid "Export refund"
+msgstr "Devolución de exportación"
 
