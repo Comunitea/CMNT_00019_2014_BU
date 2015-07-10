@@ -122,7 +122,8 @@ class picking_report(models.AbstractModel):
                 continue
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
-            picking_product_ids = [x.product_id.id for x in picking.move_lines]
+            picking_product_ids = [x.product_id.id for x in picking.move_lines
+                                   if x.state != 'cancel']
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
@@ -153,7 +154,8 @@ class picking_without_company_report(models.AbstractModel):
                 continue
             my_context = dict(self.env.context)
             my_context['lang'] = picking.partner_id.lang
-            picking_product_ids = [x.product_id.id for x in picking.move_lines]
+            picking_product_ids = [x.product_id.id for x in picking.move_lines
+                                   if x.state != 'cancel']
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
@@ -190,6 +192,8 @@ class picking_internal_report(models.AbstractModel):
             packs[picking.id] = []
             packs_dict = {}
             for line in picking.move_lines:
+                if line.state == 'cancel':
+                    continue
                 if line.pack_component:
                     move_sale = line.get_sale_line_id()
                     pack_top = False

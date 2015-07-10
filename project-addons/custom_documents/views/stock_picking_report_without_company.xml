@@ -62,7 +62,7 @@
                     </thead>
                     <tbody>
                         <tr t-foreach="o.move_lines" t-as="move">
-                            <t t-if="not move.pack_component">
+                            <t t-if="not move.pack_component and move.state != 'cancel'">
                                 <td><span t-esc="move.product_id.get_product_ref(move.partner_id)"/></td>
                                 <td><span t-field="move.product_id.with_context({'lang': move.partner_id.lang}).name"/></td>
                                 <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
