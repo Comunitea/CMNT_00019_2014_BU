@@ -163,7 +163,7 @@
                                                         <t t-if="move.product_id.default_code == move.product_id.get_product_ref(move.partner_id)">
                                                             <td><span t-esc="move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or ''"/></td>
                                                         </t>
-                                                        <td><span t-field="move.weight"/></td>
+                                                        <td><t t-if="move.weight"><span t-field="move.weight"/></t></td>
                                                     </tr>
                                                 </t>
                                                 <t t-if="not pack[0]">

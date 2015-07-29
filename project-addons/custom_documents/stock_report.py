@@ -117,18 +117,18 @@ class picking_report(models.AbstractModel):
         report = report_obj._get_report_from_name('stock.report_picking_')
         packs = {}
         for picking in self.env[report.model].browse(self._ids):
-            packs[picking.id] = []
+            my_ctxt = dict(self.env.context)
+            my_ctxt['lang'] = picking.partner_id.lang
+            packs[picking.id] = self.env['sale.order.line'].with_context(my_ctxt)
             if not picking.sale_id:
                 continue
-            my_context = dict(self.env.context)
-            my_context['lang'] = picking.partner_id.lang
             picking_product_ids = [x.product_id.id for x in picking.move_lines
                                    if x.state != 'cancel']
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
                         continue
-                    packs[picking.id].append(line)
+                    packs[picking.id] += line
 
         docargs = {
             'doc_ids': self._ids,
@@ -149,18 +149,18 @@ class picking_without_company_report(models.AbstractModel):
             'custom_documents.report_picking_final')
         packs = {}
         for picking in self.env[report.model].browse(self._ids):
-            packs[picking.id] = []
+            my_ctxt = dict(self.env.context)
+            my_ctxt['lang'] = picking.partner_id.lang
+            packs[picking.id] = self.env['sale.order.line'].with_context(my_ctxt)
             if not picking.sale_id:
                 continue
-            my_context = dict(self.env.context)
-            my_context['lang'] = picking.partner_id.lang
             picking_product_ids = [x.product_id.id for x in picking.move_lines
                                    if x.state != 'cancel']
             for line in picking.sale_id.order_line:
                 if line.pack_child_line_ids and not line.pack_parent_line_id:
                     if not line.pack_in_moves(picking_product_ids):
                         continue
-                    packs[picking.id].append(line)
+                    packs[picking.id] += line
 
         docargs = {
             'doc_ids': self._ids,
