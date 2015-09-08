@@ -761,5 +761,28 @@ class stock_return_picking(orm.TransientModel):
                                                      [(3, x.id) for x in
                                                       line.invoice_lines]},
                                                     context)
-            return super(stock_return_picking, self)._create_returns(
-                cr, uid, ids, context)
+        new_picking_id, picking_type_id = \
+            super(stock_return_picking, self)._create_returns(cr, uid, ids,
+                                                              context)
+        record_id = context and context.get('active_id', False) or False
+        picking = self.pool.get('stock.picking').browse(cr, uid, record_id,
+                                                        context)
+        if picking.picking_type_id.code == 'outgoing':
+            new_picking = self.pool.get('stock.picking').browse(
+                cr, uid, new_picking_id, context)
+            self.pool.get('stock.move').do_unreserve(
+                cr, uid, [x.id for x in new_picking.move_lines], context)
+            picking_type = self.pool.get('stock.picking.type').browse(
+                cr, uid, picking_type_id, context)
+            for move in new_picking.move_lines:
+                move.location_dest_id = picking_type.default_location_dest_id.id
+            self.pool.get('stock.move').action_assign(cr, uid,
+                                                      [x.id for x in
+                                                       new_picking.move_lines],
+                                                      context)
+            for move in new_picking.move_lines:
+                for quant in move.reserved_quant_ids:
+                    if quant.package_id:
+                        self.pool.get('stock.quant').write(
+                            cr, uid, quant.id, {'package_id': False}, context)
+        return new_picking_id, picking_type_id
