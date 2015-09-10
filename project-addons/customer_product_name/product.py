@@ -44,8 +44,13 @@ class product_product(models.Model):
     _inherit = 'product.product'
 
     def get_product_ref(self, partner):
-        if isinstance(partner, ( int, long )):
+        if isinstance(partner, (int, long)):
             partner = self.env['res.partner'].browse(partner)
-        name = self.env['product.customer'].search([('product_id', '=', self.id), ('customer_id', '=', partner.id)])
+        name = self.env['product.customer'].search(
+            [('product_id', '=', self.id), ('customer_id', '=', partner.id)])
+        if not name:
+            top_partner_id = partner.get_top_partner_id()
+            name = self.env['product.customer'].search(
+                [('product_id', '=', self.id), ('customer_id', '=',
+                                                top_partner_id)])
         return name and name[0].name or (self.default_code or '')
-

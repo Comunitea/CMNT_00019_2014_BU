@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2015 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,9 +18,16 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from openerp import models, api
 
-import res_partner
-import product
-import sale
-import stock
-import account
+
+class ResPartner(models.Model):
+
+    _inherit = 'res.partner'
+
+    @api.multi
+    def get_top_partner_id(self):
+        self.ensure_one()
+        if self.parent_id:
+            return self.parent_id.get_top_partner_id()
+        return self.id

@@ -42,7 +42,9 @@ class account_invoice_line(models.Model):
                 partner_id = self.partner_id.parent_id.id
             else:
                 partner_id = self.partner_id.id
-            search_domain = [('product_id', '=', self.product_id.product_tmpl_id.id), ('customer_id', '=', partner_id)]
+            search_domain = [('product_id', '=',
+                              self.product_id.product_tmpl_id.id),
+                             ('customer_id', '=', partner_id)]
             customer_names = self.env['product.customer'].search(search_domain)
             if customer_names:
                 self.product_name = customer_names[0].name
