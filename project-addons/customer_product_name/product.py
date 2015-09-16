@@ -44,6 +44,8 @@ class product_product(models.Model):
     _inherit = 'product.product'
 
     def get_product_ref(self, partner):
+        if not partner:
+            return self.default_code or ''
         if isinstance(partner, (int, long)):
             partner = self.env['res.partner'].browse(partner)
         name = self.env['product.customer'].search(
