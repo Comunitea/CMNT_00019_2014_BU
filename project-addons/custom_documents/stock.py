@@ -100,8 +100,11 @@ class product_packaging(models.Model):
 
     @api.one
     def _get_measures(self):
-        self.measures_str = str(self.ul.height) + 'X' + str(self.ul.width) + \
-            'X' + str(self.ul.length)
+        height = self.ul.height.is_integer() and int(self.ul.height) or self.ul.height
+        width = self.ul.width.is_integer() and int(self.ul.width) or self.ul.width
+        length = self.ul.length.is_integer() and int(self.ul.length) or self.ul.length
+        self.measures_str = str(height) + 'x' + str(width) + \
+            'x' + str(length)
 
 
 class StockQuantPackage(models.Model):

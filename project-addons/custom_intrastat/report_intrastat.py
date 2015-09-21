@@ -47,11 +47,9 @@ class report_intrastat(models.Model):
                             then inv_line.price_subtotal
                             else 0
                         end) as value,
-                    sum(
-                        case when (inv.lines_len != 0)
-                            then pick.weight_edit/inv.lines_len
-                            else pick.weight_edit
-                    end) as weight,
+                    (SELECT sum(pick.weight_edit) as weight
+                         from stock_picking pick
+                         where pick.invoice_id = inv.id) as weight,
                     sum(
                         case when uom.category_id != puom.category_id then inv_line.quantity
                         else (inv_line.quantity * uom.factor) end
@@ -76,10 +74,10 @@ class report_intrastat(models.Model):
                     left join (res_partner inv_address
                         left join res_country inv_country on (inv_country.id = inv_address.country_id))
                     on (inv_address.id = inv.partner_id)
-                    left join stock_picking pick on pick.invoice_id = inv.id
                 where
                     inv.state in ('open','paid')
                     and inv_line.product_id is not null
                     and inv_country.intrastat=true
-                group by to_char(inv.date_invoice, 'YYYY'), to_char(inv.date_invoice, 'MM'),inv.partner_id,intrastat.id,inv.type,pt.intrastat_id, inv_country.id,inv.number,  inv.currency_id)""")
-
+                group by to_char(inv.date_invoice, 'YYYY'), to_char(inv.date_invoice, 'MM'),
+                         inv.partner_id,intrastat.id,inv.type,pt.intrastat_id, inv_country.id,inv.number,
+                         inv.id, inv.currency_id)""")
