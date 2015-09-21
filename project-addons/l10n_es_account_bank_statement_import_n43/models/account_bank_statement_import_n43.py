@@ -49,11 +49,21 @@ class AccountBankStatementImport(models.TransientModel):
             'num_haber': 0,
             'haber': 0,
             'lines': [],
+            'currency':self._get_currency(line[47:50]),
         }
         if line[32:33] == '1':
             st_group['saldo_ini'] *= -1
         self.balance_start = st_group['saldo_ini']
         return st_group
+
+    def _get_currency(self, iso_code):
+        iso_dict= {
+            '840': 'USD',
+            '978': 'EUR',
+            '826': 'GBP'
+        }
+
+        return iso_dict.get(iso_code, "EUR")
 
     def _process_record_22(self, line):
         """22 - Registro principal de movimiento (obligatorio)"""
@@ -284,4 +294,4 @@ class AccountBankStatementImport(models.TransientModel):
             'balance_start': n43 and n43[0]['saldo_ini'] or 0.0,
             'balance_end_real': n43 and n43[-1]['saldo_fin'] or 0.0,
         }
-        return 'EUR', False, [vals_bank_statement]
+        return n43[0]['currency'], False, [vals_bank_statement]
