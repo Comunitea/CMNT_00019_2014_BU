@@ -22,7 +22,7 @@
 ###############################################################################
 
 import math
-from openerp.osv import fields, orm
+from openerp.osv import fields, orm, osv
 import openerp.addons.decimal_precision as dp
 from openerp import api
 
@@ -397,6 +397,14 @@ class sale_order(orm.Model):
             iteration. This way we support packs inside other packs. """
             self.expand_packs(cr, uid, ids, context, depth + 1)
         return
+
+class sale_report(osv.osv):
+    _inherit = 'sale.report'
+
+    def _group_by(self):
+        group_by_str = super(sale_report, self)._group_by()
+        return "WHERE l.pack_depth=0" + group_by_str
+
 
 
 class purchase_order_line(orm.Model):
