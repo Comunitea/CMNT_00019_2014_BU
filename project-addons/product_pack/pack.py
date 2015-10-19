@@ -212,14 +212,14 @@ class sale_order_line(orm.Model):
 
     @api.multi
     def pack_in_moves(self, product_ids):
-        is_in_list = True
+        is_in_list = False
         for child in self.pack_child_line_ids:
             if child.pack_child_line_ids:
-                if not child.pack_in_moves(product_ids):
-                    is_in_list = False
+                if child.pack_in_moves(product_ids):
+                    is_in_list = True
             else:
-                if child.product_id.id not in product_ids:
-                    is_in_list = False
+                if child.product_id.id in product_ids:
+                    is_in_list = True
         return is_in_list
 
 
