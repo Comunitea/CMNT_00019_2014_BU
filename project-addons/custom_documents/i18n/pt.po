@@ -903,3 +903,11 @@ msgstr "sem estoque mínimo"
 #: view:website:custom_documents.report_internal_picking
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
+
+#. module: stock
+#: code:addons/stock/stock.py:3271
+#: model:stock.picking.type,name:stock.chi_picking_type_out
+#: model:stock.picking.type,name:stock.picking_type_out
+#, python-format
+msgid "Delivery Orders"
+msgstr "Ordem de entrega"
