@@ -43,3 +43,13 @@ class StockPicking(models.Model):
         if picking.backorder_id:
             self.link_backorder(picking.backorder_id, invoice_id)
         return invoice_id
+
+
+class StockMove(models.Model):
+
+    _inherit = 'stock.move'
+
+    @api.multi
+    def action_cancel(self):
+        self.write({'invoice_state': 'none'})
+        return super(StockMove, self).action_cancel()
