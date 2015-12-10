@@ -27,6 +27,8 @@ class StockPicking(models.Model):
 
     currency = fields.Many2one('res.currency',
                                related='sale_id.currency_id', store=True)
+    partner_id = fields.Many2one(states={'done': [('readonly', False)],
+                                         'cancel': [('readonly', True)]})
 
     def link_backorder(self, picking, invoice_id):
         picking.write({'invoice_id': invoice_id})
