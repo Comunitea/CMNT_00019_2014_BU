@@ -44,7 +44,10 @@ class report_intrastat(models.Model):
                     intrastat.id as intrastat_id,
                     inv_country.id as country_id,
                     sum(case when inv_line.price_unit is not null
-                            then inv_line.price_subtotal
+                            then
+                                CASE WHEN inv.type in ('out_invoice', 'in_invoice') THEN inv_line.price_subtotal
+                                     WHEN inv.type in ('out_refund', 'in_refund') THEN - inv_line.price_subtotal end
+
                             else 0
                         end) as value,
                     (SELECT sum(pick.weight_edit) as weight
