@@ -86,7 +86,7 @@
                                     <div class="col-xs-12 tittle">DIRECCION DE ENVIO</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-12"><span t-esc="o.partner_id.street or '' + ' ' + o.partner_id.street2 or ''"/></div>
+                                    <div class="col-xs-12"><span t-esc="(o.partner_id.street or '') + ' ' + (o.partner_id.street2 or '')"/></div>
                                 </div>
                             </div>
                             <div class="col-xs-5">
