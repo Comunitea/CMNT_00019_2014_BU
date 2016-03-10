@@ -30,7 +30,8 @@ class ProductProduct(models.Model):
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):
         res = super(ProductProduct, self).name_search(name=name, args=args, operator=operator, limit=limit)
-        prod_ids = self.search([('tech_office_code', operator, name)])
+        args = [('tech_office_code', operator, name)] + args
+        prod_ids = self.search(args)
         for prod in prod_ids:
             if prod.id not in [x[0] for x in res]:
                 res += prod.name_get()
