@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* custom_documents
+#   * custom_documents
 #
 msgid ""
 msgstr ""
@@ -304,12 +304,12 @@ msgstr "ID"
 #: model:ir.model,name:custom_documents.model_account_invoice
 #: view:website:custom_documents.report_invoice_document
 msgid "Invoice"
-msgstr "Fatura"
+msgstr "Factura"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 msgid "Invoice Date:"
-msgstr "Data da Fatura:"
+msgstr "Data da factura:"
 
 #. module: custom_documents
 #: field:res.country,invoice_report_with_shipping_address:0
@@ -365,7 +365,7 @@ msgstr "Número de pedido de cliente"
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
 msgid "Order (Origin)"
-msgstr "Ordem (Origem)"
+msgstr "Ordem (origem)"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
@@ -497,7 +497,7 @@ msgstr "Lugar:"
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 msgid "Pr/unit"
-msgstr "Pr/unit"
+msgstr "preço/unid"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -534,7 +534,7 @@ msgstr "Produzido"
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
 msgid "Product"
-msgstr "Artigo"
+msgstr "Descrição"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -756,14 +756,14 @@ msgstr "Total"
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)"
-msgstr "Montante total devido (Faça o favor de tomar nota de que nós não assumimos as despesas das taxas das transferências bancárias.)"
+msgstr "Montante total devido (faça o favor de tomar nota de que nós não assumimos as despesas das taxas das transferências bancárias.)"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Total Without Taxes"
-msgstr "Total Sem Impostos"
+msgstr "Total sem impostos"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -779,7 +779,7 @@ msgstr "Tipo de materiais"
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN..."
-msgstr "Tipo de materiais: Material de segurança // MATERIAL NÃO PERIGOSO // Origem dos bens: ESPANHA..."
+msgstr "Tipo de materiais: material de segurança // MATERIAL NÃO PERIGOSO // Origem dos bens: ESPANHA"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -790,7 +790,7 @@ msgstr "URGE"
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Unit Price"
-msgstr "Preço Unitário"
+msgstr "Preço / unidade"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
@@ -844,7 +844,7 @@ msgstr "Seu Pedido de Referência"
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
 msgid "Your Reference"
-msgstr "Your Reference"
+msgstr "A sua referência"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
@@ -855,7 +855,7 @@ msgstr "Your Reference."
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Your Reference:"
-msgstr "A Sua Referência"
+msgstr "A sua referência"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_internal_picking
@@ -865,7 +865,7 @@ msgstr "chk"
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
 msgid "disc(%)"
-msgstr "disc(%)"
+msgstr "desc.(%)"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -904,3 +904,10 @@ msgstr "sem estoque mínimo"
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
 
+#. module: stock
+#: code:addons/stock/stock.py:3271
+#: model:stock.picking.type,name:stock.chi_picking_type_out
+#: model:stock.picking.type,name:stock.picking_type_out
+#, python-format
+msgid "Delivery Orders"
+msgstr "Ordem de entrega"

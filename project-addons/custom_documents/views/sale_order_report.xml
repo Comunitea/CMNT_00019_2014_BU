@@ -209,10 +209,10 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-10">
+                                                <div class="col-xs-9">
                                                     <p><span t-field="bank.currency_id.symbol"/> Account: <span t-field="bank.acc_number"/> SWIFT Code <span t-field="bank.bank_bic"/></p>
                                                 </div>
-                                                <div class="col-xs-2">
+                                                <div class="col-xs-3 text-right">
                                                     <ul class="list-inline">
                                                         <li>Page:</li>
                                                         <li><span class="page"/></li>

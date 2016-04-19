@@ -212,14 +212,14 @@ class sale_order_line(orm.Model):
 
     @api.multi
     def pack_in_moves(self, product_ids):
-        is_in_list = True
+        is_in_list = False
         for child in self.pack_child_line_ids:
             if child.pack_child_line_ids:
-                if not child.pack_in_moves(product_ids):
-                    is_in_list = False
+                if child.pack_in_moves(product_ids):
+                    is_in_list = True
             else:
-                if child.product_id.id not in product_ids:
-                    is_in_list = False
+                if child.product_id.id in product_ids:
+                    is_in_list = True
         return is_in_list
 
 
@@ -233,6 +233,10 @@ class sale_order(orm.Model):
 
     def write(self, cr, uid, ids, vals, context=None):
         result = super(sale_order, self).write(cr, uid, ids, vals, context)
+        for sale in self.browse(cr, uid, ids, context):
+            if sale.state in ('draft', 'sent'):
+                self.unlink_pack_components(cr, uid, ids, context)
+                self.pool.get('sale.order.line').write(cr, uid, sale.order_line._ids, {'sequence': 0}, context)
         self.expand_packs(cr, uid, ids, context)
         return result
 
@@ -241,11 +245,14 @@ class sale_order(orm.Model):
         result = super(sale_order, self).copy(cr, uid, id, default, context)
         sale = self.browse(cr, uid, result, context)
         self.unlink_pack_components(cr, uid, sale.id, context)
+        self.pool.get('sale.order.line').write(cr, uid, sale.order_line._ids, {'sequence': 0}, context)
         self.expand_packs(cr, uid, sale.id, context)
         return result
 
     def unlink_pack_components(self, cr, uid, sale_id, context=None):
-        unlink_lines = self.pool.get('sale.order.line').search(cr, uid, [('order_id', '=', sale_id), ('pack_parent_line_id', '!=', None), ('pack_child_line_ids', '=', None)], context=context)
+        if isinstance(sale_id, int):
+            sale_id = [sale_id]
+        unlink_lines = self.pool.get('sale.order.line').search(cr, uid, [('order_id', 'in', sale_id), ('pack_parent_line_id', '!=', None), ('pack_child_line_ids', '=', None)], context=context)
         if unlink_lines:
             self.pool.get('sale.order.line').unlink(cr, uid, unlink_lines, context)
             self.unlink_pack_components(cr, uid, sale_id, context)
@@ -303,7 +310,7 @@ class sale_order(orm.Model):
                 else:
                     sequence = line.sequence
 
-                if line.state != 'draft':
+                if line.state not in ('draft', 'sent'):
                     continue
                 if not line.product_id:
                     continue
@@ -395,7 +402,7 @@ class sale_order(orm.Model):
         if updated_orders:
             """ Try to expand again all those orders that had a pack in this
             iteration. This way we support packs inside other packs. """
-            self.expand_packs(cr, uid, ids, context, depth + 1)
+            self.expand_packs(cr, uid, updated_orders, context, depth + 1)
         return
 
 class sale_report(osv.osv):

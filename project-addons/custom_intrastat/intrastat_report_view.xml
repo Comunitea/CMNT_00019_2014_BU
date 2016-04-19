@@ -28,6 +28,28 @@
             </field>
         </record>
 
+        <record id="report_intrastat.action_report_intrastat_tree_all" model="ir.actions.act_window">
+            <field name="name">Intrastat</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">report.intrastat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_current_year': 1}</field>
+            <field name="search_view_id" ref="report_intrastat.view_report_intrastat_search"/>
+        </record>
+
+        <record id="view_report_intrastat_search" model="ir.ui.view">
+            <field name="name">report.intrastat.search</field>
+            <field name="model">report.intrastat</field>
+            <field name="inherit_id" ref="report_intrastat.view_report_intrastat_search"/>
+            <field name="arch" type="xml">
+                <field name="intrastat_id" position="after">
+                    <filter icon="terp-go-today" string="Current year" name="current_year"
+                            domain="[('name','=',time.strftime('%Y'))]" help="Current year"/>
+                </field>
+            </field>
+        </record>
+
         <template id="report_intrastatinvoice_document_change_weight" inherit_id="report_intrastat.report_intrastatinvoice_document">
             <xpath expr="//span[@t-esc='l.product_id.weight']" position="replace">
                 <span t-esc="l.weight"/>

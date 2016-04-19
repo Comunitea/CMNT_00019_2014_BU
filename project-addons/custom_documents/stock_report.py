@@ -84,7 +84,7 @@ class PackingrReport(models.AbstractModel):
                         totals[picking.id]['boxes'] += packing[0]
                         totals[picking.id]['qty'] += op_line.product_qty * \
                             packing[0]
-                        totals[picking.id]['weight'] += weight
+                        totals[picking.id]['weight'] += weight * packing[0]
                         first = False
                     else:
                         line_pick.append(

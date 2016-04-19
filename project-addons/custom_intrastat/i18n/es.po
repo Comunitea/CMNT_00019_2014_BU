@@ -21,6 +21,11 @@ msgid "Country"
 msgstr "País"
 
 #. module: custom_intrastat
+#: view:report.intrastat:custom_intrastat.view_report_intrastat_search
+msgid "Current year"
+msgstr "Año actual"
+
+#. module: custom_intrastat
 #: model:ir.model,name:custom_intrastat.model_report_intrastat
 msgid "Intrastat report"
 msgstr "Informe Intrastat"

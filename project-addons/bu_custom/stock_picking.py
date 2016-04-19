@@ -27,6 +27,8 @@ class StockPicking(models.Model):
 
     currency = fields.Many2one('res.currency',
                                related='sale_id.currency_id', store=True)
+    partner_id = fields.Many2one(states={'done': [('readonly', False)],
+                                         'cancel': [('readonly', True)]})
 
     def link_backorder(self, picking, invoice_id):
         picking.write({'invoice_id': invoice_id})
@@ -43,3 +45,13 @@ class StockPicking(models.Model):
         if picking.backorder_id:
             self.link_backorder(picking.backorder_id, invoice_id)
         return invoice_id
+
+
+class StockMove(models.Model):
+
+    _inherit = 'stock.move'
+
+    @api.multi
+    def action_cancel(self):
+        self.write({'invoice_state': 'none'})
+        return super(StockMove, self).action_cancel()

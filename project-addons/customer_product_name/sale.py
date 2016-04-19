@@ -51,4 +51,5 @@ class sale_order_line(models.Model):
                                                       context)
         res['value']['name'] = product.get_product_ref(partner) + ' - ' \
             + product.with_context({'lang': partner.lang}).name
+
         return res

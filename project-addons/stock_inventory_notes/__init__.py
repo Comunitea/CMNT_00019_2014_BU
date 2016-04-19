@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2015 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,24 +18,4 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api
-
-
-class ProductProduct(models.Model):
-
-    _inherit = 'product.product'
-
-    tech_office_code = fields.Char('Technical office code')
-
-    @api.model
-    def name_search(self, name='', args=None, operator='ilike', limit=100):
-        res = super(ProductProduct, self).name_search(name=name, args=args, operator=operator, limit=limit)
-        args = [('tech_office_code', operator, name)] + args
-        prod_ids = self.search(args)
-        for prod in prod_ids:
-            if prod.id not in [x[0] for x in res]:
-                res += prod.name_get()
-        if len(res) > limit:
-            res = res[:limit]
-        return res
-
+from . import models

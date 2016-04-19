@@ -26,7 +26,7 @@
     'description': """Show different product name for customers""",
     'author': 'Pexego',
     'website': 'www.pexego.es',
-    "depends": ['base', 'product', 'stock', 'sale_stock'],
+    "depends": ['base', 'product', 'stock', 'sale_stock', 'warning'],
     "data": ['product_view.xml',
              'security/ir.model.access.csv'],
     "installable": True
