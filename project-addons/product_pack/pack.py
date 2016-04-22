@@ -670,7 +670,54 @@ class stock_pciking(orm.Model):
                 invoices += invoice
             if pack_moves:
                 self.pool.get('stock.move').write(cr, uid, [x.id for x in pack_moves], {'invoice_state': 'invoiced'}, context)
+        self._create_return_pack_invoice_lines(cr, uid, ids, invoices, context)
         return invoices
+
+    def _create_return_pack_invoice_lines(self, cr, uid, ids, invoices, context=None):
+        context = context or {}
+        inv_line_obj = self.pool.get('account.invoice.line')
+        inv_obj = self.pool.get('account.invoice')
+        sale_obj = self.pool.get('sale.order')
+        sale_line_obj = self.pool.get('sale.order.line')
+        for picking in self.browse(cr, uid, ids, context=context):
+            new_lines = []
+            use_invoice = False
+            currency = picking.company_id.currency_id
+            partner = picking.partner_id
+            if partner:
+                currency = partner.property_product_pricelist.currency_id
+            for invoice in inv_obj.browse(cr, uid, invoices, context):
+                if invoice.company_id == picking.company_id and \
+                        invoice.partner_id == picking.partner_id and \
+                        invoice.currency_id == currency:
+                    use_invoice = invoice
+            if not use_invoice or use_invoice.type != 'out_refund':
+                continue
+            picking_product_ids = [x.product_id.id for x in picking.move_lines]
+            sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=',
+                                                  picking.group_id.id)],
+                                       context=context)
+            if not sale_ids:
+                continue
+            sale_line_ids = sale_line_obj.search(cr, uid,
+                                                 [('order_id', 'in',
+                                                   sale_ids),
+                                                  ('product_id.type', '=',
+                                                   'service')],
+                                                 context=context)
+            if not sale_line_ids:
+                continue
+            for line in sale_line_obj.browse(cr, uid, sale_line_ids,
+                                             context):
+                if line.pack_child_line_ids and not line.pack_parent_line_id:
+                    if sale_line_obj.pack_in_moves(cr, uid, line.id,
+                                                   picking_product_ids,
+                                                   context):
+                        line.invoiced = False
+                        inv_line_vals = sale_line_obj._prepare_order_line_invoice_line(cr, uid, line, context=context)
+                        new_lines.append((0, 0, inv_line_vals))
+            inv_obj.write(cr, uid, use_invoice.id, {'invoice_line': new_lines})
+            inv_obj.button_reset_taxes(cr, uid, use_invoice.id, context)
 
 
     def _create_invoice_from_picking(self, cr, uid, picking, vals, context=None):
@@ -678,8 +725,9 @@ class stock_pciking(orm.Model):
         sale_line_obj = self.pool.get('sale.order.line')
         invoice_line_obj = self.pool.get('account.invoice.line')
         invoice_id = super(stock_pciking, self)._create_invoice_from_picking(cr, uid, picking, vals, context=context)
+        invoice = self.pool.get('account.invoice').browse(cr, uid, invoice_id, context)
         picking_product_ids = [x.product_id.id for x in picking.move_lines]
-        if picking.group_id:
+        if picking.group_id and invoice.type != 'out_refund':
             sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=', picking.group_id.id)], context=context)
             if sale_ids:
                 sale_line_ids = sale_line_obj.search(cr, uid, [('order_id', 'in', sale_ids), ('product_id.type', '=', 'service')], context=context)
@@ -711,6 +759,7 @@ class stock_move(orm.Model):
                 if self.get_sale_line_id(cr, uid, move.id, context).pack_parent_line_id:
                     res[move.id] = True
         return res
+
 
     _columns = {
         'pack_component': fields.function(_pack_component,
@@ -746,36 +795,6 @@ class stock_return_picking(orm.TransientModel):
 
     def _create_returns(self, cr, uid, ids, context=None):
         data = self.browse(cr, uid, ids[0], context=context)
-        if data.invoice_state == '2binvoiced':
-            sale_obj = self.pool.get('sale.order')
-            sale_line_obj = self.pool.get('sale.order.line')
-            record_id = context and context.get('active_id', False) or False
-            picking = self.pool.get('stock.picking').browse(cr, uid, record_id,
-                                                            context)
-            picking_product_ids = [x.product_id.id for x in picking.move_lines]
-            sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=',
-                                                  picking.group_id.id)],
-                                       context=context)
-            if sale_ids:
-                sale_line_ids = sale_line_obj.search(cr, uid,
-                                                     [('order_id', 'in',
-                                                       sale_ids),
-                                                      ('product_id.type', '=',
-                                                       'service')],
-                                                     context=context)
-                if sale_line_ids:
-                    for line in sale_line_obj.browse(cr, uid, sale_line_ids,
-                                                     context):
-                        if line.pack_child_line_ids and not \
-                                line.pack_parent_line_id and line.invoiced:
-                            if sale_line_obj.pack_in_moves(cr, uid, line.id,
-                                                           picking_product_ids,
-                                                           context):
-                                sale_line_obj.write(cr, uid, [line.id],
-                                                    {'invoice_lines':
-                                                     [(3, x.id) for x in
-                                                      line.invoice_lines]},
-                                                    context)
         new_picking_id, picking_type_id = \
             super(stock_return_picking, self)._create_returns(cr, uid, ids,
                                                               context)

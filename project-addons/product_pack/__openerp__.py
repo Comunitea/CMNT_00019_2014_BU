@@ -44,6 +44,7 @@ as children of the pack product.
         'stock_account',
         'purchase',
         'customer_product_name',
+        'stock_picking_invoice_link',
     ],
     "data": [
         'views/report_saleorder.xml',

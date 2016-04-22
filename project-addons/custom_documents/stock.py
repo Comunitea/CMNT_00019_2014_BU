@@ -89,6 +89,7 @@ class StockPicking(models.Model):
                 address = key.id
             self.env['account.invoice'].browse(key_invoices).write(
                 {'shipping_address': address})
+        self._create_return_pack_invoice_lines(invoices)
         return invoices
 
 
