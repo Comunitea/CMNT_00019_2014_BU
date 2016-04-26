@@ -18,7 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api
+from openerp import models, fields, api, _
+from openerp.exceptions import Warning
 
 
 class StockPicking(models.Model):
@@ -55,3 +56,21 @@ class StockMove(models.Model):
     def action_cancel(self):
         self.write({'invoice_state': 'none'})
         return super(StockMove, self).action_cancel()
+
+    @api.multi
+    def do_unreserve(self):
+        for move in self:
+            if move.production_id:
+                raise Warning(
+                    _('Reserve can not be deleted'),
+                    _('Cannot remove moves of final product'))
+            if move.raw_material_production_id:
+                production = move.raw_material_production_id
+                if production.state not in ('ready', 'confirmed'):
+                    raise Warning(
+                        _('Reserve can not be deleted'),
+                        _('Reservations can only be removed in \
+productions on ready state'))
+                if production.state == 'ready':
+                    production.signal_workflow('unreserve')
+        return super(StockMove, self).do_unreserve()

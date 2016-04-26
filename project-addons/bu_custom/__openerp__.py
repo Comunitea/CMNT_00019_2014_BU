@@ -26,10 +26,10 @@
     'description': """""",
     'author': 'Pexego',
     'website': '',
-    "depends": ['sale_stock', 'stock', 'technical_office', 'l10n_es_aeat_mod340'],
+    "depends": ['sale_stock', 'stock', 'technical_office', 'l10n_es_aeat_mod340', 'mrp'],
     "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
              'wizard/stock_transfer_details_view.xml', 'product_view.xml',
              'partner_language_contact_view.xml',
-             'invoice_view.xml'],
+             'invoice_view.xml', 'mrp_workflow.xml'],
     "installable": True
 }

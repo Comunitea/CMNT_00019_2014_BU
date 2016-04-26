@@ -27,6 +27,26 @@ msgid "Currency"
 msgstr "Divisa"
 
 #. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:72
+#, python-format
+msgid "Reservations can only be removed in productions on ready state"
+msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
+
+
+#. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:66
+#, python-format
+msgid "Cannot remove moves of final product"
+msgstr "No se pueden cancelar reservas de producto final"
+
+#. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:65
+#: code:addons/bu_custom/stock_picking.py:71
+#, python-format
+msgid "Reserve can not be deleted"
+msgstr "La reserva no puede ser cancelada"
+
+#. module: bu_custom
 #: view:account.invoice:bu_custom.invoice_group_journal_search
 msgid "Diario"
 msgstr "Diario"
@@ -82,4 +102,3 @@ msgstr "Split all"
 #: view:sale.order:bu_custom.sale_order_pick_policy
 msgid "shipping policy"
 msgstr "Política de envío"
-

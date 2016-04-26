@@ -40,3 +40,15 @@ class MrpProduction(models.Model):
     def _get_produced_qty_(self):
         self.total_produced = sum([x.product_uom_qty for x in
                                    self.move_created_ids2])
+
+    @api.multi
+    def action_confirm(self):
+        to_confirm = self.env['mrp.production']
+        no_confirm = self.env['mrp.production']
+        for production in self:
+            if production.state == 'ready':
+                no_confirm += production
+            else:
+                to_confirm += production
+        no_confirm.write({'state': 'confirmed'})
+        return super(MrpProduction, to_confirm).action_confirm()
