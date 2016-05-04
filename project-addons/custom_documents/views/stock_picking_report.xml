@@ -88,13 +88,13 @@
                         <tr t-foreach="o.move_lines" t-as="move">
                             <t t-if="not move.pack_component and move.state != 'cancel'">
                                 <td><span t-esc="move.product_id.get_product_ref(move.partner_id)"/></td>
-                                <td><span t-field="move.product_id.name"/></td>
+                                <td><span t-field="move.procurement_id.sale_line_id.name"/></td>
                                 <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
                             </t>
                         </tr>
                         <tr t-foreach="packs[o.id]" t-as="pack">
                             <td><span t-esc="pack.product_id.get_product_ref(o.partner_id)"/></td>
-                            <td><span t-field="pack.product_id.name"/></td>
+                            <td><span t-field="pack.name"/></td>
                             <td class="text-right"><span t-field="pack.product_uom_qty"/> <span t-field="pack.product_uom" groups="product.group_uom"/></td>
                         </tr>
                     </tbody>
