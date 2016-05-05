@@ -137,7 +137,7 @@
                                                     <td><span t-esc="pack[0].product_id.default_code"/></td>
                                                     <td style="border: 1px solid black"></td>
                                                     <td style="border: 1px solid black"></td>
-                                                    <td><span t-esc="pack[0].product_id.name"/></td>
+                                                    <td><span t-esc="pack[0].name"/></td>
                                                     <t t-if="pack[0].product_id.default_code != pack[0].product_id.get_product_ref(pack[0].order_partner_id)">
                                                         <td><span t-esc=" (pack[0].product_id.packaging_ids and pack[0].product_id.packaging_ids[0].measures_str or '') + '   (' + pack[0].product_id.get_product_ref(pack[0].order_partner_id) + ')'"/></td>
                                                     </t>
@@ -155,7 +155,7 @@
                                                         <td style="border: 1px solid black"></td>
                                                         <td style="border: 1px solid black"></td>
                                                         <td>
-                                                            &gt; <span t-field="move.product_id.name"/>
+                                                            &gt; <span t-field="move.move_dest_id.procurement_id.sale_line_id.name"/>
                                                         </td>
                                                         <t t-if="move.product_id.default_code != move.product_id.get_product_ref(move.partner_id)">
                                                             <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id) + ')'"/></td>
@@ -173,7 +173,7 @@
                                                         <td style="border: 1px solid black"></td>
                                                         <td style="border: 1px solid black"></td>
                                                         <td>
-                                                            <span t-field="move.product_id.name"/>
+                                                            <span t-field="move.move_dest_id.procurement_id.sale_line_id.name"/>
                                                         </td>
                                                         <t t-if="move.product_id.default_code != move.product_id.get_product_ref(move.partner_id)">
                                                             <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id) + ')'"/></td>
@@ -339,4 +339,3 @@
 
     </data>
 </openerp>
-
