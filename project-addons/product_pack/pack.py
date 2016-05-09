@@ -720,24 +720,32 @@ class stock_pciking(orm.Model):
             inv_obj.button_reset_taxes(cr, uid, use_invoice.id, context)
 
 
-    def _create_invoice_from_picking(self, cr, uid, picking, vals, context=None):
+    def _invoice_create_line(self, cr, uid, moves, journal_id, inv_type='out_invoice', context=None):
+        pickings = []
+        for move in moves:
+            if move.picking_id not in pickings:
+                pickings.append(move.picking_id)
         sale_obj = self.pool.get('sale.order')
         sale_line_obj = self.pool.get('sale.order.line')
         invoice_line_obj = self.pool.get('account.invoice.line')
-        invoice_id = super(stock_pciking, self)._create_invoice_from_picking(cr, uid, picking, vals, context=context)
-        invoice = self.pool.get('account.invoice').browse(cr, uid, invoice_id, context)
-        picking_product_ids = [x.product_id.id for x in picking.move_lines]
-        if picking.group_id and invoice.type != 'out_refund':
-            sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=', picking.group_id.id)], context=context)
-            if sale_ids:
-                sale_line_ids = sale_line_obj.search(cr, uid, [('order_id', 'in', sale_ids), ('product_id.type', '=', 'service')], context=context)
-                if sale_line_ids:
-                    for line in sale_line_obj.browse(cr, uid, sale_line_ids, context):
-                        if line.pack_child_line_ids and not line.pack_parent_line_id and line.invoiced:
-                            if not line.pack_in_moves(picking_product_ids):
-                                invoice_line_obj.unlink(cr, uid, [x.id for x in line.invoice_lines], context)
-                                sale_line_obj.write(cr, uid, line.id, {'invoice_lines': False}, context)
-        return invoice_id
+        invoice_ids = super(stock_pciking, self)._invoice_create_line(cr, uid, moves, journal_id, inv_type, context)
+        invoices = self.pool.get('account.invoice').browse(cr, uid, invoice_ids, context)
+        for invoice in invoices:
+            for picking in [x for x in pickings if x in invoice.picking_ids]:
+                picking_product_ids = [x.product_id.id for x in picking.move_lines]
+                if picking.group_id and invoice.type != 'out_refund':
+                    sale_ids = sale_obj.search(cr, uid, [('procurement_group_id', '=', picking.group_id.id)], context=context)
+                    if sale_ids:
+                        sale_line_ids = sale_line_obj.search(cr, uid, [('order_id', 'in', sale_ids), ('product_id.type', '=', 'service')], context=context)
+                        if sale_line_ids:
+                            for line in sale_line_obj.browse(cr, uid, sale_line_ids, context):
+                                if line.pack_child_line_ids and not line.pack_parent_line_id and line.invoice_lines:
+                                    if not line.pack_in_moves(picking_product_ids):
+                                        for inv_line in line.invoice_lines:
+                                            if inv_line.invoice_id.id == invoice.id:
+                                                print inv_line.name
+                                                inv_line.unlink()
+        return invoice_ids
 
 
 class stock_move(orm.Model):
