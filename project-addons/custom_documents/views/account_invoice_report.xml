@@ -223,7 +223,7 @@
                             <td style="padding:15px;">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <h4><strong>OPERATION BY CREDIT AND SURETY INSURED</strong></h4>
+                                        <h4><strong>OPERATION INSURED BY CREDITO Y CAUCIÓN</strong></h4>
                                     </div>
                                 </div>
                                 <div class="row" t-if="o.payment_term">

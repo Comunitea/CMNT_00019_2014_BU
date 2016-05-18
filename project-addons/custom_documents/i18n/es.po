@@ -908,5 +908,5 @@ msgstr "¿INCLUIDOS?"
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_saleorder_document
-msgid "OPERATION BY CREDIT AND SURETY INSURED"
+msgid "OPERATION INSURED BY CREDITO Y CAUCIÓN"
 msgstr "OPERACIÓN ASEGURADA POR CRÉDITO Y CAUCIÓN"
