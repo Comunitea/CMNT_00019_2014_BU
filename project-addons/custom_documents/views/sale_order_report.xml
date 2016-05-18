@@ -184,6 +184,11 @@
                         <tr style="border: 1px solid black;">
                             <td style="padding:15px;">
                                 <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4><strong>OPERATION BY CREDIT AND SURETY INSURED</strong></h4>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-xs-2">
                                         Payment terms
                                     </div>

@@ -904,3 +904,9 @@ msgstr "sin stock mínimo"
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
 
+#. module: custom_documents
+#: view:website:custom_documents.report_invoice_document
+#: view:website:custom_documents.report_picking
+#: view:website:custom_documents.report_saleorder_document
+msgid "OPERATION BY CREDIT AND SURETY INSURED"
+msgstr "OPERACIÓN ASEGURADA POR CRÉDITO Y CAUCIÓN"

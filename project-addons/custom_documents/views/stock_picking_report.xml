@@ -101,6 +101,11 @@
                 </table>
                 <br/>
                 <br/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4><strong>OPERATION BY CREDIT AND SURETY INSURED</strong></h4>
+                    </div>
+                </div>
                 <table class="table table-condensed notes">
                     <tr>
                         <td><span t-field="o.note"/></td>
