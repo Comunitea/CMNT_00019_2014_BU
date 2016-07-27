@@ -101,5 +101,16 @@
             </field>
         </record>
 
+        <record id="view_move_picking_tree_add_date" model="ir.ui.view">
+            <field name="name">stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="date"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
