@@ -257,7 +257,9 @@ class sale_order(orm.Model):
             self.pool.get('sale.order.line').unlink(cr, uid, unlink_lines, context)
             self.unlink_pack_components(cr, uid, sale_id, context)
         else:
-            return
+            unlink_lines = self.pool.get('sale.order.line').search(cr, uid, [('order_id', 'in', sale_id), ('pack_depth', '>', 0)], context=context)
+            self.pool.get('sale.order.line').unlink(cr, uid, unlink_lines, context)
+
 
 
     def expand_packs(self, cr, uid, ids, context={}, depth=1):
