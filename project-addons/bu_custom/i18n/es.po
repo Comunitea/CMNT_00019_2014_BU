@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 18:37+0000\n"
-"PO-Revision-Date: 2015-03-17 18:37+0000\n"
+"POT-Creation-Date: 2016-08-31 16:32+0000\n"
+"PO-Revision-Date: 2016-08-31 16:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,21 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bu_custom
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
+#: field:account.invoice.report,agent_id:0
+#: field:account.invoice.report,invoice_id:0
+msgid "Agent"
+msgstr "Agente"
+
+#. module: bu_custom
 #: view:stock.move:bu_custom.move_receipt_picking_calendar
 msgid "Calendar View"
 msgstr "Vista calendario"
 
 #. module: bu_custom
-#: view:stock.picking:bu_custom.stock_search_currency
-#: field:stock.picking,currency:0
-msgid "Currency"
-msgstr "Divisa"
-
-#. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:72
-#, python-format
-msgid "Reservations can only be removed in productions on ready state"
-msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
-
+#: view:stock.move:bu_custom.view_move_form_add_unreserve
+msgid "Cancel Availability"
+msgstr "Cancelar disponibilidad"
 
 #. module: bu_custom
 #: code:addons/bu_custom/stock_picking.py:66
@@ -40,11 +39,10 @@ msgid "Cannot remove moves of final product"
 msgstr "No se pueden cancelar reservas de producto final"
 
 #. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:65
-#: code:addons/bu_custom/stock_picking.py:71
-#, python-format
-msgid "Reserve can not be deleted"
-msgstr "La reserva no puede ser cancelada"
+#: view:stock.picking:bu_custom.stock_search_currency
+#: field:stock.picking,currency:0
+msgid "Currency"
+msgstr "Divisa"
 
 #. module: bu_custom
 #: view:account.invoice:bu_custom.invoice_group_journal_search
@@ -52,9 +50,20 @@ msgid "Diario"
 msgstr "Diario"
 
 #. module: bu_custom
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
+msgid "Due Month"
+msgstr "Mes de vencimiento"
+
+#. module: bu_custom
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
 #: model:ir.model,name:bu_custom.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: bu_custom
+#: model:ir.model,name:bu_custom.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Estadísticas de facturas"
 
 #. module: bu_custom
 #: field:product.product,manual_minimum_stock:0
@@ -65,6 +74,11 @@ msgstr "Stock mínimo manual"
 #: model:ir.model,name:bu_custom.model_mrp_production
 msgid "Manufacturing Order"
 msgstr "Órden de producción"
+
+#. module: bu_custom
+#: field:product.product,minimum_stock:0
+msgid "Minimum stock"
+msgstr "Minimum stock"
 
 #. module: bu_custom
 #: model:ir.model,name:bu_custom.model_stock_picking
@@ -94,11 +108,40 @@ msgid "Qty produced"
 msgstr "Cantidad producida"
 
 #. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:72
+#, python-format
+msgid "Reservations can only be removed in productions on ready state"
+msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
+
+#. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:65
+#: code:addons/bu_custom/stock_picking.py:71
+#, python-format
+msgid "Reserve can not be deleted"
+msgstr "La reserva no puede ser cancelada"
+
+#. module: bu_custom
+#: field:account.invoice,sale_ref:0
+msgid "Sale ref"
+msgstr "Sale ref"
+
+#. module: bu_custom
 #: view:stock.transfer_details:bu_custom.transfer_details_add_split_all
 msgid "Split all"
 msgstr "Split all"
 
 #. module: bu_custom
+#: model:ir.model,name:bu_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: bu_custom
 #: view:sale.order:bu_custom.sale_order_pick_policy
 msgid "shipping policy"
 msgstr "Política de envío"
+
+#. module: bu_custom
+#: view:res.partner:bu_custom.partner_language_context
+msgid "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
+msgstr "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
+
