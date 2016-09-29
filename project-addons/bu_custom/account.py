@@ -68,3 +68,19 @@ class AccountInvoiceReport(models.Model):
         group_by_str = super(AccountInvoiceReport, self)._group_by()
         group_by_str += ",ai.agent_id, ail.invoice_id"
         return group_by_str
+
+
+class AccountInvoiceLine(models.Model):
+
+    _inherit = 'account.invoice.line'
+
+    product_category = fields.Many2one('product.category',
+                                       related="product_id.categ_id",
+                                       store=True)
+    invoice_type = fields.Selection(
+        [('out_invoice','Customer Invoice'),
+        ('in_invoice','Supplier Invoice'),
+        ('out_refund','Customer Refund'),
+        ('in_refund','Supplier Refund')],
+        related='invoice_id.type', store=True)
+    invoice_date = fields.Date(related='invoice_id.date_invoice', store=True)

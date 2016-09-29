@@ -30,6 +30,9 @@
                     <field name="minimum_stock"/>
                     <field name="manual_minimum_stock"/>
                 </field>
+                <group name="sale_condition" position="inside">
+                    <field name="commercialized_in_miami"/>
+                </group>
             </field>
         </record>
     </data>

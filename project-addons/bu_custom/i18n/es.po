@@ -23,6 +23,43 @@ msgid "Agent"
 msgstr "Agente"
 
 #. module: bu_custom
+#: field:product.product,commercialized_in_miami:0
+msgid "Commercialized in miami"
+msgstr "Comercializado en Miami"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Product category"
+msgstr "Categoría de producto"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Invoice type"
+msgstr "Tipo de factura"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Group By"
+msgstr "Agrupar"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Invoice date"
+msgstr "Fecha de factura"
+
+#. module: bu_custom
+#: model:ir.actions.act_window,name:bu_custom.account_invoice_line_action
+#: model:ir.ui.menu,name:bu_custom.menu_account_invoice_line
+msgid "Invoice lines"
+msgstr "Lineas de factura"
+
+
+#. module: bu_custom
+#: field:account.invoice.line,product_category:0
+msgid "Internal Category"
+msgstr "Categoría de producto"
+
+#. module: bu_custom
 #: view:stock.move:bu_custom.move_receipt_picking_calendar
 msgid "Calendar View"
 msgstr "Vista calendario"
@@ -144,4 +181,3 @@ msgstr "Política de envío"
 #: view:res.partner:bu_custom.partner_language_context
 msgid "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
 msgstr "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
-
