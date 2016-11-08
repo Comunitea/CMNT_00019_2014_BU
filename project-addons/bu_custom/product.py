@@ -33,3 +33,10 @@ class ProductProduct(models.Model):
     def _get_minimum_stock(self):
         self.minimum_stock = sum([x.product_min_qty for x in
                                   self.orderpoint_ids])
+
+
+class ProductTemplate(models.Model):
+
+    _inherit = 'product.template'
+
+    miami = fields.Boolean('Miami')
