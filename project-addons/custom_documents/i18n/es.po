@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * custom_documents
+#	* custom_documents
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-22 09:19+0000\n"
-"PO-Revision-Date: 2015-04-22 09:19+0000\n"
+"POT-Creation-Date: 2016-11-08 12:08+0000\n"
+"PO-Revision-Date: 2016-11-08 12:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,7 @@ msgid "Account:"
 msgstr "Cuenta:"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Amount"
 msgstr "Importe"
@@ -68,6 +69,7 @@ msgid "Bank details"
 msgstr "Detalles bancarios"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Base"
 msgstr "Base"
@@ -98,6 +100,7 @@ msgid "CLIENTE"
 msgstr "CLIENTE"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
@@ -124,6 +127,7 @@ msgid "Comentarios"
 msgstr "Comentarios"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Comment:"
 msgstr "Comentario:"
@@ -191,6 +195,12 @@ msgid "Date"
 msgstr "Fecha"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+#: view:website:custom_documents.report_invoice_document
+msgid "Date Due:"
+msgstr "Vencimiento:"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
 msgid "Date Ordered:"
 msgstr "Fecha pedida:"
@@ -213,6 +223,7 @@ msgstr "Dirección de envío"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
 #: view:website:custom_documents.report_purchaseorder_document
@@ -227,11 +238,31 @@ msgid "Disc.(%)"
 msgstr "Desc.(%)"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Discount (%)"
+msgstr "Descuento (%)"
+
+#. module: custom_documents
+#: field:report.custom_documents.mrp_production,display_name:0
+#: field:report.custom_documents.report_internal_picking,display_name:0
+#: field:report.custom_documents.report_packing,display_name:0
+#: field:report.custom_documents.report_picking_final,display_name:0
+#: field:report.stock.report_picking_,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: custom_documents
 #: field:res.partner,document_name:0
 msgid "Document name"
 msgstr "Document name"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Document:"
+msgstr "Documento:"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Draft Invoice"
 msgstr "Factura borrador"
@@ -287,9 +318,19 @@ msgid "Final client picking"
 msgstr "Albarán de cliente final"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Fiscal Position:"
+msgstr "Posición fiscal"
+
+#. module: custom_documents
 #: view:website:custom_documents.report_packing_document
 msgid "G.W. per box(KG)"
 msgstr "G.W. por caja(KG)"
+
+#. module: custom_documents
+#: field:sale.order,have_discounts:0
+msgid "Have discounts"
+msgstr "Have discounts"
 
 #. module: custom_documents
 #: field:report.custom_documents.mrp_production,id:0
@@ -301,12 +342,19 @@ msgid "ID"
 msgstr "ID"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Intrastat"
+msgstr "Intrastat"
+
+#. module: custom_documents
 #: model:ir.model,name:custom_documents.model_account_invoice
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Invoice"
 msgstr "Factura"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Invoice Date:"
 msgstr "Fecha de factura:"
@@ -322,6 +370,16 @@ msgid "Invoice report with validation data"
 msgstr "Documento de factura con datos de validación"
 
 #. module: custom_documents
+#: field:report.custom_documents.mrp_production,__last_update:0
+#: field:report.custom_documents.report_internal_picking,__last_update:0
+#: field:report.custom_documents.report_packing,__last_update:0
+#: field:report.custom_documents.report_picking_final,__last_update:0
+#: field:report.stock.report_picking_,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: custom_documents
+#: field:product.packaging,measures_str:0
 #: field:stock.quant.package,measures:0
 msgid "Measures"
 msgstr "Medidas"
@@ -330,6 +388,11 @@ msgstr "Medidas"
 #: view:website:custom_documents.mrp_production
 msgid "Min"
 msgstr "Mínimo"
+
+#. module: custom_documents
+#: field:product.product,stock_min:0
+msgid "Min stock"
+msgstr "Min stock"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -360,6 +423,13 @@ msgstr "Número de pedido"
 #: view:website:custom_documents.report_internal_picking
 msgid "Número de pedido de cliente"
 msgstr "Número de pedido de cliente"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_invoice_document
+#: view:website:custom_documents.report_picking
+#: view:website:custom_documents.report_saleorder_document
+msgid "OPERATION INSURED BY CREDITO Y CAUCIÓN"
+msgstr "OPERACIÓN ASEGURADA POR CRÉDITO Y CAUCIÓN"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_picking
@@ -408,6 +478,7 @@ msgid "POBLACION"
 msgstr "POBLACION"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "PRO-FORMA"
 msgstr "PRO-FORMA"
@@ -462,6 +533,16 @@ msgstr "Paquete catálogos"
 #: model:ir.model,name:custom_documents.model_res_partner
 msgid "Partner"
 msgstr "Empresa"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Partner Ref.:"
+msgstr "Ref. de empresa:"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Payment Term:"
+msgstr "Plazo de pago:"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_invoice_document
@@ -563,6 +644,7 @@ msgid "Qty"
 msgstr "Ctdad"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
 #: view:website:custom_documents.report_picking
@@ -609,6 +691,7 @@ msgid "Reference"
 msgstr "Referencia"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Refund"
 msgstr "Factura rectificativa"
@@ -650,11 +733,6 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: custom_documents
-#: model:ir.model,name:custom_documents.model_sale_order_line
-msgid "Sales Order Line"
-msgstr "Línea pedido de venta"
-
-#. module: custom_documents
 #: view:website:custom_documents.report_saleorder_document
 msgid "Salesperson:"
 msgstr "Comercial:"
@@ -662,7 +740,7 @@ msgstr "Comercial:"
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
 msgid "Security material"
-msgstr "Material de seguridad"
+msgstr "Security material"
 
 #. module: custom_documents
 #: field:account.invoice,shipping_address:0
@@ -695,11 +773,13 @@ msgid "Supplier Address:"
 msgstr "Dirección del proveedor:"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Supplier Invoice"
 msgstr "Factura de proveedor"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Supplier Refund"
 msgstr "Factura rectificativa de proveedor"
@@ -715,11 +795,13 @@ msgid "TRANSPORTE"
 msgstr "TRANSPORTE"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 msgid "Tax"
 msgstr "Impuesto"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
@@ -745,6 +827,7 @@ msgid "The exporter of the products covered by this document declares that, exce
 msgstr "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_packing_document
 #: view:website:custom_documents.report_purchaseorder_document
@@ -759,6 +842,7 @@ msgid "Total Amount due (Please take note of the fact that we do not assume the 
 msgstr "Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_invoice_document
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
@@ -787,10 +871,16 @@ msgid "URGE"
 msgstr "URGE"
 
 #. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Unit Price"
 msgstr "Precio unidad"
+
+#. module: custom_documents
+#: view:website:custom_documents.report_intrastatinvoice_document
+msgid "Unit of measure"
+msgstr "Unidad de medida"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
@@ -825,6 +915,7 @@ msgstr "Dirección del almacén"
 #. module: custom_documents
 #: field:stock.picking,weight_edit:0
 #: field:stock.quant.package,weight:0
+#: view:website:custom_documents.report_intrastatinvoice_document
 #: view:website:custom_documents.report_picking
 #: view:website:custom_documents.report_picking_final_
 msgid "Weight"
@@ -904,9 +995,3 @@ msgstr "sin stock mínimo"
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
 
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_saleorder_document
-msgid "OPERATION INSURED BY CREDITO Y CAUCIÓN"
-msgstr "OPERACIÓN ASEGURADA POR CRÉDITO Y CAUCIÓN"
