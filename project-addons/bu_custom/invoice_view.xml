@@ -57,11 +57,16 @@
                     <field name="product_id"/>
                     <field name="product_category"/>
                     <field name="invoice_type"/>
+                    <field name="agent_id"/>
+                    <field name="product_brand"/>
+                    <field name="journal_id"/>
                     <field name="name"/>
                     <group expand="0" string="Group By">
                         <filter name="group_by_product_category" string="Product category" context="{'group_by':'product_category'}"/>
                         <filter name="group_by_invoice_type" string="Invoice type" context="{'group_by':'invoice_type'}"/>
                         <filter name="group_by_invoice_date" string="Invoice date" context="{'group_by':'invoice_date'}"/>
+                        <filter name="group_by_agent" string="Agent" context="{'group_by':'agent_id'}"/>
+                        <filter name="group_by_brand" string="Brand" context="{'group_by':'product_brand'}"/>
                     </group>
                </search>
             </field>
