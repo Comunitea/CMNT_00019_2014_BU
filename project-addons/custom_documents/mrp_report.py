@@ -57,7 +57,7 @@ class ParticularReport(models.AbstractModel):
             _('without minimun stock'): {},
             'total': {},
         }
-        for production in self.env[report.model].browse(self._ids):
+        for production in self.env[report.model].with_context(warehouse=1).browse(self._ids):
             rules = self.env['stock.warehouse.orderpoint'].search(
                 [('product_id', '=', production.product_id.id)])
             if production.routing_id.name not in \
