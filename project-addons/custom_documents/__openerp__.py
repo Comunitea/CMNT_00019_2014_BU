@@ -28,7 +28,7 @@
     'website': '',
     "depends": ['account', 'sale', 'sale_stock', 'mrp', 'purchase',
                 'stock', 'customer_product_name', 'delivery', 'hr',
-                'product_pack'],
+                'product_pack', 'report_intrastat'],
     "data": ['views/ir_qweb.xml',
              'views/stock_picking_report.xml',
              'views/purchase_order_report.xml',
@@ -42,6 +42,7 @@
              'account_view.xml',
              'res_partner_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',
+             'views/account_invoice_intrastat_report.xml',
              'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml',
              'data/report.paperformat.csv'],
     "installable": True

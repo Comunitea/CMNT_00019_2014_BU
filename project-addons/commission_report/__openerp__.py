@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015 Pexego All Rights Reserved
+#    Copyright (C) 2014 Pexego All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@pexego.es>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,26 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api
 
-
-class ProductProduct(models.Model):
-
-    _inherit = 'product.product'
-
-    minimum_stock = fields.Float(string='Minimum stock',
-                                 compute='_get_minimum_stock')
-    manual_minimum_stock = fields.Float('Manual minimum stock')
-    commercialized_in_miami = fields.Boolean()
-
-    @api.one
-    def _get_minimum_stock(self):
-        self.minimum_stock = sum([x.product_min_qty for x in
-                                  self.orderpoint_ids])
-
-
-class ProductTemplate(models.Model):
-
-    _inherit = 'product.template'
-
-    miami = fields.Boolean('Miami')
+{
+    'name': "Commission report",
+    'version': '1.0',
+    'category': 'sale',
+    'description': """Adds analysis view for sale commissions""",
+    'author': 'Pexego',
+    'website': 'www.pexego.es',
+    "depends": ['base', 'sale_commission', 'account'],
+    "data": ['commission_report_view.xml', 'security/ir.model.access.csv'],
+    "installable": True
+}

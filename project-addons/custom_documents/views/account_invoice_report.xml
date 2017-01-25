@@ -85,10 +85,15 @@
                         <strong>Source:</strong>
                         <p t-field="o.origin"/>
                     </div>
-                    <div class="col-xs-3" t-if="o.partner_id.ref">
+                    <div class="col-xs-2" t-if="o.date_due">
+                        <strong>Date Due:</strong>
+                        <p t-field="o.date_due"/>
+                    </div>
+                    <div class="col-xs-1" t-if="o.partner_id.ref">
                         <strong>Customer Code:</strong>
                         <p t-field="o.partner_id.ref"/>
                     </div>
+                     
                 </div>
 
                 <table class="table table-condensed">

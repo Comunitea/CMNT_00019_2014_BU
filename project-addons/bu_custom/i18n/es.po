@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * bu_custom
+#       * bu_custom
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-17 18:37+0000\n"
-"PO-Revision-Date: 2015-03-17 18:37+0000\n"
+"POT-Creation-Date: 2016-12-01 19:28+0000\n"
+"PO-Revision-Date: 2016-12-01 19:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,22 +16,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: field:account.invoice.line,agent_id:0
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
+#: field:account.invoice.report,agent_id:0
+#: field:account.invoice.report,invoice_id:0
+msgid "Agent"
+msgstr "Agente"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: field:account.invoice.line,product_brand:0
+msgid "Brand"
+msgstr "Marca"
+
+#. module: bu_custom
 #: view:stock.move:bu_custom.move_receipt_picking_calendar
 msgid "Calendar View"
 msgstr "Vista calendario"
 
 #. module: bu_custom
-#: view:stock.picking:bu_custom.stock_search_currency
-#: field:stock.picking,currency:0
-msgid "Currency"
-msgstr "Divisa"
-
-#. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:72
-#, python-format
-msgid "Reservations can only be removed in productions on ready state"
-msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
-
+#: view:stock.move:bu_custom.view_move_form_add_unreserve
+msgid "Cancel Availability"
+msgstr "Cancelar disponibilidad"
 
 #. module: bu_custom
 #: code:addons/bu_custom/stock_picking.py:66
@@ -40,11 +47,25 @@ msgid "Cannot remove moves of final product"
 msgstr "No se pueden cancelar reservas de producto final"
 
 #. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:65
-#: code:addons/bu_custom/stock_picking.py:71
-#, python-format
-msgid "Reserve can not be deleted"
-msgstr "La reserva no puede ser cancelada"
+#: field:account.invoice.line,product_category:0
+msgid "Category"
+msgstr "Categoría"
+
+#. module: bu_custom
+#: field:product.product,commercialized_in_miami:0
+msgid "Commercialized in miami"
+msgstr "Comercializado en Miami"
+
+#. module: bu_custom
+#: view:product.template:bu_custom.product_template_search_view
+msgid "Consumable"
+msgstr "Consumible"
+
+#. module: bu_custom
+#: view:stock.picking:bu_custom.stock_search_currency
+#: field:stock.picking,currency:0
+msgid "Currency"
+msgstr "Divisa"
 
 #. module: bu_custom
 #: view:account.invoice:bu_custom.invoice_group_journal_search
@@ -52,9 +73,61 @@ msgid "Diario"
 msgstr "Diario"
 
 #. module: bu_custom
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
+msgid "Due Month"
+msgstr "Mes de vencimiento"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Group By"
+msgstr "Agrupar"
+
+#. module: bu_custom
+#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
 #: model:ir.model,name:bu_custom.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: bu_custom
+#: field:account.invoice.line,invoice_date:0
+msgid "Invoice Date"
+msgstr "Fecha factura"
+
+#. module: bu_custom
+#: model:ir.model,name:bu_custom.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Invoice date"
+msgstr "Fecha de factura"
+
+#. module: bu_custom
+#: model:ir.actions.act_window,name:bu_custom.account_invoice_line_action
+#: model:ir.ui.menu,name:bu_custom.menu_account_invoice_line
+msgid "Invoice lines"
+msgstr "Lineas de factura"
+
+#. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Invoice type"
+msgstr "Tipo de factura"
+
+#. module: bu_custom
+#: model:ir.model,name:bu_custom.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Estadísticas de facturas"
+
+#. module: bu_custom
+#: field:account.invoice.line,journal_id:0
+msgid "Journal"
+msgstr "Diario"
+
+#. module: bu_custom
+#: help:account.invoice.line,invoice_date:0
+msgid "Keep empty to use the current date"
+msgstr "Mantener vacío para usar la fecha actual"
 
 #. module: bu_custom
 #: field:product.product,manual_minimum_stock:0
@@ -65,6 +138,18 @@ msgstr "Stock mínimo manual"
 #: model:ir.model,name:bu_custom.model_mrp_production
 msgid "Manufacturing Order"
 msgstr "Órden de producción"
+
+#. module: bu_custom
+#: field:product.product,miami:0
+#: view:product.template:bu_custom.product_template_search_view
+#: field:product.template,miami:0
+msgid "Miami"
+msgstr "Miami"
+
+#. module: bu_custom
+#: field:product.product,minimum_stock:0
+msgid "Minimum stock"
+msgstr "Stock mínimo"
 
 #. module: bu_custom
 #: model:ir.model,name:bu_custom.model_stock_picking
@@ -82,6 +167,11 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: bu_custom
+#: model:ir.model,name:bu_custom.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: bu_custom
 #: model:ir.ui.menu,name:bu_custom.menu_products_mrp
 #: model:ir.ui.menu,name:bu_custom.menu_products_purchase
 #: model:ir.ui.menu,name:bu_custom.menu_products_stock
@@ -89,14 +179,57 @@ msgid "Product Variants"
 msgstr "Variantes de Producto"
 
 #. module: bu_custom
+#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+msgid "Product category"
+msgstr "Categoría de producto"
+
+#. module: bu_custom
 #: field:mrp.production,total_produced:0
 msgid "Qty produced"
 msgstr "Cantidad producida"
 
 #. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:72
+#, python-format
+msgid "Reservations can only be removed in productions on ready state"
+msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
+
+#. module: bu_custom
+#: code:addons/bu_custom/stock_picking.py:65
+#: code:addons/bu_custom/stock_picking.py:71
+#, python-format
+msgid "Reserve can not be deleted"
+msgstr "La reserva no puede ser cancelada"
+
+#. module: bu_custom
+#: field:account.invoice,sale_ref:0
+msgid "Sale ref"
+msgstr "Ref. venta"
+
+#. module: bu_custom
+#: help:account.invoice.line,product_brand:0
+msgid "Select a brand for this product"
+msgstr "Marca para el producto"
+
+#. module: bu_custom
+#: help:account.invoice.line,product_category:0
+msgid "Select category for the current product"
+msgstr "Categoría del produto actual"
+
+#. module: bu_custom
 #: view:stock.transfer_details:bu_custom.transfer_details_add_split_all
 msgid "Split all"
-msgstr "Split all"
+msgstr "Separar todo"
+
+#. module: bu_custom
+#: model:ir.model,name:bu_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: bu_custom
+#: field:account.invoice.line,invoice_type:0
+msgid "Type"
+msgstr "Tipo"
 
 #. module: bu_custom
 #: view:sale.order:bu_custom.sale_order_pick_policy
