@@ -29,12 +29,25 @@ class ProductProduct(models.Model):
                                  compute='_get_minimum_stock')
     manual_minimum_stock = fields.Float('Manual minimum stock')
     commercialized_in_miami = fields.Boolean()
+    purchase_count = fields.Integer('# Purchases', compute='_get_purchase_count')
 
     @api.one
     def _get_minimum_stock(self):
         self.minimum_stock = sum([x.product_min_qty for x in
                                   self.orderpoint_ids])
 
+    @api.multi
+    def action_view_purchases(self):
+        result = self.env['product.template']._get_act_window_dict(
+            'purchase.action_purchase_line_product_tree')
+        result['domain'] = "[('product_id','in',[" + ','.join(map(str, self.ids)) + "]), ('state', '!=', 'cancel')]"
+        return result
+
+    @api.one
+    def _get_purchase_count(self):
+        self.purchase_count = self.env['purchase.order'].search_count(
+            [('order_line.product_id', '=', self.id),
+             ('state', '!=', 'cancel')])
 
 class ProductTemplate(models.Model):
 
