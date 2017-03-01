@@ -40,14 +40,14 @@ class ProductProduct(models.Model):
     def action_view_purchases(self):
         result = self.env['product.template']._get_act_window_dict(
             'purchase.action_purchase_line_product_tree')
-        result['domain'] = "[('product_id','in',[" + ','.join(map(str, self.ids)) + "]), ('state', '!=', 'cancel')]"
+        result['domain'] = "[('product_id','in',[" + ','.join(map(str, self.ids)) + "]), ('state', 'not in', ['draft', 'cancel'])]"
         return result
 
     @api.one
     def _get_purchase_count(self):
         self.purchase_count = self.env['purchase.order'].search_count(
             [('order_line.product_id', '=', self.id),
-             ('state', '!=', 'cancel')])
+             ('state', 'not in', ['draft', 'cancel'])])
 
 class ProductTemplate(models.Model):
 
