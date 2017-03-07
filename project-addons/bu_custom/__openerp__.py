@@ -28,6 +28,7 @@
     'website': '',
     "depends": ['sale_stock', 'stock', 'technical_office',
                 'l10n_es_aeat_mod340', 'mrp', 'sale_commission',
+                'product_brand',
                 'product_extended'],
     "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
              'data/cron.xml',
