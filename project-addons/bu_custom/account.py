@@ -74,9 +74,14 @@ class AccountInvoiceLine(models.Model):
 
     _inherit = 'account.invoice.line'
 
-    product_category = fields.Many2one('product.category',
+    product_category = fields.Many2one('product.category', 'Category',
                                        related="product_id.categ_id",
                                        store=True)
+    product_brand = fields.Many2one('product.brand', 'Brand',
+                                    related="product_id.product_brand_id",
+                                    store=True)
+    journal_id = fields.Many2one('account.journal', 'Journal',
+                                 related="invoice_id.journal_id")
     invoice_type = fields.Selection(
         [('out_invoice','Customer Invoice'),
         ('in_invoice','Supplier Invoice'),
@@ -84,3 +89,6 @@ class AccountInvoiceLine(models.Model):
         ('in_refund','Supplier Refund')],
         related='invoice_id.type', store=True)
     invoice_date = fields.Date(related='invoice_id.date_invoice', store=True)
+    agent_id = fields.Many2one("sale.agent", "Agent", store=True,
+                               related="invoice_id.agent_id")
+
