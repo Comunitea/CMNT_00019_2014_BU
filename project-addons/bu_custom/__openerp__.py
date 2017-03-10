@@ -34,7 +34,7 @@
              'data/cron.xml',
              'wizard/stock_transfer_details_view.xml',
              'wizard/recompute_price_from_bom.xml',
-             'product_view.xml',
+             'product_view.xml', 'purchase.xml',
              'partner_language_contact_view.xml',
              'invoice_view.xml', 'mrp_workflow.xml'],
     "installable": True
