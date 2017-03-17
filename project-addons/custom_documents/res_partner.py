@@ -30,7 +30,7 @@ class ResPartner(models.Model):
                                 compute='_get_document_name', store=True)
 
     @api.one
-    @api.depends('name', 'parent_id')
+    @api.depends('name', 'parent_id.name')
     def _get_document_name(self):
         if self.parent_id:
             self.document_name = self.parent_id.document_name
