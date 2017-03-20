@@ -26,4 +26,4 @@ class RecomputePriceFromBom(models.TransientModel):
 
     @api.model
     def _do_cron(self):
-        self.create().recompute_price_from_bom()
+        self.create({}).recompute_price_from_bom()
