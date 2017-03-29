@@ -52,3 +52,18 @@ class MrpProduction(models.Model):
                 to_confirm += production
         no_confirm.write({'state': 'confirmed'})
         return super(MrpProduction, to_confirm).action_confirm()
+
+
+class MrpBom(models.Model):
+
+    _inherit = 'mrp.bom'
+
+    @api.multi
+    def onchange_product_tmpl_id(self, product_tmpl_id, product_qty=0):
+        res = super(MrpBom, self).onchange_product_tmpl_id(product_tmpl_id,
+                                                           product_qty)
+        if product_tmpl_id:
+            template = self.env['product.template'].browse(product_tmpl_id)
+            res['value']['name'] = '[%s] %s' % (template.default_code,
+                                                res['value']['name'])
+        return res
