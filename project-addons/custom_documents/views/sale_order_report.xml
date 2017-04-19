@@ -100,7 +100,7 @@
                                         <span groups="product.group_uom" t-field="l.product_uom"/>
                                     </td>
                                     <td class="text-right">
-                                        <span t-field="l.price_unit"/>
+                                        <span t-esc="formatLang(l.price_unit, digits=2)"/>
                                     </td>
                                     <t t-if="o.have_discounts">
                                         <td groups="sale.group_discount_per_so_line">

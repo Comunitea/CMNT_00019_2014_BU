@@ -80,6 +80,25 @@ class StockPicking(models.Model):
                     [('invoice_id', '=', key_invoices),
                      ('product_id', '=', delete_move.product_id.id)])
                 to_delete.unlink()
+            '''
+                Buscamos en los pedidos de venta lineas sin facturar,
+                 en caso de facturar 2 albaranes por partner,
+                 y si 1 de ellos solo tiene packs es necesario
+                 crear las lineas de factura.
+            '''
+            moves = self.env['stock.move'].browse([x.id for x in todo[key]])
+            sales = moves.mapped('procurement_id.sale_line_id.order_id.id')
+            sale_line_ids = self.env['sale.order.line'].search(
+                [('order_id', 'in', sales),
+                 ('invoiced', '=', False), '|',
+                 ('product_id', '=', False),
+                 ('product_id.type', '=', 'service')])
+            if sale_line_ids:
+                created_lines = sale_line_ids.invoice_line_create()
+                created_lines = self.env['account.invoice.line'].browse(created_lines)
+                created_lines.write({'invoice_id': key_invoices[0]})
+                sale_line_ids.mapped('order_id').write({'invoice_ids': [(4, x) for x in key_invoices]})
+
             if pack_moves:
                 pack_moves.write({'invoice_state': 'invoiced'})
             invoices += key_invoices

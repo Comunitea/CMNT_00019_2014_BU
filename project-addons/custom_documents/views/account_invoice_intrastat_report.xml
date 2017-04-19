@@ -2,7 +2,7 @@
 <openerp>
     <data>
 <template id="report_intrastatinvoice_document">
-    <t t-call="report.external_layout">
+    <t t-call="report.internal_layout">
         <div class="page">
             <div class="row">
                 <div class="col-xs-5 col-xs-offset-7">
@@ -64,7 +64,7 @@
                         <td class="text-right"><span t-esc="l.product_id.weight"/></td>
                         <td class="text-right"><span t-field="l.quantity"/></td>
                         <td groups="product.group_uom"><span t-field="l.uos_id"/></td>
-                        <td class="text-right"><span t-field="l.price_unit"/></td>
+                        <td class="text-right"><span t-esc="formatLang(l.price_unit, digits=2)"/></td>
                         <td groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
                         <td class="text-right">
                             <span t-field="l.price_subtotal"

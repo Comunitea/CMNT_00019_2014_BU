@@ -93,7 +93,7 @@
                         <strong>Customer Code:</strong>
                         <p t-field="o.partner_id.ref"/>
                     </div>
-                     
+
                 </div>
 
                 <table class="table table-condensed">
@@ -117,7 +117,7 @@
                                 <span t-field="l.uos_id"  groups="product.group_uom"/>
                             </td>
                             <td class="text-right">
-                                <span t-field="l.price_unit"/>
+                                <span t-esc="formatLang(l.price_unit, digits=2)"/>
                             </td>
                             <td class="text-center" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
                             <!--td class="text-right">
