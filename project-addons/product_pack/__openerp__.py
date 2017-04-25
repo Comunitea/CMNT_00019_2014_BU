@@ -43,6 +43,7 @@ as children of the pack product.
         'sale_stock',
         'stock_account',
         'purchase',
+        'mrp',
         'customer_product_name',
         'stock_picking_invoice_link',
     ],
