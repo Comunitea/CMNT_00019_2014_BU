@@ -6,12 +6,13 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+		<xpath expr="//page[@name='sales_purchases']/group/group[2]/field[@name='customer']" position="after">
+                    <field name="final_customer"/>
+                </xpath>
                 <field name="active" position="after">
                     <field name="prospective" attrs="{'invisible':[('customer', '=', False)]}"/>
                 </field>
-		<field name="customer" position="after">
-                    <field name="final_customer"/>
-                </field>
+		
             </field>
         </record>
 
