@@ -9,8 +9,23 @@
                 <field name="active" position="after">
                     <field name="prospective" attrs="{'invisible':[('customer', '=', False)]}"/>
                 </field>
+		<field name="customer" position="after">
+                    <field name="final_customer"/>
+                </field>
             </field>
         </record>
+
+	<record id="res_parnter_add_final_search" model="ir.ui.view">
+            <field name="name">res.partner.final.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+		<filter name="customer" position="after">
+                    <filter string="Clientes finales" name="final_customer" domain="[('final_customer','=',1)]" help="Clientes finales"/>
+                </filter>
+            </field>
+        </record>
+
 
     <record id="action_view_prospective_customers" model="ir.actions.act_window">
             <field name="name">Prospective customers</field>

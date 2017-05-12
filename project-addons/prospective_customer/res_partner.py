@@ -29,6 +29,7 @@ class res_partner(orm.Model):
 
     _columns = {
         'prospective': fields.boolean('Prospective'),
+	'final_customer': fields.boolean('Cliente final'),
         }
 
 
