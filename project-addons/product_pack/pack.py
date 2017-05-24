@@ -26,6 +26,7 @@ from openerp.osv import fields, orm, osv
 import openerp.addons.decimal_precision as dp
 from openerp import api
 
+
 class product_pack(orm.Model):
     _name = 'product.pack.line'
     _rec_name = 'product_id'
@@ -43,6 +44,25 @@ class product_pack(orm.Model):
 
 class product_product(orm.Model):
     _inherit = 'product.product'
+
+    def action_view_bom(self, cr, uid, ids, context=None):
+        tmpl_obj = self.pool.get("product.template")
+        products = set()
+        for product in self.browse(cr, uid, ids, context=context):
+            products.add(product.product_tmpl_id.id)
+        result = tmpl_obj._get_act_window_dict(cr, uid, 'mrp.product_open_bom', context=context)
+        # bom specific to this variant or global to template
+        domain = [
+            '|',
+                ('product_id', 'in', ids),
+                '&',
+                    ('product_id', '=', False),
+                    ('product_tmpl_id', 'in', list(products)),
+        ]
+        result['context'] = "{'default_product_tmpl_id': %s}" % (len(products) and products.pop() or 'False')
+        result['domain'] = str(domain)
+        return result
+
 
     def _product_available(self, cr, uid, ids, field_names=None, arg=False, context=None):
         res = {}
