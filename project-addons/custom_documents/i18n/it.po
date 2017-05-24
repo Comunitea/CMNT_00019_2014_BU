@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* custom_documents
+#   * custom_documents
 #
 msgid ""
 msgstr ""
@@ -370,7 +370,7 @@ msgstr "Order (Origin)"
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
 msgid "Order Date:"
-msgstr "Order Date:"
+msgstr "Data D´Ordine:"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
@@ -380,7 +380,7 @@ msgstr "Origine delle merci"
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
 msgid "Our Order Reference:"
-msgstr "Our Order Reference:"
+msgstr "Il Nostro Riferimento D´Ordine:"
 
 #. module: custom_documents
 #: view:website:custom_documents.report_packing_document
@@ -763,7 +763,7 @@ msgstr "Importo totale dovuto (Per favore, prendere atto del fatto che noi non p
 #: view:website:custom_documents.report_purchaseorder_document
 #: view:website:custom_documents.report_saleorder_document
 msgid "Total Without Taxes"
-msgstr "Total Without Taxes"
+msgstr "Totale Senza Tasse"
 
 #. module: custom_documents
 #: view:website:custom_documents.mrp_production
@@ -795,7 +795,7 @@ msgstr "Prezzo unitario"
 #. module: custom_documents
 #: view:website:custom_documents.report_purchaseorder_document
 msgid "Validated By:"
-msgstr "Validated By:"
+msgstr "Validato Da:"
 
 #. module: custom_documents
 #: field:account.invoice,validated_by:0
@@ -903,4 +903,3 @@ msgstr "senza stock minimo"
 #: view:website:custom_documents.report_internal_picking
 msgid "¿INCLUIDOS?"
 msgstr "¿INCLUIDOS?"
-
