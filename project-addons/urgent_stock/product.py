@@ -45,8 +45,8 @@ class ProductProduct(models.Model):
                 [('show_material_stock', '=', True)])
             if warehouse:
                 new_context = dict(self.env.context)
-                new_context['warehouse'] = warehouse.id
-            move_domain += [('warehouse_id', '=', warehouse.id)]
+                new_context['warehouse'] = [x.id for x in warehouse]
+            move_domain += [('warehouse_id', 'in', [x.id for x in warehouse])]
 
         moves_out = self.with_context(new_context).env['stock.move'].search(
             move_domain)
