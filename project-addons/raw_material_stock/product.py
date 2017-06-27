@@ -47,7 +47,8 @@ class ProductProduct(models.Model):
                 [('show_material_stock', '=', True)])
             if warehouse:
                 new_context = dict(self.env.context)
-                new_context['warehouse'] = warehouse.id
+
+                new_context['warehouse'] = [x.id for x in warehouse]
         uom_obj = self.with_context(new_context).env['product.uom']
         bom_lines = self.with_context(new_context).env['mrp.bom.line'].search([('product_id', '=',
                                                     self.id)])
