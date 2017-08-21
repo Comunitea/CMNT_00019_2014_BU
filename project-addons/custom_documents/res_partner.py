@@ -27,12 +27,16 @@ class ResPartner(models.Model):
 
     checked_by = fields.Char('Checked by')
     document_name = fields.Char('Document name',
-                                compute='_get_document_name', store=True)
+                                compute='_get_document_name')
 
-    @api.one
-    @api.depends('name', 'parent_id.name')
-    def _get_document_name(self):
+    @api.multi
+    def _get_top_document_name(self):
         if self.parent_id:
-            self.document_name = self.parent_id.document_name
+           return self.parent_id._get_top_document_name()
         else:
-            self.document_name = self.name
+            return self.name
+        return ''
+    @api.multi
+    def _get_document_name(self):
+        for partner in self:
+            partner.document_name = partner._get_top_document_name()
