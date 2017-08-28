@@ -9,7 +9,7 @@ class PurchaseOrder(models.Model):
 
     _inherit = 'purchase.order'
 
-    invoiced2 = fields.Boolean(store=True, compute='_compute_invoiced')
+    invoiced2 = fields.Boolean(store=True, compute='_compute_invoiced2')
 
     @api.multi
     def set_invoiced(self):
