@@ -51,5 +51,26 @@ class sale_order_line(models.Model):
                                                       context)
         res['value']['name'] = product.get_product_ref(partner) + ' - ' \
             + product.with_context({'lang': partner.lang}).name
-
         return res
+
+    def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,
+            uom=False, qty_uos=0, uos=False, name='', partner_id=False,
+            lang=False, update_tax=True, date_order=False, packaging=False,
+            fiscal_position=False, flag=False, context=None):
+            """
+                Se vuelve a obtener el nombre para evitar errores.
+            """
+            res = super(sale_order_line, self).product_id_change(
+                cr, uid, ids, pricelist, product, qty,
+                uom, qty_uos, uos, name, partner_id,
+                lang, update_tax, date_order, packaging,
+                fiscal_position, flag, context)
+            if not partner_id or not product:
+                return res
+            product = self.pool.get('product.product').browse(cr, uid, product,
+                                                              context)
+            partner = self.pool.get('res.partner').browse(cr, uid, partner_id,
+                                                          context)
+            res['value']['name'] = product.get_product_ref(partner) + ' - ' \
+                + product.with_context({'lang': partner.lang}).name
+            return res
