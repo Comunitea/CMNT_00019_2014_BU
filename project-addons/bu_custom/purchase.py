@@ -9,10 +9,7 @@ class PurchaseOrder(models.Model):
 
     _inherit = 'purchase.order'
 
-    invoiced = fields.Boolean(
-        'Invoice Received', copy=False,
-        help="It indicates that an invoice has been validated",
-        compute='_compute_invoiced')
+    invoiced2 = fields.Boolean(store=True, compute='_compute_invoiced')
 
     @api.multi
     def set_invoiced(self):
@@ -20,6 +17,6 @@ class PurchaseOrder(models.Model):
         self.step_workflow()
 
     @api.depends('order_line.invoiced', 'order_line.state')
-    def _compute_invoiced(self):
+    def _compute_invoiced2(self):
         for purchase in self:
             purchase.invoiced = all(line.invoiced for line in purchase.order_line if line.state != 'cancel')
