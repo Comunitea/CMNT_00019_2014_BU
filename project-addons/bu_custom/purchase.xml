@@ -27,5 +27,16 @@
             </field>
         </record>
 
+        <record id="purchase_order_fix_not_invoiced" model="ir.ui.view">
+            <field name="name">purchase.order.search</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <filter name="not_invoiced" position="attributes">
+                    <attribute name="domain">[('invoiced','=', False)]</attribute>
+                </filter>
+            </field>
+        </record>
+
     </data>
 </openerp>
