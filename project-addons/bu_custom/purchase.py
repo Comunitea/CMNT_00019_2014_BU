@@ -19,4 +19,4 @@ class PurchaseOrder(models.Model):
     @api.depends('order_line.invoiced', 'order_line.state')
     def _compute_invoiced2(self):
         for purchase in self:
-            purchase.invoiced = all(line.invoiced for line in purchase.order_line if line.state != 'cancel')
+            purchase.invoiced2 = all(line.invoiced for line in purchase.order_line if line.state != 'cancel')
