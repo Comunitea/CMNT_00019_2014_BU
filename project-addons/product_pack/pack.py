@@ -766,7 +766,6 @@ class stock_pciking(orm.Model):
                                     if not line.pack_in_moves(picking_product_ids):
                                         for inv_line in line.invoice_lines:
                                             if inv_line.invoice_id.id == invoice.id:
-                                                print inv_line.name
                                                 inv_line.unlink()
         return invoice_ids
 
