@@ -17,6 +17,7 @@
                     <field name="minimum_stock"/>
                     <field name="manual_minimum_stock"/>
                     <field name="virtual_available"/>
+                    <field name="virtual_stock_conservative"/>
                 </field>
             </field>
         </record>
