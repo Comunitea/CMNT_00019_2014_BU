@@ -21,3 +21,4 @@
 
 from . import stock_transfer_details
 from . import recompute_price_from_bom
+from . import stock_valuation_history
