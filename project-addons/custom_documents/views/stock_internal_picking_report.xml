@@ -50,7 +50,9 @@
                                 </div>
                                 <div class="row diff_row">
                                     <div class="col-xs-12">
-                                        <span t-esc="o.partner_id.name_get()[0][1]"/>
+                                        <t t-if="o.partner_id">
+                                            <span t-esc="o.partner_id.name_get()[0][1]"/>
+                                        </t>
                                     </div>
                                 </div>
                                 <div class="row">
