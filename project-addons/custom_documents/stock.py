@@ -25,16 +25,17 @@ class StockPicking(models.Model):
 
     _inherit = 'stock.picking'
 
-    weight_edit = fields.Float('Weight', compute='compute_weight', store=True,
-                               readonly=False)
-    weight_net_edit = fields.Float('Net weight', compute='compute_weight',
-                                   store=True, readonly=False)
+    #TODO: Migrar
+    # ~ weight_edit = fields.Float('Weight', compute='compute_weight', store=True,
+                               # ~ readonly=False)
+    # ~ weight_net_edit = fields.Float('Net weight', compute='compute_weight',
+                                   # ~ store=True, readonly=False)
 
-    @api.one
-    @api.depends('weight', 'weight_net')
-    def compute_weight(self):
-        self.weight_edit = self.weight
-        self.weight_net_edit = self.weight_net
+    # ~ @api.one
+    # ~ @api.depends('weight', 'weight_net')
+    # ~ def compute_weight(self):
+        # ~ self.weight_edit = self.weight
+        # ~ self.weight_net_edit = self.weight_net
 
     @api.multi
     def action_invoice_create(self, journal_id, group=False,
@@ -135,26 +136,27 @@ class StockQuantPackage(models.Model):
     weight = fields.Float('Weight')
 
 
-class stock_transfer_details_items(models.TransientModel):
-    _inherit = 'stock.transfer_details_items'
+#TODO: Migrar
+# ~ class stock_transfer_details_items(models.TransientModel):
+    # ~ _inherit = 'stock.transfer_details_items'
 
-    @api.multi
-    def put_in_pack(self):
-        res = super(stock_transfer_details_items, self).put_in_pack()
-        for packop in self:
-            if packop.result_package_id:
-                weight = packop.quantity * packop.product_id.weight
-                measures = ''
-                use_packaging = False
-                for packaging in packop.product_id.packaging_ids:
-                    if packaging.qty >= packop.quantity:
-                        if not use_packaging:
-                            use_packaging = packaging
-                        else:
-                            if packaging.qty < use_packaging.qty:
-                                use_packaging = packaging
-                if use_packaging:
-                    measures = use_packaging.measures_str
-                packop.result_package_id.write({'weight': weight,
-                                                'measures': measures})
-        return res
+    # ~ @api.multi
+    # ~ def put_in_pack(self):
+        # ~ res = super(stock_transfer_details_items, self).put_in_pack()
+        # ~ for packop in self:
+            # ~ if packop.result_package_id:
+                # ~ weight = packop.quantity * packop.product_id.weight
+                # ~ measures = ''
+                # ~ use_packaging = False
+                # ~ for packaging in packop.product_id.packaging_ids:
+                    # ~ if packaging.qty >= packop.quantity:
+                        # ~ if not use_packaging:
+                            # ~ use_packaging = packaging
+                        # ~ else:
+                            # ~ if packaging.qty < use_packaging.qty:
+                                # ~ use_packaging = packaging
+                # ~ if use_packaging:
+                    # ~ measures = use_packaging.measures_str
+                # ~ packop.result_package_id.write({'weight': weight,
+                                                # ~ 'measures': measures})
+        # ~ return res

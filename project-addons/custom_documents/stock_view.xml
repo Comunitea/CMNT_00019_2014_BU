@@ -3,7 +3,7 @@
 <openerp>
     <data>
 
-        <record id="stock_picking_add_editable_weight" model="ir.ui.view">
+        <!--TODO: Migrar<record id="stock_picking_add_editable_weight" model="ir.ui.view">
             <field name="name">stock.picking.form</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="delivery.view_picking_withcarrier_out_form"/>
@@ -15,7 +15,7 @@
                     <field name="weight_edit" class="oe_inline"/>
                 </field>
             </field>
-        </record>
+        </record>-->
 
         <record id="stock_quant_package_add_measures" model="ir.ui.view">
             <field name="name">stock.quant.package.form</field>
