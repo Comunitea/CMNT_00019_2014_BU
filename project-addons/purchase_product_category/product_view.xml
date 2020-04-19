@@ -147,8 +147,8 @@
             </field>
         </record>
 
-    <menuitem name="Products by material category" id="menu_product_by_material_category_purchase_form" action="product_material_category_action"
-           parent="purchase.menu_procurement_management_product" sequence="9"/>
+    <!--TODO: Migrar<menuitem name="Products by material category" id="menu_product_by_material_category_purchase_form" action="product_material_category_action"
+           parent="purchase.menu_procurement_management_product" sequence="9"/>-->
 
     </data>
 </openerp>

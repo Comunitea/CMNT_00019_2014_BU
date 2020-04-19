@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from openerp import models, fields, tools
+from openerp import models, fields, tools, api
 
 
 class commission_report(models.Model):
@@ -39,9 +39,10 @@ class commission_report(models.Model):
     commission_amount = fields.Float("Commission amount")
     journal_id = fields.Many2one("account.journal", "Journal")
 
-    def init(self, cr):
-        tools.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE or REPLACE VIEW %s as (
+    @api.model_cr
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr, self._table)
+        self.env.cr.execute("""CREATE or REPLACE VIEW %s as (
             SELECT c_line.id,
                 i_line.product_id  AS product_id,
                 c_line.agent_id  AS agent_id,

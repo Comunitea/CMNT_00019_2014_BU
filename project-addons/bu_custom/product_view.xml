@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <menuitem id="menu_products_purchase" action="product.product_normal_action_sell" parent="purchase.menu_procurement_management_product" groups="base.group_no_one" sequence="60"/>
+        <!--TODO: Migrar<menuitem id="menu_products_purchase" action="product.product_normal_action_sell" parent="purchase.menu_procurement_management_product" groups="base.group_no_one" sequence="60"/>
         <menuitem id="menu_products_stock" action="product.product_normal_action_sell" parent="stock.menu_stock_product" groups="base.group_no_one" sequence="10"/>
-        <menuitem id="menu_products_mrp" action="product.product_normal_action_sell" parent="mrp.menu_mrp_bom" groups="base.group_no_one" sequence="80"/>
+        <menuitem id="menu_products_mrp" action="product.product_normal_action_sell" parent="mrp.menu_mrp_bom" groups="base.group_no_one" sequence="80"/>-->
 
         <record id="view_stock_product_tree" model="ir.ui.view">
             <field name="name">product.stock.tree.inherit</field>
@@ -56,7 +56,7 @@
                 <filter string="Consumable" position="after">
                     <filter string="Miami" name="miami" domain="[('miami','=',True)]"/>
                 </filter>
-                    
+
             </field>
         </record>
 

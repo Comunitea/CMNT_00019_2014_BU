@@ -19,8 +19,8 @@
 #
 ##############################################################################
 
-from openerp import models, fields
-from openerp.tools.sql import drop_view_if_exists
+from openerp import models, fields, api
+from openerp.tools import drop_view_if_exists
 
 
 class report_intrastat(models.Model):
@@ -31,10 +31,10 @@ class report_intrastat(models.Model):
     type = fields.Selection(selection_add=[('import_refund', 'Import refund'),
                                            ('export_refund', 'Export refund')])
 
-
-    def init(self, cr):
-        drop_view_if_exists(cr, 'report_intrastat')
-        cr.execute("""
+    @api.model_cr
+    def init(self):
+        drop_view_if_exists(self.env.cr, 'report_intrastat')
+        self.env.cr.execute("""
             create or replace view report_intrastat as (
                 select
                     to_char(inv.date_invoice, 'YYYY') as name,
