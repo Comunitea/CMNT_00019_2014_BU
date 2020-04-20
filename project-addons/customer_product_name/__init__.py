@@ -19,8 +19,8 @@
 #
 ##############################################################################
 
-import res_partner
-import product
-import sale
-import stock
-import account
+from . import res_partner
+from . import product
+from . import sale
+from . import stock
+from . import account

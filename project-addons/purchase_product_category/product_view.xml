@@ -78,12 +78,12 @@
             <field name="context">{'material_categ_id':active_id, 'search_default_material_categ_id':active_id}</field>
         </record>
 
-        <record id="ir_product_category_open" model="ir.values">
+       <!-- TODO: Migrar<record id="ir_product_category_open" model="ir.values">
             <field eval="'tree_but_open'" name="key2"/>
             <field eval="'product.material.category'" name="model"/>
             <field name="name">Products by material Categories</field>
             <field eval="'ir.actions.act_window,%d'%product_normal_action_tree" name="value"/>
-        </record>
+        </record>-->
 
     <record id="product_material_category_search_view" model="ir.ui.view">
         <field name="name">product.material.category.search</field>
