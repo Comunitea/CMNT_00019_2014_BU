@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * technical_office
+#       * technical_office
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-16 09:25+0000\n"
-"PO-Revision-Date: 2014-12-16 09:25+0000\n"
+"POT-Creation-Date: 2020-06-02 11:34+0000\n"
+"PO-Revision-Date: 2020-06-02 11:34+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,17 @@ msgstr ""
 
 #. module: technical_office
 #: model:ir.model,name:technical_office.model_product_product
+#: model_terms:ir.ui.view,arch_db:technical_office.product_search_tech_office
 msgid "Product"
 msgstr "Producto"
 
 #. module: technical_office
-#: field:product.product,tech_office_code:0
+#: model:ir.model,name:technical_office.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: technical_office
+#: model:ir.model.fields,field_description:technical_office.field_product_product__tech_office_code
+#: model:ir.model.fields,field_description:technical_office.field_product_template__tech_office_code
 msgid "Technical office code"
 msgstr "Código de oficina técnica"
-

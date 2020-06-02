@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,15 +17,28 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+from odoo import models, fields, api
 
-{
-    'name': "Technical office",
-    'version': '1.0',
-    'category': 'product',
-    'description': """""",
-    'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['product', 'mrp'],
-    "data": ['product_view.xml'],
-    "installable": True
-}
+
+class ProductProduct(models.Model):
+
+    _inherit = 'product.product'
+
+    tech_office_code = fields.Char('Technical office code')
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100,
+                    name_get_uid=None):
+        args = [('tech_office_code', operator, name)] + args
+        res = super().name_search(name, args=args, operator=operator,
+                                  limit=limit, name_get_uid=name_get_uid)
+        return res
+
+
+class ProductTemplate(models.Model):
+
+    _inherit = 'product.template'
+
+    tech_office_code = fields.\
+        Char('Technical office code', readonly=False,
+             related="product_variant_ids.tech_office_code")
