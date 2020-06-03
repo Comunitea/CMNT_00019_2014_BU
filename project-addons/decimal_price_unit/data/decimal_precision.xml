@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="purchase_decimal_price" model="decimal.precision">
-            <field name="name">Purchase price</field>
-            <field name="digits">4</field>
-        </record>
-    </data>
-</openerp>
