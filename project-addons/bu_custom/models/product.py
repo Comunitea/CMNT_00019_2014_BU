@@ -25,6 +25,7 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     manual_minimum_stock = fields.Float('Manual minimum stock')
+    reordering_min_qty = fields.Float(string="Min. qty for purchase")
 
 
 class ProductTemplate(models.Model):

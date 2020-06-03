@@ -28,10 +28,22 @@ class ProductProduct(models.Model):
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=100):
-        args = [('tech_office_code', operator, name)] + args
-        res = super().name_search(name, args=args, operator=operator,
-                                  limit=limit)
-        return res
+        if not args:
+            args = []
+        recs = self.browse()
+        if name:
+            recs = self.search([('tech_office_code', operator, name)])
+
+        if not recs:
+            return super().name_search(name, args=args, operator=operator,
+                                       limit=limit)
+        else:
+            records = super().name_search(name, args=args, operator=operator,
+                                          limit=limit)
+            records = [x[0] for x in records]
+            records = self.browse(records)
+            recs |= records
+            return recs.name_get()
 
 
 class ProductTemplate(models.Model):
