@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* bu_custom
+#       * bu_custom
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 15:42+0000\n"
-"PO-Revision-Date: 2017-03-07 15:42+0000\n"
+"POT-Creation-Date: 2020-06-03 10:59+0000\n"
+"PO-Revision-Date: 2020-06-03 10:59+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,109 +16,72 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: bu_custom
-#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
-#: field:account.invoice.report,agent_id:0
-#: field:account.invoice.report,invoice_id:0
-msgid "Agent"
-msgstr "Agente"
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__product_brand
+#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
+msgid "Brand"
+msgstr "Marca"
 
 #. module: bu_custom
-#: view:stock.move:bu_custom.move_receipt_picking_calendar
+#: model_terms:ir.ui.view,arch_db:bu_custom.move_receipt_picking_calendar
 msgid "Calendar View"
-msgstr "Vista Calendario"
+msgstr "Vista calendario"
 
 #. module: bu_custom
-#: view:recompute.price.from.bom:bu_custom.recompute_price_from_bom_form_view
+#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
 msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: bu_custom
-#: view:stock.move:bu_custom.view_move_form_add_unreserve
-msgid "Cancel Availability"
-msgstr "Cancelar disponibilidad"
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__product_category
+msgid "Category"
+msgstr "Categoría"
 
 #. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:66
-#, python-format
-msgid "Cannot remove moves of final product"
-msgstr "No se pueden cancelar reservas de producto final"
-
-#. module: bu_custom
-#: field:recompute.price.from.bom,recursive:0
-msgid "Change prices of child BoMs too"
-msgstr "Cambiar precios de la LdM hijas también"
-
-#. module: bu_custom
-#: field:product.product,commercialized_in_miami:0
-msgid "Commercialized in miami"
-msgstr "Comercializado en Miami"
-
-#. module: bu_custom
-#: view:product.template:bu_custom.product_template_search_view
-msgid "Consumable"
-msgstr "Consumible"
-
-#. module: bu_custom
-#: field:recompute.price.from.bom,create_uid:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,create_date:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
 
 #. module: bu_custom
-#: view:stock.picking:bu_custom.stock_search_currency
-#: field:stock.picking,currency:0
+#: model:ir.model.fields,field_description:bu_custom.field_stock_picking_currency
+#: model_terms:ir.ui.view,arch_db:bu_custom.stock_search_currency
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 #. module: bu_custom
-#: view:account.invoice:bu_custom.invoice_group_journal_search
+#: model_terms:ir.ui.view,arch_db:bu_custom.invoice_group_journal_search
 msgid "Diario"
 msgstr "Diario"
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,display_name:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nombre mostrado"
 
 #. module: bu_custom
-#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
-msgid "Due Month"
-msgstr "Mes de vencimiento"
-
-#. module: bu_custom
-#: field:recompute.price.from.bom,real_time_accounting:0
-msgid "Generate accounting entries when real-time"
-msgstr "Generar asientos contables en tiempo real"
-
-#. module: bu_custom
-#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
 msgid "Group By"
-msgstr "Agrupar"
+msgstr "Agrupar por"
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,id:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom_id
 msgid "ID"
-msgstr "ID"
+msgstr "ID (identificación)"
 
 #. module: bu_custom
-#: field:account.invoice.line,product_category:0
-msgid "Internal Category"
-msgstr "Categoría de producto"
-
-#. module: bu_custom
-#: view:account.invoice.report:bu_custom.view_account_invoice_report_search
 #: model:ir.model,name:bu_custom.model_account_invoice
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_report_invoice_id
 msgid "Invoice"
 msgstr "Factura"
 
 #. module: bu_custom
-#: field:account.invoice.line,invoice_date:0
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__invoice_date
 msgid "Invoice Date"
-msgstr "F3echa factura"
+msgstr "Fecha factura"
 
 #. module: bu_custom
 #: model:ir.model,name:bu_custom.model_account_invoice_line
@@ -126,7 +89,7 @@ msgid "Invoice Line"
 msgstr "Línea de factura"
 
 #. module: bu_custom
-#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
 msgid "Invoice date"
 msgstr "Fecha de factura"
 
@@ -137,7 +100,7 @@ msgid "Invoice lines"
 msgstr "Lineas de factura"
 
 #. module: bu_custom
-#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
 msgid "Invoice type"
 msgstr "Tipo de factura"
 
@@ -147,93 +110,72 @@ msgid "Invoices Statistics"
 msgstr "Estadísticas de facturas"
 
 #. module: bu_custom
-#: help:account.invoice.line,invoice_date:0
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: bu_custom
+#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__invoice_date
 msgid "Keep empty to use the current date"
-msgstr "Mantener vacío para usar la fecha actual"
+msgstr "Dejarlo vacío para utilizar la fecha actual."
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,__last_update:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom____last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Última Modifiación en"
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,write_uid:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Última actualización de"
 
 #. module: bu_custom
-#: field:recompute.price.from.bom,write_date:0
+#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Última actualización en"
 
 #. module: bu_custom
-#: field:product.product,manual_minimum_stock:0
+#: model:ir.model.fields,field_description:bu_custom.field_product_product__manual_minimum_stock
+#: model:ir.model.fields,field_description:bu_custom.field_product_template__manual_minimum_stock
 msgid "Manual minimum stock"
 msgstr "Stock mínimo manual"
 
 #. module: bu_custom
-#: model:ir.model,name:bu_custom.model_mrp_production
-msgid "Manufacturing Order"
-msgstr "Órden de producción"
-
-#. module: bu_custom
-#: field:product.product,miami:0
-#: view:product.template:bu_custom.product_template_search_view
-#: field:product.template,miami:0
+#: model:ir.model.fields,field_description:bu_custom.field_product_product_miami
+#: model:ir.model.fields,field_description:bu_custom.field_product_template_miami
+#: model_terms:ir.ui.view,arch_db:bu_custom.product_template_search_view
 msgid "Miami"
 msgstr "Miami"
 
 #. module: bu_custom
-#: field:product.product,minimum_stock:0
-msgid "Minimum stock"
-msgstr "Stock mínimo"
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line_origin_line_ids
+msgid "Original invoice line"
+msgstr "Línea de la factura original"
 
 #. module: bu_custom
-#: view:recompute.price.from.bom:bu_custom.recompute_price_from_bom_form_view
-msgid "Options"
-msgstr "Opciones"
+#: model:ir.model.fields,help:bu_custom.field_account_invoice_line_origin_line_ids
+msgid "Original invoice line to which this refund invoice line is referred to"
+msgstr "Línea de la factura original a la que está línea de factura rectificativa se refiere"
 
 #. module: bu_custom
-#: model:ir.model,name:bu_custom.model_stock_picking
-msgid "Picking List"
-msgstr "Albarán"
+#: model:ir.model.fields,field_description:bu_custom.field_stock_picking__partner_id
+msgid "Partner"
+msgstr "Empresa"
 
 #. module: bu_custom
-#: model:ir.model,name:bu_custom.model_stock_transfer_details_items
-msgid "Picking wizard items"
-msgstr "Elementos del asistente de albarán"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_product_product
-msgid "Product"
-msgstr "Producto"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_product_template
-msgid "Product Template"
-msgstr "Plantilla de producto"
-
-#. module: bu_custom
-#: model:ir.ui.menu,name:bu_custom.menu_products_mrp
-#: model:ir.ui.menu,name:bu_custom.menu_products_purchase
-#: model:ir.ui.menu,name:bu_custom.menu_products_stock
-msgid "Product Variants"
-msgstr "Variantes de Producto"
-
-#. module: bu_custom
-#: view:account.invoice.line:bu_custom.account_invoice_line_view_search
+#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
 msgid "Product category"
-msgstr "Categoría de producto"
+msgstr "Categ. producto"
 
 #. module: bu_custom
-#: field:mrp.production,total_produced:0
-msgid "Qty produced"
-msgstr "Cantidad producida"
-
-#. module: bu_custom
-#: view:recompute.price.from.bom:bu_custom.recompute_price_from_bom_form_view
+#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
 msgid "Recompute"
 msgstr "Recalcular"
+
+#. module: bu_custom
+#: model:ir.cron,name:bu_custom.ir_cron_recompute_price_from_bom
+msgid "Recompute Price From BoM"
+msgstr "Recalcular Precios (LdM)"
 
 #. module: bu_custom
 #: model:ir.actions.act_window,name:bu_custom.action_recompute_price_from_bom
@@ -242,55 +184,36 @@ msgid "Recompute Prices (BoM)"
 msgstr "Recalcular Precios (LdM)"
 
 #. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:72
-#, python-format
-msgid "Reservations can only be removed in productions on ready state"
-msgstr "Las reservas solo pueden cancelarse si la producción está confirmada o preparada."
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line_refund_line_ids
+msgid "Refund invoice line"
+msgstr "Línea de factura rectificativa"
 
 #. module: bu_custom
-#: code:addons/bu_custom/stock_picking.py:65
-#: code:addons/bu_custom/stock_picking.py:71
-#, python-format
-msgid "Reserve can not be deleted"
-msgstr "La reserva no puede ser cancelada"
+#: model:ir.model.fields,help:bu_custom.field_account_invoice_line_refund_line_ids
+msgid "Refund invoice lines created from this invoice line"
+msgstr "Líneas de facturas rectificativas creadas desde esta línea de factura"
 
 #. module: bu_custom
-#: field:account.invoice,sale_ref:0
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice__sale_ref
 msgid "Sale ref"
-msgstr "Sale ref"
+msgstr "Ref. venta"
 
 #. module: bu_custom
-#: help:account.invoice.line,product_category:0
+#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__product_brand
+msgid "Select a brand for this product"
+msgstr "Seleccione una marca para este producto"
+
+#. module: bu_custom
+#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__product_category
 msgid "Select category for the current product"
-msgstr "Seleccionar categoría en el producto actual"
+msgstr "Seleccione la categoría para el producto actual."
 
 #. module: bu_custom
-#: view:stock.transfer_details:bu_custom.transfer_details_add_split_all
-msgid "Split all"
-msgstr "Dividir todo"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_stock_move
-msgid "Stock Move"
-msgstr "Movimiento de existencias"
-
-#. module: bu_custom
-#: field:account.invoice.line,invoice_type:0
+#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__invoice_type
 msgid "Type"
 msgstr "Tipo"
 
 #. module: bu_custom
-#: view:recompute.price.from.bom:bu_custom.recompute_price_from_bom_form_view
+#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
 msgid "or"
 msgstr "o"
-
-#. module: bu_custom
-#: view:sale.order:bu_custom.sale_order_pick_policy
-msgid "shipping policy"
-msgstr "Política de envío"
-
-#. module: bu_custom
-#: view:res.partner:bu_custom.partner_language_context
-msgid "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
-msgstr "{'default_lang':lang, 'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_use_parent_address': True}"
-

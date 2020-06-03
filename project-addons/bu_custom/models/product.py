@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2015 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,11 +17,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields
+from odoo import models, fields
 
 
-class SaleOrder(models.Model):
+class ProductProduct(models.Model):
 
-    _inherit = 'sale.order'
+    _inherit = 'product.product'
 
-    picking_policy = fields.Selection(string='shipping policy')
+    manual_minimum_stock = fields.Float('Manual minimum stock')
+
+
+class ProductTemplate(models.Model):
+
+    _inherit = 'product.template'
+
+    miami = fields.Boolean('Miami')
+    manual_minimum_stock = fields.\
+        Float('Manual minimum stock', readonly=True,
+              related="product_variant_ids.manual_minimum_stock")

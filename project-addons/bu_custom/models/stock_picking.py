@@ -1,6 +1,6 @@
 ##############################################################################
 #
-#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    Copyright (C) 2015 Comunitea All Rights Reserved
 #    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -17,5 +17,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import models
-from . import wizard
+from odoo import models, fields
+
+
+class StockPicking(models.Model):
+
+    _inherit = 'stock.picking'
+
+    currency = fields.Many2one('res.currency',
+                               related='sale_id.currency_id', store=True)
+    partner_id = fields.Many2one(states={'done': [('readonly', False)],
+                                         'cancel': [('readonly', True)]})

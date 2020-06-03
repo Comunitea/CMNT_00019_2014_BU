@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<openerp>
-    <data>
+<odoo>
 
         <record id="recompute_price_from_bom_form_view" model="ir.ui.view">
             <field name="name">recompute.price.from.bom.form.view</field>
             <field name="model">recompute.price.from.bom</field>
             <field name="arch" type="xml">
                 <form>
-                    <group string="Options">
-                         <field name="real_time_accounting"/>
-                         <field name="recursive"/>
-                    </group>
                     <footer>
                         <button name="recompute_price_from_bom" string="Recompute" type="object" class="oe_highlight"/>
                          or
@@ -36,7 +30,6 @@
           action="action_recompute_price_from_bom"
           parent="mrp.menu_mrp_bom"
           sequence="6"/>
-      
-    </data>
-</openerp>
+
+</odoo>
 

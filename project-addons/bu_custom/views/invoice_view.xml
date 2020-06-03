@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
 
         <record id="invoice_group_journal_search" model="ir.ui.view">
             <field name="name">invoice.group.journal.search</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.view_account_invoice_filter"/>
             <field name="arch" type="xml">
-                <xpath expr="//group/filter[@string='Period']" position="after">
-                    <filter string="Diario" context="{'group_by':'journal_id'}" />
-                </xpath>
-            </field>
-        </record>
-
-        <record id="account_invoice_change_reference" model="ir.ui.view">
-            <field name="name">account.invoice.supplier.mod340.form</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="l10n_es_aeat_mod340.invoice_supplier_mod340_form"/>
-            <field name="arch" type="xml">
-                <field name="reference" position="replace">
-                    <field name="reference" nolabel="1" required="0"/>
-                </field>
+                <filter name="status" position="after">
+                    <filter string="Diario" name="journal" context="{'group_by': 'journal_id'}" />
+                </filter>
             </field>
         </record>
 
@@ -36,18 +24,6 @@
             </field>
         </record>
 
-        <record id="view_account_invoice_report_search" model="ir.ui.view">
-            <field name="model">account.invoice.report</field>
-            <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
-            <field name="arch" type="xml">
-                <filter string="Due Month" position="after">
-                    <filter string="Agent" context="{'group_by':'agent_id'}"/>
-                    <filter string="Invoice" context="{'group_by':'invoice_id'}"/>
-                </filter>
-            </field>
-        </record>
-
-
         <record id="account_invoice_line_view_search" model="ir.ui.view">
             <field name="name">account.invoice.line.search</field>
             <field name="model">account.invoice.line</field>
@@ -57,7 +33,6 @@
                     <field name="product_id"/>
                     <field name="product_category"/>
                     <field name="invoice_type"/>
-                    <field name="agent_id"/>
                     <field name="product_brand"/>
                     <field name="journal_id"/>
                     <field name="name"/>
@@ -65,7 +40,6 @@
                         <filter name="group_by_product_category" string="Product category" context="{'group_by':'product_category'}"/>
                         <filter name="group_by_invoice_type" string="Invoice type" context="{'group_by':'invoice_type'}"/>
                         <filter name="group_by_invoice_date" string="Invoice date" context="{'group_by':'invoice_date'}"/>
-                        <filter name="group_by_agent" string="Agent" context="{'group_by':'agent_id'}"/>
                         <filter name="group_by_brand" string="Brand" context="{'group_by':'product_brand'}"/>
                     </group>
                </search>
@@ -83,5 +57,4 @@
 
         <menuitem name="Invoice lines" sequence="100" parent="account.menu_finance_receivables" action="account_invoice_line_action" id="menu_account_invoice_line"/>
 
-    </data>
-</openerp>
+</odoo>

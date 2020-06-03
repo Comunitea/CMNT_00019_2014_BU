@@ -27,11 +27,10 @@ class ProductProduct(models.Model):
     tech_office_code = fields.Char('Technical office code')
 
     @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=100,
-                    name_get_uid=None):
+    def name_search(self, name, args=None, operator='ilike', limit=100):
         args = [('tech_office_code', operator, name)] + args
         res = super().name_search(name, args=args, operator=operator,
-                                  limit=limit, name_get_uid=name_get_uid)
+                                  limit=limit)
         return res
 
 

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,22 +20,19 @@
 
 {
     'name': "BU customizations",
-    'version': '8.0.2.0.0',
+    'version': '12.0.1.0.0',
     'category': '',
     'description': """""",
-    'author': 'Pexego',
+    'author': 'Comunitea',
     'website': '',
-    "depends": ['sale_stock', 'stock', 'technical_office',
-                'l10n_es_aeat_mod340', 'mrp', 'sale_commission',
-                'product_brand',
-                'product_extended',
+    "depends": ['sale_stock', 'technical_office', 'purchase_force_invoiced',
+                'mrp_bom_cost', 'sale_commission', 'product_brand',
                 'product_virtual_stock_conservative'],
-    "data": ['sale_view.xml', 'mrp_view.xml', 'stock_view.xml',
+    "data": ['views/sale_view.xml', 'views/stock_view.xml',
              'data/cron.xml',
-             'wizard/stock_transfer_details_view.xml',
              'wizard/recompute_price_from_bom.xml',
-             'product_view.xml', 'purchase.xml',
-             'partner_language_contact_view.xml',
-             'invoice_view.xml', 'mrp_workflow.xml'],
+             'views/product_view.xml',
+             'views/partner_language_contact_view.xml',
+             'views/invoice_view.xml'],
     "installable": True
 }
