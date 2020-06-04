@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (C) 2015 Comunitea All Rights Reserved
@@ -21,7 +20,7 @@
 
 {
     'name': 'Stock inventory notes',
-    'version': '1.0',
+    'version': '12.0.1.0.0',
     'category': 'stock',
     'description': """add notes to inventory adjustment""",
     'author': 'Comunitea',
