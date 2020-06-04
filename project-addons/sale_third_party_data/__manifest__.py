@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego Sistemas Informáticos All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea Sistemas Informáticos All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,11 +20,11 @@
 
 {
     'name': "Sale third-party data",
-    'version': '1.0',
+    'version': '12.0.1.0.0',
     'category': 'sale',
     'description': """When a sale is confirmed checks the partner data""",
-    'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['base', 'sale'],
+    'author': 'Comunitea',
+    'website': 'www.comunitea.com',
+    "depends": ['sale'],
     "installable": True
 }

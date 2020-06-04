@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego Sistemas Informáticos All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -19,21 +18,18 @@
 #
 ##############################################################################
 
-from openerp import models, api, exceptions, _
+from odoo import models, api, exceptions, _
 
 
-class sale_order(models.Model):
+class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
-    @api.model
-    def action_wait(self):
-        errors = []
-        if not self.partner_id.vat:
-            errors.append(_('The partner %s not have VAT.') %
-                          self.partner_id.name)
-        if errors:
-            raise exceptions.except_orm(
-                _('Field error'),
-                ('%s\n' * len(errors) % tuple(x for x in errors)))
-        return super(sale_order, self).action_wait()
+    @api.multi
+    def action_confirm(self):
+        for order in self:
+            if not order.partner_id.commercial_partner_id.vat:
+                raise exceptions.Warning(_('The partner %s not have VAT.') %
+                                         order.partner_id.
+                                         commercial_partner_id.name)
+        return super().action_confirm()
