@@ -33,6 +33,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     miami = fields.Boolean('Miami')
+    reordering_min_qty = fields.Float(string="Min. qty for purchase")
     manual_minimum_stock = fields.\
         Float('Manual minimum stock', readonly=True,
               related="product_variant_ids.manual_minimum_stock")

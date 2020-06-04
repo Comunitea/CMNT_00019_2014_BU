@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,12 +20,12 @@
 
 {
     'name': "Used material stock",
-    'version': '1.0',
+    'version': '12.0.1.0.0',
     'category': 'stock',
     'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['product', 'mrp', 'stock', 'decimal_precision'],
-    "data": ['product_view.xml', 'stock_view.xml'],
+    'author': 'Comunitea',
+    'website': 'www.comunitea.com',
+    "depends": ['mrp', 'product_virtual_stock_conservative'],
+    "data": ['views/product_view.xml', 'views/stock_view.xml'],
     "installable": True
 }
