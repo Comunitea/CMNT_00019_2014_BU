@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * purchase_product_category
+#       * purchase_product_category
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-09 11:23+0000\n"
-"PO-Revision-Date: 2014-10-09 11:23+0000\n"
+"POT-Creation-Date: 2020-06-04 15:08+0000\n"
+"PO-Revision-Date: 2020-06-04 15:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,79 +16,105 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: purchase_product_category
-#: view:product.template:purchase_product_category.product_template_add_material_cat_search_view
-msgid "Category"
-msgstr "Categoría"
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_form
+msgid "<span class=\"o_stat_text\"> Products</span>"
+msgstr "<span class=\"o_stat_text\"> Productos</span>"
 
 #. module: purchase_product_category
-#: field:product.material.category,child_id:0
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_form
+msgid "Category name"
+msgstr "Nombre de categoría"
+
+#. module: purchase_product_category
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__child_id
 msgid "Child Categories"
-msgstr "Categorias hijas"
+msgstr "Categorías hijas"
 
 #. module: purchase_product_category
-#: field:product.material.category,create_uid:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: purchase_product_category
-#: field:product.material.category,create_date:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
 
 #. module: purchase_product_category
-#: field:product.material.category,id:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: purchase_product_category
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category_id
 msgid "ID"
-msgstr "ID"
+msgstr "ID (identificación)"
 
 #. module: purchase_product_category
-#: field:product.material.category,write_uid:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category____last_update
+msgid "Last Modified on"
+msgstr "Última Modifiación en"
+
+#. module: purchase_product_category
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Última actualización de"
 
 #. module: purchase_product_category
-#: field:product.material.category,write_date:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Última actualización en"
 
 #. module: purchase_product_category
-#: field:product.material.category,parent_left:0
-msgid "Left Parent"
-msgstr "Left Parent"
-
-#. module: purchase_product_category
-#: view:product.material.category:purchase_product_category.material_category_tree
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_tree
 msgid "Material categories"
-msgstr "Categorias de material"
+msgstr "Categorías de materiales"
 
 #. module: purchase_product_category
-#: view:product.material.category:purchase_product_category.material_category_form
-#: view:product.template:purchase_product_category.product_template_add_material_cat_search_view
-#: field:product.template,material_categ_id:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_product__material_categ_id
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_template__material_categ_id
 msgid "Material category"
 msgstr "Categoría de material"
 
 #. module: purchase_product_category
-#: field:product.material.category,name:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__complete_name
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category_name
 msgid "Name"
 msgstr "Nombre"
 
 #. module: purchase_product_category
-#: field:product.material.category,parent_id:0
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__parent_id
 msgid "Parent Category"
 msgstr "Categoría padre"
 
 #. module: purchase_product_category
-#: view:product.material.category:purchase_product_category.material_category_search
+#: model:ir.model.fields,field_description:purchase_product_category.field_product_material_category__parent_path
+msgid "Parent Path"
+msgstr "Ruta padre"
+
+#. module: purchase_product_category
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_search
 msgid "Product Categories"
-msgstr "Categorías de producto"
+msgstr "Categorías de productos"
 
 #. module: purchase_product_category
-#: model:ir.model,name:purchase_product_category.model_product_template
-msgid "Product Template"
-msgstr "Plantilla de producto"
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_tree
+msgid "Product Category"
+msgstr "Categoría de producto"
 
 #. module: purchase_product_category
-#: field:product.material.category,parent_right:0
-msgid "Right Parent"
-msgstr "Right Parent"
+#: model:ir.actions.act_window,name:purchase_product_category.product_material_category_action_form
+#: model:ir.ui.menu,name:purchase_product_category.menu_product_category_config_purchase
+msgid "Product Material Categories"
+msgstr "Categorías de materiales"
 
+#. module: purchase_product_category
+#: code:addons/purchase_product_category/models/product.py:56
+#, python-format
+msgid "You cannot create recursive categories."
+msgstr "No puede crear categorías recursivas"
+
+#. module: purchase_product_category
+#: model_terms:ir.ui.view,arch_db:purchase_product_category.material_category_form
+msgid "e.g. Lamps"
+msgstr "ej. Lámparas"
