@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015 Pexego All Rights Reserved
-#    $Omar Castiñeira Saavedra <omar@pexego.es>$
+#    Copyright (C) 2015 Comunitea All Rights Reserved
+#    $Omar Castiñeira Saavedra <omar@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -19,7 +18,7 @@
 #
 ##############################################################################
 
-from openerp import models, api, _, exceptions
+from odoo import models, api, _, exceptions
 
 
 class AccountInvoice(models.Model):
@@ -28,14 +27,13 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def invoice_validate(self):
-        boss_group = self.env.ref("validated_partner.group_account_boss",
-                                  False)
         for invoice in self:
-            if not invoice.partner_id.validated:
-                if boss_group not in self.env.user.groups_id:
+            if not invoice.partner_id.commercial_partner_id.validated:
+                if not self.env.user.\
+                        has_group("validated_partner.group_account_boss"):
                     raise exceptions.Warning(_("Cannot validate this "
                                                "invoice because partner is "
                                                "not validated and you are "
                                                "not in Financial Boss "
                                                "group"))
-        return super(AccountInvoice, self).invoice_validate()
+        return super().invoice_validate()

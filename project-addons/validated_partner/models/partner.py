@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015 Pexego All Rights Reserved
-#    $Omar Castiñeira Saavedra <omar@pexego.es>$
+#    Copyright (C) 2015 Comunitea All Rights Reserved
+#    $Omar Castiñeira Saavedra <omar@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -19,16 +18,11 @@
 #
 ##############################################################################
 
-{
-    'name': "Validated partners",
-    'version': '1.0',
-    'category': 'stock',
-    'description': """Allow to mark partners as validated, invoices to this
-partners can be approved by anyone""",
-    'author': 'Pexego',
-    'website': 'www.pexego.es',
-    "depends": ['base', 'account'],
-    "data": ['partner_view.xml',
-             'data/validated_partner_groups.xml'],
-    "installable": True
-}
+from odoo import models, fields
+
+
+class ResPartner(models.Model):
+
+    _inherit = "res.partner"
+
+    validated = fields.Boolean('Validated')
