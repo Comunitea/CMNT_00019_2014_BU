@@ -1,111 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
+
         <template id="mrp_production">
-            <t t-call="report.html_container">
-                <t t-if="o and 'company_id' in o">
-                    <t t-set="company" t-value="o.company_id"></t>
-                </t>
-                <t t-if="not o or not 'company_id' in o">
-                    <t t-set="company" t-value="res_company"></t>
-                </t>
-                <div class="header">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
-                        </div>
-                        <div class="col-xs-9 text-right" style="margin-top:20px;" t-field="company.rml_header1"/>
-                    </div>
-                    <div class="row zero_min_height">
-                        <div class="col-xs-12">
-                            <div style="border-bottom: 1px solid black;"></div>
-                        </div>
-                    </div>
-                    <div class="row">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
                         <h1>Production Template</h1>
-                        <p>Date: <t t-esc="today"/></p>
-                    </div>
-                </div>
-                <div class="page">
-                    <t t-foreach="docs" t-as="stock_type">
-                        <t t-foreach="docs[stock_type]" t-as="routes">
-                            <strong><t t-esc="stock_type"/> in <t t-esc="routes"/></strong>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th><strong>Category</strong></th>
-                                        <th><strong>Description</strong></th>
-                                        <th><strong>Reference</strong></th>
-                                        <th><strong>Name</strong></th>
-                                        <th><strong>Produce</strong></th>
-                                        <th><strong>URGE</strong></th>
-                                        <th><strong>Produced</strong></th>
-                                        <th><strong>Prepared</strong></th>
-                                        <th><strong>Min</strong></th>
-                                        <th><strong>Available</strong></th>
-                                        <th><strong>Stock</strong></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <t t-foreach="docs[stock_type][routes]" t-as="o">
+                        <p>Date: <t t-esc="datetime.date.today()"/></p>
+                        <t t-foreach="docs" t-as="stock_type">
+                            <t t-foreach="docs[stock_type]" t-as="routes">
+                                <strong><t t-esc="stock_type"/> in <t t-esc="routes"/></strong>
+                                <table class="table">
+                                    <thead>
                                         <tr>
-
-                                            <td><span t-field="o.product_id.categ_id.name"/></td>
-                                            <td><span t-field="o.product_id.name"/></td>
-                                            <td><span t-field="o.product_id.default_code"/></td>
-                                            <td><span t-field="o.name"/></td>
-                                            <td><span t-field="o.product_qty"/></td>
-                                            <td><span t-field="o.product_id.urgent_stock"/></td>
-                                            <td> </td>
-                                            <td> </td>
-                                            <td><span t-field="o.product_id.stock_min"/></td>
-                                            <td><span t-field="o.product_id.virtual_available"/></td>
-                                            <td><span t-field="o.product_id.qty_available"/></td>
+                                            <th><strong>Category</strong></th>
+                                            <th><strong>Description</strong></th>
+                                            <th><strong>Reference</strong></th>
+                                            <th><strong>Name</strong></th>
+                                            <th><strong>Produce</strong></th>
+                                            <th><strong>URGE</strong></th>
+                                            <th><strong>Produced</strong></th>
+                                            <th><strong>Prepared</strong></th>
+                                            <th><strong>Min</strong></th>
+                                            <th><strong>Available</strong></th>
+                                            <th><strong>Stock</strong></th>
                                         </tr>
-                                    </t>
-                                    <tr>
-                                        <td colspan="3">TOTAL TO PRODUCE:</td>
-                                        <td>
-                                            <t t-esc="totals[stock_type][routes]"/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </t>
-                    </t>
-                    <table class="table">
-                        <t t-foreach="totals['total']" t-as="total_route">
-                            <tr>
-                                <td>Total to produce in <t t-esc="total_route"/>:
-                                </td>
-                                <td>
-                                    <t t-esc="totals['total'][total_route]"/>
-                                </td>
-                            </tr>
-                        </t>
-                    </table>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="docs[stock_type][routes]" t-as="o">
+                                            <tr>
 
-                    <div style="border: 1px solid black;">
-                        <p>CANTIDAD Minima de producción para arrancar robot: 70</p>
-                        <p>PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día</p>
-                        <p>Producción maxima diaria ROBOT: xxx (aprox)</p>
-                        <p>BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30</p>
-                        <p>SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**</p>
-                        <p>*= solo si hay necesidad de producción</p>
-                        <p>**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción.</p>
+                                                <td><span t-field="o.product_id.categ_id.name"/></td>
+                                                <td><span t-field="o.product_id.name"/></td>
+                                                <td><span t-field="o.product_id.default_code"/></td>
+                                                <td><span t-field="o.name"/></td>
+                                                <td><span t-field="o.product_qty"/></td>
+                                                <td><span t-field="o.product_id.urgent_stock"/></td>
+                                                <td> </td>
+                                                <td> </td>
+                                                <td><span t-field="o.product_id.reordering_min_qty"/></td>
+                                                <td><span t-field="o.product_id.virtual_available"/></td>
+                                                <td><span t-field="o.product_id.qty_available"/></td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td colspan="3">TOTAL TO PRODUCE:</td>
+                                            <td>
+                                                <t t-esc="data['totals'][stock_type][routes]"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </t>
+                        <table class="table">
+                            <t t-foreach="data['totals']['total']" t-as="total_route">
+                                <tr>
+                                    <td>Total to produce in <t t-esc="total_route"/>:
+                                    </td>
+                                    <td>
+                                        <t t-esc="data['totals']['total'][total_route]"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+
+                        <div style="border: 1px solid black;">
+                            <p>CANTIDAD Minima de producción para arrancar robot: 70</p>
+                            <p>PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día</p>
+                            <p>Producción maxima diaria ROBOT: xxx (aprox)</p>
+                            <p>BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30</p>
+                            <p>SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**</p>
+                            <p>*= solo si hay necesidad de producción</p>
+                            <p>**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción.</p>
+                        </div>
                     </div>
-                </div>
+                </t>
             </t>
-            <div class="footer">
-                <div class="text-center" style="border-top: 1px solid black;">
-                    <ul class="list-inline">
-                        <li>Page:</li>
-                        <li><span class="page"/></li>
-                        <li>/</li>
-                        <li><span class="topage"/></li>
-                    </ul>
-                </div>
-            </div>
         </template>
-    </data>
-</openerp>
+
+</odoo>

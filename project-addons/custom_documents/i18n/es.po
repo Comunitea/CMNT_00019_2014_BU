@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* custom_documents
+#       * custom_documents
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-08 12:08+0000\n"
-"PO-Revision-Date: 2016-11-08 12:08+0000\n"
+"POT-Creation-Date: 2020-08-13 01:13+0000\n"
+"PO-Revision-Date: 2020-08-13 01:13+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,141 +16,268 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción."
-msgstr "**= si no diera tiempo realizar toda la producción, subir la hoja al terminar la jornada de producción."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "*= solo si hay necesidad de producción"
-msgstr "*= solo si hay necesidad de producción"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<span><strong>Customer Address:</strong></span>"
+msgstr "<span><strong>Dirección del Cliente:</strong></span>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<span><strong>Supplier Address:</strong></span>"
+msgstr "<span><strong>Dirección del proveedor:</strong></span>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<span><strong>Warehouse Address:</strong></span>"
+msgstr "<span><strong>Dirección de almacén:</strong></span>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<span>Page: </span><span class=\"page\"/><span>/</span><span class=\"topage\"/>"
+msgstr "<span>Página: </span><span class=\"page\"/><span>/</span><span class=\"topage\"/>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Available</strong>"
+msgstr "<strong>Disponible</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "<strong>CLIENTE</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Carrier</strong>"
+msgstr "<strong>Transporte</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Category</strong>"
+msgstr "<strong>Categoría</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Date</strong>"
+msgstr "<strong>Fecha</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Min</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Name</strong>"
+msgstr "<strong>Nombre</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
+msgid "<strong>OPERATION INSURED BY CREDITO Y CAUCIÓN</strong>"
+msgstr "<strong>OPERACIÓN ASEGURADA POR CREDITO Y CAUCIÓN</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Order (Origin)</strong>"
+msgstr "<strong>Orden (origen)</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
+msgid "<strong>Origins of goods</strong>"
+msgstr "<strong>Origen de los materiales</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "<strong>Pegatinas</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Prepared</strong>"
+msgstr "<strong>Preparado</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Produce</strong>"
+msgstr "<strong>Producir</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Produced</strong>"
+msgstr "<strong>Producido</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Product</strong>"
+msgstr "<strong>Producto</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
+msgid "<strong>Proforma invoice:</strong>"
+msgstr "<strong>Factura proforma:</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Quantity</strong>"
+msgstr "<strong>Cantidad</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Ref.</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Reference</strong>"
+msgstr "<strong>Referencia</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>Stock</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "<strong>TRANSPORTE</strong> Pagados"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
+msgid "<strong>Type of goods</strong>"
+msgstr "<strong>Tipo de materiales</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+msgid "<strong>URGE</strong>"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Weight</strong>"
+msgstr "<strong>Peso</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
+msgid "<strong>Your Reference.</strong>"
+msgstr "<strong>Su referencia.</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
+msgid "<strong>Your Reference</strong>"
+msgstr "<strong>Su referencia</strong>"
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "A REVISAR POR:"
-msgstr "A REVISAR POR:"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "ABOUND"
-msgstr "ABOUND"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Account:"
 msgstr "Cuenta:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Amount"
-msgstr "Importe"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Available"
-msgstr "Disponible"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30"
-msgstr "BAJAR ESTA HOJA DE PRODUCCIÓN a ALMACÉN TODOS LOS VIERNES, LUNES(*) y MIERCOLES(*) Antes de las 13.30"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "BUNKER"
-msgstr "BUNKER"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Bank details"
 msgstr "Detalles bancarios"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Base"
-msgstr "Base"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Boxes"
 msgstr "Cajas"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "C.P."
-msgstr "C.P."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "CANTIDAD Minima de producción para arrancar robot: 70"
-msgstr "CANTIDAD Minima de producción para arrancar robot: 70"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "CBIS-CBID"
-msgstr "CBIS-CBID"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
-msgid "CLIENTE"
-msgstr "CLIENTE"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Carrier"
-msgstr "Transportista"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Category"
-msgstr "Categoría"
-
-#. module: custom_documents
-#: field:res.partner,checked_by:0
+#: model:ir.model.fields,field_description:custom_documents.field_res_partner__checked_by
+#: model:ir.model.fields,field_description:custom_documents.field_res_users__checked_by
 msgid "Checked by"
 msgstr "Comprobado por"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Comentarios"
-msgstr "Comentarios"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Comment:"
-msgstr "Comentario:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Comprobado por"
-msgstr "Comprobado por"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Confirmado Con"
-msgstr "Confirmado Con"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Contacto TRANSPORTISTA"
-msgstr "Contacto TRANSPORTISTA"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Coste transportista"
-msgstr "Coste transportista"
+msgstr ""
 
 #. module: custom_documents
 #: model:ir.model,name:custom_documents.model_res_country
@@ -158,412 +285,236 @@ msgid "Country"
 msgstr "País"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_picking_final_
-msgid "Customer Address:"
-msgstr "Dirección de cliente:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Customer Code:"
-msgstr "Código de cliente"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "DATASHEETS"
-msgstr "DATASHEETS"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "DESCRIPCIÓN"
-msgstr "DESCRIPCIÓN"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "DIMENSION (Pegatinas de)"
-msgstr "DIMENSION (Pegatinas de)"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "DIRECCION DE ENVIO"
-msgstr "DIRECCION DE ENVIO"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_packing_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Date"
-msgstr "Fecha"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Date Due:"
-msgstr "Vencimiento:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Date Ordered:"
-msgstr "Fecha pedida:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Date Req."
-msgstr "Fecha solicitud"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Date:"
 msgstr "Fecha:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Delivery address"
 msgstr "Dirección de envío"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_packing_document
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_purchasequotation_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Description"
 msgstr "Descripción"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Disc.(%)"
-msgstr "Desc.(%)"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Discount (%)"
-msgstr "Descuento (%)"
-
-#. module: custom_documents
-#: field:report.custom_documents.mrp_production,display_name:0
-#: field:report.custom_documents.report_internal_picking,display_name:0
-#: field:report.custom_documents.report_packing,display_name:0
-#: field:report.custom_documents.report_picking_final,display_name:0
-#: field:report.stock.report_picking_,display_name:0
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_mrp_production__display_name
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_internal_picking__display_name
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_packing__display_name
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking___display_name
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking_final__display_name
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nombre mostrado"
 
 #. module: custom_documents
-#: field:res.partner,document_name:0
-msgid "Document name"
-msgstr "Document name"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Document:"
-msgstr "Documento:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Draft Invoice"
 msgstr "Factura borrador"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "E.P. Disc. :"
-msgstr "Desc. P.P. :"
+#: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
+msgid "Email:"
+msgstr "Correo electrónico:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Entrega"
-msgstr "Entrega"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchasequotation_document
-msgid "Expected Date"
-msgstr "Fecha prevista"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "FECHA"
-msgstr "FECHA"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "FIRMA Y FECHA"
-msgstr "FIRMA Y FECHA"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Factura"
-msgstr "Factura"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Factura cliente"
-msgstr "Factura cliente"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Fecha Llamada/MAIL"
-msgstr "Fecha Llamada/MAIL"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Fecha _____________"
-msgstr "Fecha _____________"
+msgstr ""
 
 #. module: custom_documents
-#: model:ir.actions.report.xml,name:custom_documents.action_report_picking
+#: model:ir.actions.report,name:custom_documents.action_report_picking
 msgid "Final client picking"
 msgstr "Albarán de cliente final"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Fiscal Position:"
-msgstr "Posición fiscal"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "G.W. per box(KG)"
-msgstr "G.W. por caja(KG)"
+msgstr "P.B. por caja (KG)"
 
 #. module: custom_documents
-#: field:sale.order,have_discounts:0
-msgid "Have discounts"
-msgstr "Have discounts"
-
-#. module: custom_documents
-#: field:report.custom_documents.mrp_production,id:0
-#: field:report.custom_documents.report_internal_picking,id:0
-#: field:report.custom_documents.report_packing,id:0
-#: field:report.custom_documents.report_picking_final,id:0
-#: field:report.stock.report_picking_,id:0
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_mrp_production_id
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_internal_picking_id
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_packing_id
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking___id
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking_final_id
 msgid "ID"
-msgstr "ID"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Intrastat"
-msgstr "Intrastat"
+msgstr "ID (identificación)"
 
 #. module: custom_documents
 #: model:ir.model,name:custom_documents.model_account_invoice
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Invoice"
 msgstr "Factura"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Invoice Date:"
-msgstr "Fecha de factura:"
-
-#. module: custom_documents
-#: field:res.country,invoice_report_with_shipping_address:0
+#: model:ir.model.fields,field_description:custom_documents.field_res_country__invoice_report_with_shipping_address
 msgid "Invoice report with shipping address"
 msgstr "Documento de factura con dirección de envío"
 
 #. module: custom_documents
-#: field:res.country,invoice_report_with_validation_data:0
+#: model:ir.model.fields,field_description:custom_documents.field_res_country__invoice_report_with_validation_data
 msgid "Invoice report with validation data"
 msgstr "Documento de factura con datos de validación"
 
 #. module: custom_documents
-#: field:report.custom_documents.mrp_production,__last_update:0
-#: field:report.custom_documents.report_internal_picking,__last_update:0
-#: field:report.custom_documents.report_packing,__last_update:0
-#: field:report.custom_documents.report_picking_final,__last_update:0
-#: field:report.stock.report_picking_,__last_update:0
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_mrp_production____last_update
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_internal_picking____last_update
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_packing____last_update
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking_____last_update
+#: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_picking_final____last_update
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Última Modifiación en"
 
 #. module: custom_documents
-#: field:product.packaging,measures_str:0
-#: field:stock.quant.package,measures:0
+#: model:ir.model.fields,field_description:custom_documents.field_product_packaging__measures_str
+#: model:ir.model.fields,field_description:custom_documents.field_stock_quant_package_measures
 msgid "Measures"
 msgstr "Medidas"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Min"
-msgstr "Mínimo"
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "No"
+msgstr ""
 
 #. module: custom_documents
-#: field:product.product,stock_min:0
-msgid "Min stock"
-msgstr "Min stock"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Name"
-msgstr "Nombre"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Net Price"
-msgstr "Precio neto"
-
-#. module: custom_documents
-#: field:stock.picking,weight_net_edit:0
-msgid "Net weight"
-msgstr "Peso neto"
-
-#. module: custom_documents
-#: field:res.country,not_show_type_message:0
+#: model:ir.model.fields,field_description:custom_documents.field_res_country__not_show_type_message
 msgid "Not show type of goods"
 msgstr "No mostrar mensaje en documentos"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Número de pedido"
-msgstr "Número de pedido"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Número de pedido de cliente"
-msgstr "Número de pedido de cliente"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_saleorder_document
-msgid "OPERATION INSURED BY CREDITO Y CAUCIÓN"
-msgstr "OPERACIÓN ASEGURADA POR CRÉDITO Y CAUCIÓN"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Order (Origin)"
-msgstr "Pedido (Origen)"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Order Date:"
-msgstr "Fecha de pedido:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
-msgid "Origins of goods"
-msgstr "Origen del material"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Our Order Reference:"
-msgstr "Nuestra referencia de pedido:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "PACKING LIST"
 msgstr "LISTA DE EMBALAJE"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "PAIS"
-msgstr "PAIS"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "PEDIDO ALMACÉN"
-msgstr "PEDIDO ALMACÉN"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "PESO"
-msgstr "PESO"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "POBLACION"
-msgstr "POBLACION"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "PRO-FORMA"
-msgstr "PRO-FORMA"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "PROFORMA INVOICE"
 msgstr "FACTURA PROFORMA"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
-msgstr "PROMEDIO PRODUCCIÓN ROBOT: 120 columnas día"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "PROVINCIA"
-msgstr "PROVINCIA"
+msgstr ""
 
 #. module: custom_documents
-#: model:ir.model,name:custom_documents.model_product_packaging
-msgid "Packaging"
-msgstr "Empaquetado"
-
-#. module: custom_documents
-#: model:ir.actions.report.xml,name:custom_documents.action_report_packing
+#: model:ir.actions.report,name:custom_documents.action_report_packing
 msgid "Packing list"
-msgstr "lista de embalaje"
+msgstr "Lista de embalaje"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
-msgid "Pagados"
-msgstr "Pagados"
+#: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Página: <span class=\"page\"/>/<span class=\"topage\"/>"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_purchasequotation_document
-#: view:website:custom_documents.report_saleorder_document
-msgid "Page:"
-msgstr "Página:"
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
+msgid "Page: <span class=\"page\"/>/<span class=\"topage\"/>"
+msgstr "Página: <span class=\"page\"/>/<span class=\"topage\"/>"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Paquete catálogos"
-msgstr "Paquete catálogos"
+msgstr ""
 
 #. module: custom_documents
-#: model:ir.model,name:custom_documents.model_res_partner
-msgid "Partner"
-msgstr "Empresa"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Partner Ref.:"
-msgstr "Ref. de empresa:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Payment Term:"
-msgstr "Plazo de pago:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Payment terms"
 msgstr "Plazo de pago"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
-msgid "Pegatinas"
-msgstr "Pegatinas"
-
-#. module: custom_documents
-#: model:ir.model,name:custom_documents.model_stock_quant_package
-msgid "Physical Packages"
-msgstr "Paquetes físicos"
-
-#. module: custom_documents
-#: model:ir.model,name:custom_documents.model_stock_picking
-msgid "Picking List"
-msgstr "Albarán"
+#: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
+msgid "Phone:"
+msgstr "Teléfono:"
 
 #. module: custom_documents
 #: model:ir.model,name:custom_documents.model_stock_transfer_details_items
@@ -571,427 +522,255 @@ msgid "Picking wizard items"
 msgstr "Elementos del asistente de albarán"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Place:"
 msgstr "Lugar:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Pr/unit"
-msgstr "Prec/ud"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Prepared"
-msgstr "Preparado"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Presupuesto solicitado"
-msgstr "Presupuesto solicitado"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Price"
-msgstr "Precio"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "Producción maxima diaria ROBOT: xxx (aprox)"
-msgstr "Producción maxima diaria ROBOT: xxx (aprox)"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Produce"
-msgstr "Producir"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Produced"
-msgstr "Producido"
-
-#. module: custom_documents
-#: model:ir.model,name:custom_documents.model_product_product
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Product"
-msgstr "Producto"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "Production Template"
 msgstr "Plantilla de producción"
 
 #. module: custom_documents
-#: model:ir.actions.report.xml,name:custom_documents.action_report_production
+#: model:ir.actions.report,name:custom_documents.action_report_production
 msgid "Production list"
 msgstr "Lista de producción"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Proforma invoice:"
-msgstr "Factura proforma:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
 msgid "Purchase Order Confirmation N°"
 msgstr "Confirmación pedido de compra Nº"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_purchasequotation_document
-msgid "Qty"
-msgstr "Ctdad"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_packing_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Quotation Date:"
-msgstr "Fecha de presupuesto:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "REF."
-msgstr "REF."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Realizado por por"
-msgstr "Realizado por por"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Recogida"
-msgstr "Recogida"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Redactado por"
-msgstr "Redactado por"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Ref."
-msgstr "Ref."
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-#: view:website:custom_documents.report_invoice_document
-msgid "Reference"
-msgstr "Referencia"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Refund"
 msgstr "Factura rectificativa"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchasequotation_document
-msgid "Regards,"
-msgstr "Saludos cordiales,"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Repartidor"
-msgstr "Repartidor"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchasequotation_document
 msgid "Request for Quotation"
 msgstr "Solicitud de presupuesto"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
 msgid "Request for Quotation N°"
 msgstr "Solicitud de presupuesto Nº"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
-msgstr "SUBIR ESTA HOJA DE PRODUCCIÓN a O.TECNICA AL TERMINAR LA PRODUCCION SEMANAL**"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "SWIFT Code"
 msgstr "Código SWIFT"
 
 #. module: custom_documents
-#: model:ir.model,name:custom_documents.model_sale_order
-msgid "Sales Order"
-msgstr "Pedido de venta"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "Salesperson:"
-msgstr "Comercial:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Security material"
-msgstr "Security material"
+msgstr ""
 
 #. module: custom_documents
-#: field:account.invoice,shipping_address:0
-msgid "Shipping address"
-msgstr "Dirección de envío"
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "Si"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Si / No"
-msgstr "Si / No"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Size(cm.)"
 msgstr "Medidas(cm.)"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Source:"
-msgstr "Origen:"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "Stock"
-msgstr "Stock"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_picking_final_
-msgid "Supplier Address:"
-msgstr "Dirección del proveedor:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Supplier Invoice"
 msgstr "Factura de proveedor"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Supplier Refund"
 msgstr "Factura rectificativa de proveedor"
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "TECH REF."
+msgstr "REF. TÉC."
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "TOTAL TO PRODUCE:"
 msgstr "TOTAL A PRODUCIR:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "TRANSPORTE"
-msgstr "TRANSPORTE"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-msgid "Tax"
-msgstr "Impuesto"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_saleorder_document
-msgid "Taxes"
-msgstr "Impuestos"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Tel.:"
+#: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
+msgid "Tel:"
 msgstr "Tel.:"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin."
-msgstr "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_packing_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
-msgstr "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_packing_document
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)"
-msgstr "Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_saleorder_document
-msgid "Total Without Taxes"
-msgstr "Total sin impuestos"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "Total to produce in"
 msgstr "Total a producir en"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_packing_document
-msgid "Type of goods"
-msgstr "Tipo de materiales"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN..."
-msgstr "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN..."
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.mrp_production
-msgid "URGE"
-msgstr "URGE"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_purchaseorder_document
-#: view:website:custom_documents.report_saleorder_document
-msgid "Unit Price"
-msgstr "Precio unidad"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_intrastatinvoice_document
-msgid "Unit of measure"
-msgstr "Unidad de medida"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Validated By:"
-msgstr "Validado por:"
-
-#. module: custom_documents
-#: field:account.invoice,validated_by:0
+#: model:ir.model.fields,field_description:custom_documents.field_account_invoice__validated_by
 msgid "Validated by"
 msgstr "Validado por"
 
 #. module: custom_documents
-#: field:account.invoice,validation_date:0
+#: model:ir.model.fields,field_description:custom_documents.field_account_invoice__validation_date
 msgid "Validation date"
 msgstr "Fecha de validación"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "Vat Reg. Nº:"
-msgstr "Vat Reg. Nº:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "Vendedor"
-msgstr "Vendedor"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_picking_final_
-msgid "Warehouse Address:"
-msgstr "Dirección del almacén"
+#: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
+msgid "Web:"
+msgstr ""
 
 #. module: custom_documents
-#: field:stock.picking,weight_edit:0
-#: field:stock.quant.package,weight:0
-#: view:website:custom_documents.report_intrastatinvoice_document
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
+#: model:ir.model.fields,field_description:custom_documents.field_stock_picking__weight_edit
+#: model:ir.model.fields,field_description:custom_documents.field_stock_quant_package__weight
 msgid "Weight"
 msgstr "Peso"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_saleorder_document
-msgid "With E.P. :"
-msgstr "Con P.P. :"
+#: model:ir.model.fields,help:custom_documents.field_stock_quant_package__weight
+msgid "Weight computed based on the sum of the weights of the products."
+msgstr "Peso calculado con la suma de los pesos de los productos."
 
 #. module: custom_documents
-#: view:website:custom_documents.report_purchaseorder_document
-msgid "Your Order Reference"
-msgstr "Su referencia"
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "________"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_picking
-#: view:website:custom_documents.report_picking_final_
-msgid "Your Reference"
-msgstr "Su referencia"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_packing_document
-msgid "Your Reference."
-msgstr "Su referencia."
-
-#. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-#: view:website:custom_documents.report_saleorder_document
-msgid "Your Reference:"
-msgstr "Su referencia:"
-
-#. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "chk"
-msgstr "chk"
+msgstr ""
 
 #. module: custom_documents
-#: view:website:custom_documents.report_invoice_document
-msgid "disc(%)"
-msgstr "disc(%)"
-
-#. module: custom_documents
-#: view:website:custom_documents.mrp_production
+#: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "in"
-msgstr "in"
+msgstr "en"
 
 #. module: custom_documents
-#: model:ir.actions.report.xml,name:custom_documents.action_report_internal_picking
+#: model:ir.actions.report,name:custom_documents.action_report_internal_picking
 msgid "internal picking"
 msgstr "Albarán interno"
 
 #. module: custom_documents
-#: code:addons/custom_documents/mrp_report.py:52
-#: code:addons/custom_documents/mrp_report.py:56
-#: code:addons/custom_documents/mrp_report.py:64
-#: code:addons/custom_documents/mrp_report.py:65
-#: code:addons/custom_documents/mrp_report.py:66
-#: code:addons/custom_documents/mrp_report.py:74
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "re"
+msgstr ""
+
+#. module: custom_documents
+#: code:addons/custom_documents/report/mrp_report.py:31
+#: code:addons/custom_documents/report/mrp_report.py:35
+#: code:addons/custom_documents/report/mrp_report.py:39
+#: code:addons/custom_documents/report/mrp_report.py:46
+#: code:addons/custom_documents/report/mrp_report.py:47
+#: code:addons/custom_documents/report/mrp_report.py:57
 #, python-format
 msgid "with minimun stock"
 msgstr "con stock mínimo"
 
 #. module: custom_documents
-#: code:addons/custom_documents/mrp_report.py:53
-#: code:addons/custom_documents/mrp_report.py:57
-#: code:addons/custom_documents/mrp_report.py:68
-#: code:addons/custom_documents/mrp_report.py:69
-#: code:addons/custom_documents/mrp_report.py:70
-#: code:addons/custom_documents/mrp_report.py:76
+#: code:addons/custom_documents/report/mrp_report.py:32
+#: code:addons/custom_documents/report/mrp_report.py:36
+#: code:addons/custom_documents/report/mrp_report.py:40
+#: code:addons/custom_documents/report/mrp_report.py:50
+#: code:addons/custom_documents/report/mrp_report.py:51
+#: code:addons/custom_documents/report/mrp_report.py:59
 #, python-format
 msgid "without minimun stock"
 msgstr "sin stock mínimo"
 
 #. module: custom_documents
-#: view:website:custom_documents.report_internal_picking
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "¿INCLUIDOS?"
-msgstr "¿INCLUIDOS?"
-
+msgstr ""

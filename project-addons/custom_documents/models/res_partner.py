@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,20 +17,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api
+from odoo import models, fields
 
 
-class SaleOrder(models.Model):
+class ResPartner(models.Model):
 
-    _inherit = 'sale.order'
+    _inherit = 'res.partner'
 
-    have_discounts = fields.Boolean('Have discounts',
-                                    compute='_have_discounts')
-
-    @api.one
-    def _have_discounts(self):
-        discounts = False
-        for line in self.order_line:
-            if line.discount > 0:
-                discounts = True
-        self.have_discounts = discounts
+    checked_by = fields.Char('Checked by')

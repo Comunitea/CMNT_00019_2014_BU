@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,29 +20,27 @@
 
 {
     'name': "Documents customizations",
-    'version': '1.0',
+    'version': '12.0.1.0.0',
     'category': '',
     'description': """""",
-    'author': 'Pexego',
-    'website': '',
-    "depends": ['account', 'sale', 'sale_stock', 'mrp', 'purchase',
-                'stock', 'customer_product_name', 'delivery', 'hr',
-                'product_pack', 'report_intrastat'],
-    "data": ['views/ir_qweb.xml',
-             'views/stock_picking_report.xml',
+    'author': 'Comunitea',
+    'website': 'www.comunitea.com',
+    "depends": ['sale_stock', 'mrp', 'purchase',
+                'customer_product_name', 'delivery', 'hr',
+                'mrp_bom_phantom_fix', 'account_payment_sale'],
+    "data": ['views/stock_picking_report.xml',
              'views/purchase_order_report.xml',
              'views/purchase_quotation_report.xml',
              'views/stock_picking_report_without_company.xml',
              'views/stock_packing_report.xml',
              'views/stock_internal_picking_report.xml',
              'views/sale_order_report.xml',
-             'purchase_report.xml',
-             'res_country_view.xml',
-             'account_view.xml',
-             'res_partner_view.xml',
+             'views/res_country_view.xml',
+             'views/account_view.xml',
+             'views/res_partner_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',
-             'views/account_invoice_intrastat_report.xml',
-             'views/mrp_production_report.xml', 'mrp_report.xml', 'stock_view.xml',
+             'views/mrp_production_report.xml', 'mrp_report.xml',
+             'views/stock_view.xml',
              'data/report.paperformat.csv'],
     "installable": True
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
+
         <record id="account_invoice_add_validation_data" model="ir.ui.view">
             <field name="name">account.invoice.form</field>
             <field name="model">account.invoice</field>
@@ -9,9 +9,8 @@
                 <field name="date_due" position="after">
                     <field name="validation_date"/>
                     <field name="validated_by"/>
-                    <field name="shipping_address"/>
                 </field>
             </field>
         </record>
-    </data>
-</openerp>
+
+</odoo>

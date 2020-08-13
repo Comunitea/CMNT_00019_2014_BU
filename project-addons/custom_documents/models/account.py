@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-##############################################################################
+#############################################################################
 #
-#    Copyright (C) 2014 Pexego All Rights Reserved
-#    $Jesús Ventosinos Mayor <jesus@pexego.es>$
+#    Copyright (C) 2014 Comunitea All Rights Reserved
+#    $Jesús Ventosinos Mayor <jesus@comunitea.com>$
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -18,25 +17,18 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api
+from odoo import models, fields, api
 
 
-class ResPartner(models.Model):
+class AccountInvoice(models.Model):
 
-    _inherit = 'res.partner'
+    _inherit = "account.invoice"
 
-    checked_by = fields.Char('Checked by')
-    document_name = fields.Char('Document name',
-                                compute='_get_document_name')
+    validation_date = fields.Date('Validation date')
+    validated_by = fields.Many2one('res.users', 'Validated by')
 
     @api.multi
-    def _get_top_document_name(self):
-        if self.parent_id:
-           return self.parent_id._get_top_document_name()
-        else:
-            return self.name
-        return ''
-    @api.multi
-    def _get_document_name(self):
-        for partner in self:
-            partner.document_name = partner._get_top_document_name()
+    def invoice_validate(self):
+        self.write({'validation_date': fields.Date.today(),
+                    'validated_by': self.env.user.id})
+        return super().invoice_validate()

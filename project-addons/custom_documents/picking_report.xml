@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
 
         <report
                 string="Picking"
-                id="stock.action_report_picking"
+                id="stock.action_report_delivery"
                 model="stock.picking"
                 report_type="qweb-pdf"
-                name="stock.report_picking_"
-                file="stock.report_picking_"
+                name="custom_documents.report_picking_"
+                file="custom_documents.report_picking_"
         />
 
         <report
@@ -37,5 +36,5 @@
                 name="custom_documents.report_internal_picking"
                 file="custom_documents.report_internal_picking"
         />
-    </data>
-</openerp>
+
+</odoo>

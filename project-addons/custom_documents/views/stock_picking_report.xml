@@ -1,138 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <template id="delivery.report_shipping2" inherit_id="stock.report_picking"></template>
-
+<odoo>
 
         <template id="report_picking">
-
-            <t t-if="o and 'company_id' in o">
-            <t t-set="company" t-value="o.company_id"></t>
-            </t>
-            <t t-if="not o or not 'company_id' in o">
-                <t t-set="company" t-value="res_company"></t>
-            </t>
-
-            <div class="header">
-                <div class="row"><br/></div>
-                <div class="row">
-                    <div class="col-xs-3">
-                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 150px;"/>
-                    </div>
-                    <div class="col-xs-9 text-center" style="margin-top:30px;">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                    <t t-set="partner" t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
+                    <t t-set="title">
                         <h2>
                             <span t-field="o.picking_type_id.name"/>:
                             <span t-field="o.name"/>
                         </h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">
+                    </t>
+                    <t t-if="partner" name="partner_header">
+                        <t t-set="address">
+                            <div t-esc="partner"
+                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            <span t-field="o.partner_id.vat"/>
+                       </t>
+                    </t>
+                    <div class="page">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th t-if="o.date_done"><strong>Date</strong></th>
+                                    <th t-if="o.sale_id.client_order_ref"><strong>Your Reference</strong></th>
+                                    <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
+                                    <th><strong>Weight</strong></th>
+                                    <th><strong>Order (Origin)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td t-if="o.date_done">
+                                        <span t-field="o.date_done" t-options='{"format": "dd/MM/y"}'/>
+                                    </td>
+                                    <td t-if="o.sale_id.client_order_ref">
+                                        <span t-field="o.sale_id.client_order_ref"/>
+                                    </td>
+                                    <td t-if="o.picking_type_id.code == 'outgoing'">
+                                        <span t-field="o.carrier_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.weight_edit"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.origin"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Ref.</strong></th>
+                                    <th><strong>Product</strong></th>
+                                    <th class="text-right"><strong>Quantity</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.move_lines" t-as="move">
+                                    <t t-if="not move.phantom_bom_component and move.state != 'cancel'">
+                                        <td><span t-esc="move.product_id.get_product_ref(move.partner_id)[0]"/></td>
+                                        <td><span t-field="move.sale_line_id.name"/></td>
+                                        <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
+                                    </t>
+                                </tr>
+                                <tr t-foreach="data['packs'][o.id]" t-as="pack">
+                                    <td><span t-esc="pack.product_id.get_product_ref(o.partner_id)[0]"/></td>
+                                    <td><span t-field="pack.name"/></td>
+                                    <td class="text-right"><span t-field="pack.product_uom_qty"/> <span t-field="pack.product_uom" groups="product.group_uom"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div t-field="company.partner_id"
-                                    t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                            <div class="col-12">
+                                <h4><strong>OPERATION INSURED BY CREDITO Y CAUCIÓN</strong></h4>
                             </div>
                         </div>
+                        <table class="table table-condensed notes">
+                            <tr>
+                                <td><span t-field="o.note"/></td>
+                            </tr>
+                        </table>
                     </div>
-                    <div class="col-xs-5 col-xs-offset-2">
-                        <div t-field="o.partner_id"
-                            t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
-                        <span t-field="o.partner_id.vat"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="page">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th t-if="o.date_done"><strong>Date</strong></th>
-                            <th t-if="o.sale_id.client_order_ref"><strong>Your Reference</strong></th>
-                            <th t-if="o.picking_type_id.code == 'outgoing'"><strong>Carrier</strong></th>
-                            <th><strong>Weight</strong></th>
-                            <th><strong>Order (Origin)</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td t-if="o.date_done">
-                                <span t-field="o.date_done" t-field-options='{"format": "dd/MM/y"}'/>
-                            </td>
-                            <td t-if="o.sale_id.client_order_ref">
-                                <span t-field="o.sale_id.client_order_ref"/>
-                            </td>
-                            <td t-if="o.picking_type_id.code == 'outgoing'">
-                                <span t-field="o.carrier_id"/>
-                            </td>
-                            <td>
-                                <span t-field="o.weight_edit"/>
-                            </td>
-                            <td>
-                                <span t-field="o.origin"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br/>
-                <br/>
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th><strong>Ref.</strong></th>
-                            <th><strong>Product</strong></th>
-                            <th class="text-right"><strong>Quantity</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr t-foreach="o.move_lines" t-as="move">
-                            <t t-if="not move.pack_component and move.state != 'cancel'">
-                                <td><span t-esc="move.product_id.get_product_ref(move.partner_id)"/></td>
-                                <td><span t-field="move.procurement_id.sale_line_id.name"/></td>
-                                <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
-                            </t>
-                        </tr>
-                        <tr t-foreach="packs[o.id]" t-as="pack">
-                            <td><span t-esc="pack.product_id.get_product_ref(o.partner_id)"/></td>
-                            <td><span t-field="pack.name"/></td>
-                            <td class="text-right"><span t-field="pack.product_uom_qty"/> <span t-field="pack.product_uom" groups="product.group_uom"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br/>
-                <br/>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h4><strong>OPERATION INSURED BY CREDITO Y CAUCIÓN</strong></h4>
-                    </div>
-                </div>
-                <table class="table table-condensed notes">
-                    <tr>
-                        <td><span t-field="o.note"/></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="footer">
-                <div class="row">
-                    <div class="col-xs-2 col-xs-offset-10 col-xs-height col-bottom">
-                        <ul class="list-inline">
-                            <li>Page:</li>
-                            <li><span class="page"/></li>
-                            <li>/</li>
-                            <li><span class="topage"/></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </template>
-
-        <template id="stock.report_picking_">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'custom_documents.report_picking')"/>
                 </t>
             </t>
         </template>
-    </data>
-</openerp>
+
+        <template id="report_picking_">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="custom_documents.report_picking" t-lang="o.partner_id.lang"/>
+            </t>
+        </template>
+
+</odoo>

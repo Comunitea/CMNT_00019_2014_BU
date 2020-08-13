@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#       * bu_custom
+#       * raw_material_stock
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-03 10:59+0000\n"
-"PO-Revision-Date: 2020-06-03 10:59+0000\n"
+"POT-Creation-Date: 2020-06-04 16:32+0000\n"
+"PO-Revision-Date: 2020-06-04 16:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,205 +15,35 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__product_brand
-#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
-msgid "Brand"
-msgstr "Marca"
+#. module: raw_material_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_product_material_categ_id
+msgid "Material category"
+msgstr "Categoría de material"
 
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.move_receipt_picking_calendar
-msgid "Calendar View"
-msgstr "Vista calendario"
+#. module: raw_material_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_product_purchase_requisition
+msgid "Procurement"
+msgstr "Abastecimiento"
 
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
-msgid "Cancel"
-msgstr "Cancelar"
+#. module: raw_material_stock
+#: model:ir.model.fields,help:raw_material_stock.field_product_product__used_stock
+#: model:ir.model.fields,help:raw_material_stock.field_product_template__used_stock
+msgid "Quantity available + stock used in manufacturing"
+msgstr "Cantidad siponible + stock usado en producciones"
 
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__product_category
-msgid "Category"
-msgstr "Categoría"
+#. module: raw_material_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_stock_warehouse__show_material_stock
+msgid "Show material stock"
+msgstr "Mostrar material usado"
 
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__create_uid
-msgid "Created by"
-msgstr "Creado por"
+#. module: raw_material_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_product__show_used_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_template__show_used_stock
+msgid "Show used stock"
+msgstr "Mostrar material usado"
 
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__create_date
-msgid "Created on"
-msgstr "Creado en"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_stock_picking_currency
-#: model_terms:ir.ui.view,arch_db:bu_custom.stock_search_currency
-msgid "Currency"
-msgstr "Moneda"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.invoice_group_journal_search
-msgid "Diario"
-msgstr "Diario"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
-msgid "Group By"
-msgstr "Agrupar por"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom_id
-msgid "ID"
-msgstr "ID (identificación)"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_account_invoice
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_report_invoice_id
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__invoice_date
-msgid "Invoice Date"
-msgstr "Fecha factura"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Línea de factura"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
-msgid "Invoice date"
-msgstr "Fecha de factura"
-
-#. module: bu_custom
-#: model:ir.actions.act_window,name:bu_custom.account_invoice_line_action
-#: model:ir.ui.menu,name:bu_custom.menu_account_invoice_line
-msgid "Invoice lines"
-msgstr "Lineas de factura"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
-msgid "Invoice type"
-msgstr "Tipo de factura"
-
-#. module: bu_custom
-#: model:ir.model,name:bu_custom.model_account_invoice_report
-msgid "Invoices Statistics"
-msgstr "Estadísticas de facturas"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__journal_id
-msgid "Journal"
-msgstr "Diario"
-
-#. module: bu_custom
-#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__invoice_date
-msgid "Keep empty to use the current date"
-msgstr "Dejarlo vacío para utilizar la fecha actual."
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom____last_update
-msgid "Last Modified on"
-msgstr "Última Modifiación en"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__write_uid
-msgid "Last Updated by"
-msgstr "Última actualización de"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_recompute_price_from_bom__write_date
-msgid "Last Updated on"
-msgstr "Última actualización en"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_product_product__manual_minimum_stock
-#: model:ir.model.fields,field_description:bu_custom.field_product_template__manual_minimum_stock
-msgid "Manual minimum stock"
-msgstr "Stock mínimo manual"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_product_product_miami
-#: model:ir.model.fields,field_description:bu_custom.field_product_template_miami
-#: model_terms:ir.ui.view,arch_db:bu_custom.product_template_search_view
-msgid "Miami"
-msgstr "Miami"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line_origin_line_ids
-msgid "Original invoice line"
-msgstr "Línea de la factura original"
-
-#. module: bu_custom
-#: model:ir.model.fields,help:bu_custom.field_account_invoice_line_origin_line_ids
-msgid "Original invoice line to which this refund invoice line is referred to"
-msgstr "Línea de la factura original a la que está línea de factura rectificativa se refiere"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_stock_picking__partner_id
-msgid "Partner"
-msgstr "Empresa"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.account_invoice_line_view_search
-msgid "Product category"
-msgstr "Categ. producto"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
-msgid "Recompute"
-msgstr "Recalcular"
-
-#. module: bu_custom
-#: model:ir.cron,name:bu_custom.ir_cron_recompute_price_from_bom
-msgid "Recompute Price From BoM"
-msgstr "Recalcular Precios (LdM)"
-
-#. module: bu_custom
-#: model:ir.actions.act_window,name:bu_custom.action_recompute_price_from_bom
-#: model:ir.ui.menu,name:bu_custom.menu_mrp_routing_action
-msgid "Recompute Prices (BoM)"
-msgstr "Recalcular Precios (LdM)"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line_refund_line_ids
-msgid "Refund invoice line"
-msgstr "Línea de factura rectificativa"
-
-#. module: bu_custom
-#: model:ir.model.fields,help:bu_custom.field_account_invoice_line_refund_line_ids
-msgid "Refund invoice lines created from this invoice line"
-msgstr "Líneas de facturas rectificativas creadas desde esta línea de factura"
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice__sale_ref
-msgid "Sale ref"
-msgstr "Ref. venta"
-
-#. module: bu_custom
-#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__product_brand
-msgid "Select a brand for this product"
-msgstr "Seleccione una marca para este producto"
-
-#. module: bu_custom
-#: model:ir.model.fields,help:bu_custom.field_account_invoice_line__product_category
-msgid "Select category for the current product"
-msgstr "Seleccione la categoría para el producto actual."
-
-#. module: bu_custom
-#: model:ir.model.fields,field_description:bu_custom.field_account_invoice_line__invoice_type
-msgid "Type"
-msgstr "Tipo"
-
-#. module: bu_custom
-#: model_terms:ir.ui.view,arch_db:bu_custom.recompute_price_from_bom_form_view
-msgid "or"
-msgstr "o"
+#. module: raw_material_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_product__used_stock
+#: model:ir.model.fields,field_description:raw_material_stock.field_product_template__used_stock
+msgid "Used stock"
+msgstr "Stock usado"
