@@ -30,7 +30,8 @@ class AccountInvoice(models.Model):
         for invoice in self:
             refs = invoice.invoice_line_ids.\
                 mapped('sale_line_ids.order_id.client_order_ref')
-            invoice.sale_ref = ",".join(refs)
+            if refs:
+                invoice.sale_ref = ",".join(refs)
 
     @api.multi
     def _get_computed_reference(self):
