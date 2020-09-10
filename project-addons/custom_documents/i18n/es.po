@@ -549,7 +549,7 @@ msgstr "Lista de producción"
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
 msgid "Purchase Order Confirmation N°"
-msgstr "Confirmación pedido de compra Nº"
+msgstr "Confirmación de compra Nº"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
