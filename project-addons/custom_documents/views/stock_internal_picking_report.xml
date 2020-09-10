@@ -142,7 +142,7 @@
                                                     <td style="border: 1px solid black"></td>
                                                     <td><span t-esc="pack[0].name"/></td>
                                                     <t t-if="pack[0].product_id.get_product_ref(pack[0].order_partner_id)[0] and pack[0].product_id.default_code != pack[0].product_id.get_product_ref(pack[0].order_partner_id)[0]">
-                                                        <td><span t-esc=" (pack[0].product_id.packaging_ids and pack[0].product_id.packaging_ids[0].measures_str or '') + '   (' + pack[0].product_id.get_product_ref(pack[0].order_partner_id) + ')'"/></td>
+                                                        <td><span t-esc=" (pack[0].product_id.packaging_ids and pack[0].product_id.packaging_ids[0].measures_str or '') + '   (' + pack[0].product_id.get_product_ref(pack[0].order_partner_id)[0] + ')'"/></td>
                                                     </t>
                                                     <t t-if="pack[0].product_id.get_product_ref(pack[0].order_partner_id)[0] and pack[0].product_id.default_code == pack[0].product_id.get_product_ref(pack[0].order_partner_id)[0]">
                                                         <td><span t-esc="pack[0].product_id.packaging_ids and pack[0].product_id.packaging_ids[0].measures_str or ''"/></td>
@@ -162,7 +162,7 @@
                                                             &gt; <span t-esc="move.move_dest_ids and move.move_dest_ids[0].sale_line_id.name or ''"/>
                                                         </td>
                                                         <t t-if="move.product_id.get_product_ref(move.partner_id)[0] and move.product_id.default_code != move.product_id.get_product_ref(move.partner_id)[0]">
-                                                            <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id) + ')'"/></td>
+                                                            <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id)[0] + ')'"/></td>
                                                         </t>
                                                         <t t-if="move.product_id.get_product_ref(move.partner_id)[0] and move.product_id.default_code == move.product_id.get_product_ref(move.partner_id)[0]">
                                                             <td><span t-esc="move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or ''"/></td>
@@ -181,7 +181,7 @@
                                                             <span t-esc="move.move_dest_ids and move.move_dest_ids[0].sale_line_id.name or ''"/>
                                                         </td>
                                                         <t t-if="move.product_id.get_product_ref(move.partner_id)[0] and move.product_id.default_code != move.product_id.get_product_ref(move.partner_id)[0]">
-                                                            <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id) + ')'"/></td>
+                                                            <td><span t-esc=" (move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or '') + '   (' + move.product_id.get_product_ref(move.partner_id)[0] + ')'"/></td>
                                                         </t>
                                                         <t t-if="move.product_id.get_product_ref(move.partner_id)[0] and move.product_id.default_code == move.product_id.get_product_ref(move.partner_id)[0]">
                                                             <td><span t-esc="move.product_id.packaging_ids and move.product_id.packaging_ids[0].measures_str or ''"/></td>
