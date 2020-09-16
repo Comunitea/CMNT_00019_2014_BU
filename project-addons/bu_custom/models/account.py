@@ -23,6 +23,7 @@ from odoo import models, fields, api
 class AccountInvoice(models.Model):
 
     _inherit = 'account.invoice'
+    _order = "number desc, date_invoice desc, id desc"
 
     sale_ref = fields.Char(string='Sale ref', compute='_get_so')
 
