@@ -40,14 +40,8 @@ class ProductPackaging(models.Model):
 
     def _get_measures(self):
         for pack in self:
-            height = pack.height.is_integer() and int(pack.height) or \
-                pack.height
-            width = pack.width.is_integer() and int(pack.width) or \
-                pack.width
-            length = pack.length.is_integer() and int(pack.length) or \
-                pack.length
-            pack.measures_str = str(height) + 'x' + str(width) + \
-                'x' + str(length)
+            pack.measures_str = str(pack.height) + 'x' + str(pack.width) + \
+                'x' + str(pack.length)
 
 
 class StockQuantPackage(models.Model):
