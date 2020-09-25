@@ -27,6 +27,30 @@ class ProductProduct(models.Model):
     manual_minimum_stock = fields.Float('Manual minimum stock')
     reordering_min_qty = fields.Float(string="Min. qty for purchase")
 
+    def _compute_quantities_dict(self, lot_id, owner_id, package_id,
+                                 from_date=False, to_date=False):
+        res = super()._compute_quantities_dict(lot_id, owner_id, package_id,
+                                               from_date=from_date,
+                                               to_date=to_date)
+        for prod in self.filtered('bom_ids'):
+            for bom in prod.bom_ids.filtered(lambda r: r.type == 'phantom'):
+                res_components = bom.bom_line_ids.mapped('product_id').\
+                    _compute_quantities_dict(False, False, False)
+                res[prod.id]['qty_available'] = \
+                    min([res_components[x]['qty_available']
+                        for x in res_components])
+                res[prod.id]['incoming_qty'] = \
+                    min([res_components[x]['incoming_qty']
+                        for x in res_components])
+                res[prod.id]['outgoing_qty'] = \
+                    min([res_components[x]['outgoing_qty']
+                        for x in res_components])
+                res[prod.id]['virtual_available'] = \
+                    min([res_components[x]['virtual_available']
+                        for x in res_components])
+
+        return res
+
 
 class ProductTemplate(models.Model):
 

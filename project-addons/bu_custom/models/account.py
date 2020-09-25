@@ -26,6 +26,9 @@ class AccountInvoice(models.Model):
     _order = "number desc, date_invoice desc, id desc"
 
     sale_ref = fields.Char(string='Sale ref', compute='_get_so')
+    line_agent_id = fields.Many2one('res.partner', 'Agent', store=True,
+                                    related="invoice_line_ids.agents.agent",
+                                    readonly=True)
 
     def _get_so(self):
         for invoice in self:

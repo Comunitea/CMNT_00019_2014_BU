@@ -4,9 +4,9 @@
     <record id="product_add_used_stock_form" model="ir.ui.view">
         <field name="name">product.form</field>
         <field name="model">product.template</field>
-        <field name="inherit_id" ref="product_virtual_stock_conservative.view_template_form_add_conservative_qty"/>
+        <field name="inherit_id" ref="product_virtual_stock_conservative.product_template_form_view_procurement_button"/>
         <field name="arch" type="xml">
-            <field name="virtual_stock_conservative" position="after">
+            <field name="route_ids" position="after">
                 <field name="show_used_stock"/>
                 <field name="used_stock" attrs="{'invisible': [('show_used_stock', '=', False)]}" context="{'show_used_stock': True}"/>
             </field>
