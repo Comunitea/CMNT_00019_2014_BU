@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class StockPicking(models.Model):
@@ -27,6 +27,7 @@ class StockPicking(models.Model):
     weight_edit = fields.Float('Weight', compute='compute_weight', store=True,
                                readonly=False)
 
+    @api.depends('weight')
     def compute_weight(self):
         for pick in self:
             pick.weight_edit = pick.weight
