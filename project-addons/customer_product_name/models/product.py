@@ -30,7 +30,7 @@ class ProductProduct(models.Model):
     def get_product_ref(self, partner):
         self.ensure_one()
         if not partner:
-            return self.default_code or ''
+            return self.default_code or '', self.name
         if isinstance(partner, (int)):
             partner = self.env['res.partner'].browse(partner)
         custom_prod = self.env['product.customer'].search(
