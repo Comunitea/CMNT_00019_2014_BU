@@ -17,8 +17,9 @@
                                 <span><strong>Customer Address:</strong></span>
                             </div>
                             <div t-if="o.partner_id">
+                                <span t-field="o.partner_id.commercial_partner_id.name"/>
                                 <div t-field="o.partner_id"
-                                    t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true, "only_child_name":true}'/>
+                                    t-options='{"widget": "contact", "fields": ["address", "phone", "fax"], "no_marker": true, "only_child_name":true}'/>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
                     <table class="text-left" style="border: 1px solid black; width:100%;">
                         <tr t-if="not doc.partner_id.country_id.not_show_type_message">
                             <td style="padding:15px;">
-                                <p>Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN...</p>
+                                <p>Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN.</p>
                                 <p>Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)</p>
                                 <t t-if="doc.partner_id.country_id.invoice_report_with_validation_data">
                                     <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin.</p>

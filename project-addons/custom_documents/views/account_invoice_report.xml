@@ -12,7 +12,7 @@
                         </div>
                     </t>
                     <t t-if="address">
-                        <div style="min-height: 130px;margin-left: 260px;">
+                        <div style="min-height: 130px;margin-left: 160px;">
                             <div style="padding: 4px; text-align: left;">
                                 <t t-raw="address"/>
                             </div>
@@ -78,10 +78,10 @@
                 </t>
                 <t t-set="custom_footer">
                     <div class="text-center" style="border-top: 1px solid black;">
-                        <table class="text-left" style="border: 1px solid black; width:100%;">
+                        <table class="text-left" style="width:100%;">
                             <tr t-if="not o.partner_id.country_id.not_show_type_message">
                                 <td style="padding:15px;">
-                                    <p>Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN...</p>
+                                    <p>Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN.</p>
                                     <p>Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)</p>
                                     <t t-if="o.partner_id.country_id.invoice_report_with_validation_data">
                                         <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin.</p>
@@ -135,6 +135,9 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="text-center"><p>Reg. Merc. de Barcelona. Tomo 34621. Folio 90, Hoja B252890, INSCRIPCIÓN 1</p></td>
+                            </tr>
                         </table>
                     </div>
                 </t>
@@ -166,6 +169,17 @@
                         </div>
                     </div>
                 </div>
+            </xpath>
+            <xpath expr="//span[@t-field='line.name']" position="replace">
+                <span t-if="line.product_id.hs_code_id">
+                    <span t-field="line.name" />
+                    <br />
+                    <strong>Intrastat:</strong>
+                    <span t-field="line.product_id.hs_code_id" />
+                </span>
+                <span t-if="not line.product_id.hs_code_id">
+                    <span t-field="line.name" />
+                </span>
             </xpath>
         </template>
 
