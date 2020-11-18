@@ -6,11 +6,17 @@
             <xpath expr="//h2" position="replace"/>
             <xpath expr="//h2" position="replace"/>
             <xpath expr="//h2" position="replace"/>
-            <xpath expr="//t[@t-set='address']" position="after">
+            <xpath expr="//t[@t-set='o']" position="after">
                 <t t-set="title">
                     <h2 t-if="o.state != 'draft'">Purchase Order Confirmation N°<span t-field="o.name"/></h2>
                     <h2 t-if="o.state == 'draft'">Request for Quotation N°<span t-field="o.name"/></h2>
                 </t>
+            </xpath>
+            <xpath expr="//div[@t-if='o.date_order']" position="after">
+                <div t-if="o.validator" class="col-3 bm-2">
+                    <strong>Validated by:</strong>
+                    <p t-field="o.validator" class="m-0"/>
+                </div>
             </xpath>
         </template>
 

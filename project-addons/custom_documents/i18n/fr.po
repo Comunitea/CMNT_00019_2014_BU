@@ -698,7 +698,13 @@ msgid "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of g
 msgstr "Type des biens: matériel de sécurité // MATÉRIEL NON DANGEREUX // Origine des biens: ESPAGNE..."
 
 #. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
+msgid "<strong>Validated by:</strong>"
+msgstr "<strong>Validé par:</strong>"
+
+#. module: custom_documents
 #: model:ir.model.fields,field_description:custom_documents.field_account_invoice__validated_by
+#: model:ir.model.fields,field_description:custom_documents.field_purchase_order__validator
 msgid "Validated by"
 msgstr "Validé par"
 

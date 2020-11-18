@@ -37,6 +37,7 @@
              'views/sale_order_report.xml',
              'views/res_country_view.xml',
              'views/account_view.xml',
+             'views/purchase_order_view.xml',
              'views/res_partner_view.xml',
              'picking_report.xml', 'views/account_invoice_report.xml',
              'views/mrp_production_report.xml', 'mrp_report.xml',

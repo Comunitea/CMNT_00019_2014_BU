@@ -12,8 +12,8 @@
                         </div>
                     </t>
                     <t t-if="address">
-                        <div style="min-height: 130px;">
-                            <div style="padding: 4px;">
+                        <div style="min-height: 130px;margin-left: 260px;">
+                            <div style="padding: 4px; text-align: left;">
                                 <t t-raw="address"/>
                             </div>
                         </div>
