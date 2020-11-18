@@ -18,6 +18,12 @@
                     <p t-field="o.validator" class="m-0"/>
                 </div>
             </xpath>
+            <xpath expr="//span[@t-field='line.date_planned']" position="attributes">
+                <attribute name="t-options">{"widget": "date"}</attribute>
+            </xpath>
+            <xpath expr="//p[@t-field='o.date_order']" position="attributes">
+                <attribute name="t-options">{"widget": "date"}</attribute>
+            </xpath>
         </template>
 
 </odoo>
