@@ -60,3 +60,57 @@ class AccountInvoiceLine(models.Model):
                                  related="invoice_id.journal_id")
     invoice_date = fields.Date(related='invoice_id.date_invoice', store=True)
     invoice_type = fields.Selection(store=True)
+
+
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
+
+    @api.model
+    def default_get(self, fields):
+        rec = super(AccountMoveLine, self).default_get(fields)
+        if self.env.context.get('journal_id'):
+            journal = self.env['account.journal'].\
+                browse(self.env.context['journal_id'])
+            if rec.get('debit'):
+                rec['account_id'] = journal.default_debit_account_id.id
+            elif rec.get('credit'):
+                rec['account_id'] = journal.default_credit_account_id.id
+            else:
+                rec['account_id'] = journal.default_debit_account_id.id
+
+        if 'line_ids' not in self._context:
+            return rec
+
+        lines = self.move_id.resolve_2many_commands(
+            'line_ids', self._context['line_ids'], fields=['partner_id',
+                                                           'name'])
+        if lines:
+            if lines[-1].get('partner_id'):
+                rec['partner_id'] = lines[-1]['partner_id']
+            if lines[-1].get('name'):
+                rec['name'] = lines[-1]['name']
+        return rec
+
+    @api.onchange('partner_id')
+    def onchange_partner_id_account(self):
+        if not self.account_id and self.move_id.journal_id and self.partner_id:
+            part = self.partner_id
+            jt = self.move_id.journal_id.type
+            id1 = self.partner_id.property_account_payable_id.id
+            id2 = self.partner_id.property_account_receivable_id.id
+
+            if jt == "sale":
+                self.account_id = part.property_account_position_id and \
+                    part.property_account_position_id.map_account(id2) or id2
+            elif jt == "purchase":
+                self.account_id = part.property_account_position_id and \
+                    part.property_account_position_id.map_account(id1) or id1
+            elif jt in ('general', 'bank', 'cash'):
+                if part.customer:
+                    self.account_id = part.property_account_position_id and \
+                        part.property_account_position_id.map_account(id2) or \
+                        id2
+                elif part.supplier:
+                    self.account_id = part.property_account_position_id and \
+                        part.property_account_position_id.map_account(id1) or \
+                        id1
