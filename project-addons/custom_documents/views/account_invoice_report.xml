@@ -87,7 +87,7 @@
                                         <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin.</p>
                                     </t>
                                     <t t-if="not o.partner_id.country_id.invoice_report_with_validation_data">
-                                        <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin.</p>
+                                        <p>The exporter of the products covered by this document (custom authorization) ES/62/8517/12 declares that except where otherwise clearly indicated these products are of Spanish preferential origin.</p>
                                     </t>
                                 </td>
                             </tr>
@@ -136,7 +136,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-center"><p>Reg. Merc. de Barcelona. Tomo 34621. Folio 90, Hoja B252890, INSCRIPCIÓN 1</p></td>
+                                <td class="text-center"><p>REGISTRO MERCANTIL DE MADRID - C.I.F. : B62851712 Datos Registrales : Hoja M-338844 Tomo 19334 Folio 119</p></td>
                             </tr>
                         </table>
                     </div>
@@ -171,13 +171,13 @@
                 </div>
             </xpath>
             <xpath expr="//span[@t-field='line.name']" position="replace">
-                <span t-if="line.product_id.hs_code_id">
+                <span t-if="line.product_id.hs_code_id and o.partner_id.country_id.show_intrastat">
                     <span t-field="line.name" />
                     <br />
                     <strong>Intrastat:</strong>
                     <span t-field="line.product_id.hs_code_id" />
                 </span>
-                <span t-if="not line.product_id.hs_code_id">
+                <span t-if="not line.product_id.hs_code_id or not o.partner_id.country_id.show_intrastat">
                     <span t-field="line.name" />
                 </span>
             </xpath>

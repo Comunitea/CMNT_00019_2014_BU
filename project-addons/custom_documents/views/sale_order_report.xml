@@ -20,7 +20,7 @@
                                     <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin.</p>
                                 </t>
                                 <t t-if="not doc.partner_id.country_id.invoice_report_with_validation_data">
-                                    <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin.</p>
+                                    <p>The exporter of the products covered by this document (custom authorization) ES/62/8517/12 declares that except where otherwise clearly indicated these products are of Spanish preferential origin.</p>
                                 </t>
                             </td>
                         </tr>

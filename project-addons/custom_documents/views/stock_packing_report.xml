@@ -96,7 +96,7 @@
 
                     <div class="row"  t-if="not o.partner_id.country_id.not_show_type_message">
                         <div class="col-12">
-                            <p>The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin.</p>
+                            <p>The exporter of the products covered by this document (custom authorization) ES/62/8517/12 declares that except where otherwise clearly indicated these products are of Spanish preferential origin.</p>
                         </div>
                     </div>
                 </div>

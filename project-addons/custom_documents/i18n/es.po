@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-13 01:13+0000\n"
-"PO-Revision-Date: 2020-08-13 01:13+0000\n"
+"POT-Creation-Date: 2020-12-17 11:54+0000\n"
+"PO-Revision-Date: 2020-12-17 11:54+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,12 @@ msgstr ""
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "*= solo si hay necesidad de producción"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+msgid "<br/>\n"
+"                    <strong>Intrastat:</strong>"
 msgstr ""
 
 #. module: custom_documents
@@ -107,11 +113,6 @@ msgid "<strong>Origins of goods</strong>"
 msgstr "<strong>Origen de los materiales</strong>"
 
 #. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "<strong>Pegatinas</strong>"
-msgstr ""
-
-#. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "<strong>Prepared</strong>"
 msgstr "<strong>Preparado</strong>"
@@ -160,11 +161,6 @@ msgid "<strong>Stock</strong>"
 msgstr ""
 
 #. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "<strong>TRANSPORTE</strong> Pagados"
-msgstr ""
-
-#. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "<strong>Type of goods</strong>"
 msgstr "<strong>Tipo de materiales</strong>"
@@ -173,6 +169,11 @@ msgstr "<strong>Tipo de materiales</strong>"
 #: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "<strong>URGE</strong>"
 msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
+msgid "<strong>Validated by:</strong>"
+msgstr "<strong>Validado por:</strong>"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_picking
@@ -190,11 +191,6 @@ msgstr "<strong>Su referencia.</strong>"
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_picking_final_
 msgid "<strong>Your Reference</strong>"
 msgstr "<strong>Su referencia</strong>"
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "A REVISAR POR:"
-msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
@@ -261,12 +257,7 @@ msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Comprobado por"
-msgstr ""
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Confirmado Con"
+msgid "Comprobado por NOMBRE"
 msgstr ""
 
 #. module: custom_documents
@@ -341,7 +332,7 @@ msgstr "Correo electrónico:"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Entrega"
+msgid "Entrega _____________"
 msgstr ""
 
 #. module: custom_documents
@@ -410,6 +401,11 @@ msgid "Invoice report with validation data"
 msgstr "Documento de factura con datos de validación"
 
 #. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "KBC"
+msgstr ""
+
+#. module: custom_documents
 #: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_mrp_production____last_update
 #: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_internal_picking____last_update
 #: model:ir.model.fields,field_description:custom_documents.field_report_custom_documents_report_packing____last_update
@@ -423,11 +419,6 @@ msgstr "Última Modifiación en"
 #: model:ir.model.fields,field_description:custom_documents.field_stock_quant_package_measures
 msgid "Measures"
 msgstr "Medidas"
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "No"
-msgstr ""
 
 #. module: custom_documents
 #: model:ir.model.fields,field_description:custom_documents.field_res_country__not_show_type_message
@@ -456,6 +447,11 @@ msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "PDX TRÍPTICO"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "PEDIDO ALMACÉN"
 msgstr ""
 
@@ -467,6 +463,11 @@ msgstr ""
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "POBLACION"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "PRODEXTEC"
 msgstr ""
 
 #. module: custom_documents
@@ -487,7 +488,7 @@ msgstr ""
 #. module: custom_documents
 #: model:ir.actions.report,name:custom_documents.action_report_packing
 msgid "Packing list"
-msgstr "Lista de embalaje"
+msgstr "lista de embalaje"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
@@ -562,13 +563,18 @@ msgid "REF."
 msgstr ""
 
 #. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Realizado por por"
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+msgid "REGISTRO MERCANTIL DE MADRID - C.I.F. : B62851712 Datos Registrales : Hoja M-338844 Tomo 19334 Folio 119"
 msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Recogida"
+msgid "Realizado por"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "Recogida _____________"
 msgstr ""
 
 #. module: custom_documents
@@ -580,11 +586,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 msgid "Refund"
 msgstr "Factura rectificativa"
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Repartidor"
-msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_purchasequotation_document
@@ -610,12 +611,12 @@ msgstr "Código SWIFT"
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 msgid "Security material"
-msgstr ""
+msgstr "Material de seguridad"
 
 #. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Si"
-msgstr ""
+#: model:ir.model.fields,field_description:custom_documents.field_res_country__show_intrastat
+msgid "Show HS Codes in invoices"
+msgstr "Mostrar códigos HS en facturas"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
@@ -643,6 +644,11 @@ msgid "TECH REF."
 msgstr "REF. TÉC."
 
 #. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "TEMPOS"
+msgstr ""
+
+#. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
 msgid "TOTAL TO PRODUCE:"
 msgstr "TOTAL A PRODUCIR:"
@@ -659,16 +665,16 @@ msgstr "Tel.:"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
-msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin."
-msgstr ""
+msgid "The exporter of the products covered by this document (custom authorization) ES/62/8517/12 declares that except where otherwise clearly indicated these products are of Spanish preferential origin."
+msgstr "El exportar de los productos cubiertos por este documento (autorización aduanera) ES/62/8517/12 declara que, a excepción de que se indique claramente de otra forma, estos productos son de origen preferecial España"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
-msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are with E.U. preferential origin."
-msgstr ""
+msgid "The exporter of the products covered by this document declares that, except where otherwise clearly indicated, these products are of E.U. preferential origin."
+msgstr "El exportar de los productos cubiertos por este documento declara que, a excepción de que se indique claramente de otra forma, estos productos son de origen preferecial U.E"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_packing_document
@@ -679,7 +685,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
 msgid "Total Amount due (Please take note of the fact that we do not assume the charge for bank transfer)"
-msgstr ""
+msgstr "Importe total vencido (Por favor, tenga en cuenta que nosotros no asumimos el cargo de la transferencia bancaria)"
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.mrp_production
@@ -689,13 +695,8 @@ msgstr "Total a producir en"
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_invoice_document_custom
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_saleorder_document
-msgid "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN..."
-msgstr ""
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_purchaseorder_document
-msgid "<strong>Validated by:</strong>"
-msgstr "<strong>Validado por:</strong>"
+msgid "Type of goods: Security Material // NON DANGEROUS MATERIAL // Origin of goods: SPAIN."
+msgstr "Tipo de materiales: Material de seguridad // MATERIAL NO PELIGROSO // Origen de los materiales: ESPAÑA"
 
 #. module: custom_documents
 #: model:ir.model.fields,field_description:custom_documents.field_account_invoice__validated_by
@@ -707,11 +708,6 @@ msgstr "Validado por"
 #: model:ir.model.fields,field_description:custom_documents.field_account_invoice__validation_date
 msgid "Validation date"
 msgstr "Fecha de validación"
-
-#. module: custom_documents
-#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
-msgid "Vendedor"
-msgstr ""
 
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.external_layout_standard_custom
@@ -732,6 +728,11 @@ msgstr "Peso calculado con la suma de los pesos de los productos."
 #. module: custom_documents
 #: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
 msgid "________"
+msgstr ""
+
+#. module: custom_documents
+#: model_terms:ir.ui.view,arch_db:custom_documents.report_internal_picking
+msgid "____________________"
 msgstr ""
 
 #. module: custom_documents

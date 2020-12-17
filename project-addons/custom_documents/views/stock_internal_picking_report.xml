@@ -208,14 +208,6 @@
                             <div class="row" style="page-break-inside: avoid;">
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-6 offset-6 bordered">
-                                            <div class="row">
-                                                <div class="col-6">A REVISAR POR:</div>
-                                                <div class="col-6"><span t-field="o.partner_id.checked_by"/></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-3 bordered"><p>Fecha Llamada/MAIL</p></div>
                                         <div class="col-3 bordered"><p>Contacto TRANSPORTISTA</p></div>
                                         <div class="col-6 bordered"><p>Comentarios</p></div>
@@ -248,13 +240,7 @@
                                                 </div>
                                             </div>
                                             <div class="row mt4">
-                                                <div class="col-3 bordered">
-                                                    <p><strong>TRANSPORTE</strong> Pagados</p>
-                                                </div>
-                                                <div class="col-5 bordered">
-                                                        <span style="display:inline-block; width: 40%;"><strong>Pegatinas</strong></span>
-                                                        <div style="display:inline-block; width: 25%; border: 1px solid black;">Si</div>
-                                                        <div style="display:inline-block; width: 25%; border: 1px solid black;">No</div>
+                                                <div class="col-8">
                                                 </div>
                                                 <div class="col-4">
                                                    <div class="box"/>Entrega _____________
@@ -291,9 +277,7 @@
                                             <div class="row bordered">
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div class="col-4">Comprobado por</div>
-                                                        <div class="col-4"><div class="box"/>Repartidor</div>
-                                                        <div class="col-4"><div class="box"/>Vendedor</div>
+                                                        <div class="col-12">Comprobado por NOMBRE</div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-6">FIRMA Y FECHA</div>
@@ -310,14 +294,30 @@
                                                     </div>
                                                     <br/>
                                                     <div class="row">
+                                                        <div class="col-4 offset-8"><div class="box"/>PRODEXTEC</div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="row">
                                                         <div class="col-4">¿INCLUIDOS?</div>
                                                         <div class="col-4">Si / No</div>
                                                         <div class="col-4"><div class="box"/>ABOUND</div>
                                                     </div>
                                                     <br/>
                                                     <div class="row">
+                                                        <div class="col-4 offset-8"><div class="box"/>KBC</div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="row">
                                                         <div class="col-5"><div class="box"/>DATASHEETS</div>
                                                         <div class="col-4 offset-3"><div class="box"></div>CBIS-CBID</div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="row">
+                                                        <div class="col-4 offset-8"><div class="box"/>TEMPOS</div>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="row">
+                                                        <div class="col-4 offset-8"><div class="box"/>PDX TRÍPTICO</div>
                                                     </div>
                                                 </div>
                                             </div>

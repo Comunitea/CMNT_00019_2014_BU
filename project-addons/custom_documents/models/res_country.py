@@ -30,3 +30,4 @@ class ResCountry(models.Model):
     invoice_report_with_validation_data = fields.\
         Boolean('Invoice report with validation data')
     not_show_type_message = fields.Boolean('Not show type of goods')
+    show_intrastat = fields.Boolean("Show HS Codes in invoices")
