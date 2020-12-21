@@ -17,9 +17,8 @@
                                 <span><strong>Customer Address:</strong></span>
                             </div>
                             <div t-if="o.partner_id">
-                                <span t-field="o.partner_id.commercial_partner_id.name"/>
                                 <div t-field="o.partner_id"
-                                    t-options='{"widget": "contact", "fields": ["address", "phone", "fax"], "no_marker": true, "only_child_name":true}'/>
+                                    t-options='{"widget": "contact", "fields": ["name", "address", "phone", "fax"], "no_marker": true, "only_child_name":true}'/>
                             </div>
                         </div>
                     </div>
@@ -67,7 +66,7 @@
                                 <tr t-foreach="o.move_lines" t-as="move">
                                     <t t-if="not move.phantom_bom_component and move.state != 'cancel'">
                                         <td><span t-esc="move.product_id.get_product_ref(move.partner_id)[0] or move.product_id.default_code"/></td>
-                                        <td><span t-field="move.sale_line_id.with_context({'lang': move.partner_id.lang}).name"/></td>
+                                        <td><span t-field="move.with_context({'lang': move.partner_id.commercial_partner_id.lang}).product_id.name"/></td>
                                         <td class="text-right"><span t-field="move.product_uom_qty"/> <span t-field="move.product_uom" groups="product.group_uom"/></td>
                                     </t>
                                 </tr>
@@ -97,7 +96,7 @@
 
         <template id="report_picking_final">
             <t t-foreach="docs" t-as="o">
-                <t t-call="custom_documents.report_picking_final_" t-lang="o.partner_id.lang"/>
+                <t t-call="custom_documents.report_picking_final_" t-lang="o.partner_id.commercial_partner_id.lang"/>
             </t>
         </template>
 

@@ -135,8 +135,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-center"><p>REGISTRO MERCANTIL DE MADRID - C.I.F. : B62851712 Datos Registrales : Hoja M-338844 Tomo 19334 Folio 119</p></td>
+                            <tr t-if="o.company_id.report_footer">
+                                <td class="text-center"><p t-field="o.company_id.report_footer"/></td>
                             </tr>
                         </table>
                     </div>
