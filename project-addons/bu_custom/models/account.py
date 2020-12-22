@@ -50,12 +50,6 @@ class AccountInvoiceLine(models.Model):
 
     _inherit = 'account.invoice.line'
 
-    product_category = fields.Many2one('product.category', 'Category',
-                                       related="product_id.categ_id",
-                                       store=True)
-    product_brand = fields.Many2one('product.brand', 'Brand',
-                                    related="product_id.product_brand_id",
-                                    store=True)
     journal_id = fields.Many2one('account.journal', 'Journal',
                                  related="invoice_id.journal_id")
     invoice_date = fields.Date(related='invoice_id.date_invoice', store=True)

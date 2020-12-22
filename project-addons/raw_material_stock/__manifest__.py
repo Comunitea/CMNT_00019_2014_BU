@@ -25,7 +25,7 @@
     'description': """""",
     'author': 'Comunitea',
     'website': 'www.comunitea.com',
-    "depends": ['mrp', 'product_virtual_stock_conservative'],
+    "depends": ['mrp'],
     "data": ['views/product_view.xml', 'views/stock_view.xml'],
     "installable": True
 }

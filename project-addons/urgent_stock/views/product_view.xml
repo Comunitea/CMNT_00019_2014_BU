@@ -6,7 +6,7 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="raw_material_stock.product_add_used_stock_form"/>
         <field name="arch" type="xml">
-            <field name="virtual_stock_conservative" position="after">
+            <field name="used_stock" position="after">
                 <field name="urgent_stock"/>
             </field>
         </field>

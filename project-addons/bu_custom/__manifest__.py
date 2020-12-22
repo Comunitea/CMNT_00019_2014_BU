@@ -27,7 +27,7 @@
     'website': '',
     "depends": ['sale_stock', 'technical_office', 'purchase_force_invoiced',
                 'mrp_bom_cost', 'sale_commission', 'product_brand',
-                'product_virtual_stock_conservative'],
+                'stock_available_unreserved'],
     "data": ['views/sale_view.xml', 'views/stock_view.xml',
              'data/cron.xml',
              'wizard/recompute_price_from_bom.xml',
