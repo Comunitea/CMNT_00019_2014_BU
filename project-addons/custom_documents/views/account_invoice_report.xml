@@ -7,12 +7,12 @@
                 <div class="pull-right" style="margin-top:10px;">
                     <t t-if="title">
                         <br/>
-                        <div style="padding: 8px; min-height: 120px; min-width: 250px;" class="text-center">
+                        <div style="padding: 8px; min-height: 120px; min-width: 440px;" class="text-center">
                             <t t-raw="title"/>
                         </div>
                     </t>
                     <t t-if="address">
-                        <div style="min-height: 130px;margin-left: 160px;">
+                        <div style="min-height: 130px;margin-left: 160px;" class="row">
                             <div style="padding: 4px; text-align: left;">
                                 <t t-raw="address"/>
                             </div>
@@ -181,10 +181,11 @@
                     <span t-field="line.name" />
                 </span>
             </xpath>
+            <xpath expr="//div[@name='reference']" position="replace"/>
         </template>
 
         <template id="report_invoice_payment_mode_replace" inherit_id="account_payment_partner.report_invoice_payment_mode">
-            <xpath expr="//p[@t-if='o.payment_mode_id.note']" poition="replace"/>
+            <xpath expr="//p[@t-if='o.payment_mode_id.note']" position="replace"/>
             <xpath expr="//p[@t-as='partner_bank']/.." position="replace"/>
         </template>
 
