@@ -174,8 +174,8 @@
                 <span t-if="line.product_id.hs_code_id and o.partner_id.country_id.show_intrastat">
                     <span t-field="line.name" />
                     <br />
-                    <strong>Intrastat:</strong>
-                    <span t-field="line.product_id.hs_code_id" />
+                    <strong>HS Code:</strong>
+                    <span t-field="line.product_id.hs_code_id.local_code" />
                 </span>
                 <span t-if="not line.product_id.hs_code_id or not o.partner_id.country_id.show_intrastat">
                     <span t-field="line.name" />
