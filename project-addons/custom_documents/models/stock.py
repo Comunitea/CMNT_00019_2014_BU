@@ -51,3 +51,24 @@ class StockQuantPackage(models.Model):
 
     measures = fields.Char('Measures')
     weight = fields.Float('Weight', compute=None)
+
+
+class StockMove(models.Model):
+    _inherit = 'stock.move'
+
+    def _compute_phantom_bom_component(self):
+        for move in self:
+            phantom_component = False
+            if move.sale_line_id and \
+                    move.sale_line_id.product_id != move.product_id:
+                phantom_component = True
+            elif move.move_dest_ids and move.move_dest_ids[0].\
+                    sale_line_id and move.move_dest_ids[0].\
+                    sale_line_id.product_id != move.product_id:
+                phantom_component = True
+            move.phantom_bom_component = phantom_component
+
+    def _action_confirm(self, merge=True, merge_into=False):
+        if not merge_into:
+            merge = False
+        return super()._action_confirm(merge=merge, merge_into=merge_into)

@@ -197,6 +197,8 @@ class picking_internal_report(models.AbstractModel):
                     continue
                 if line.phantom_bom_component:
                     pack_top = line.sale_line_id
+                    if not pack_top and line.move_dest_ids:
+                        pack_top = line.move_dest_ids[0].sale_line_id
                     if not packs_dict.get(pack_top.id, False):
                         packs_dict[pack_top.id] = []
                     packs_dict[pack_top.id].append(line)
