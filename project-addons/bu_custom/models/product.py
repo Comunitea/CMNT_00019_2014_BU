@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from odoo import models, fields
+from odoo import api, models, fields
 
 
 class ProductProduct(models.Model):
@@ -26,6 +26,16 @@ class ProductProduct(models.Model):
 
     manual_minimum_stock = fields.Float('Manual minimum stock')
     reordering_min_qty = fields.Float(string="Min. qty for purchase")
+    is_pack = fields.Boolean("Is pack", compute="_get_is_pack", store=True)
+
+    @api.depends('bom_ids.type')
+    @api.multi
+    def _get_is_pack(self):
+        for prod in self:
+            if prod.bom_ids.filtered(lambda r: r.type == 'phantom'):
+                prod.is_pack = True
+            else:
+                prod.is_pack = False
 
     def _compute_quantities_dict(self, lot_id, owner_id, package_id,
                                  from_date=False, to_date=False):
